@@ -23,11 +23,13 @@ class LinkedList(object):
         if not self.head:
             new_node = Node(val)
             self.head = new_node
-            return
+            print(self.head)
+            return self.head
         else:
             new_node = self.head
             while new_node.next is not None:
                 new_node = new_node.next
             newer_node = Node(val)
             new_node.next = newer_node
-            return
+            print(self.head)
+            return self.head
