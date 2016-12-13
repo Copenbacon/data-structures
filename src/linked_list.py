@@ -46,3 +46,17 @@ class LinkedList(object):
     def size(self):
         """Return the size of the list."""
         return self.size_of_list
+
+
+    def search(self, val):
+        """Return the val of the node when searched."""
+        current = self.head
+        flag = False
+        while current and flag is False:
+            if val == current.val:
+                flag = True
+                return  current
+            else:
+                current = current.next
+        if current ==None:
+                return None

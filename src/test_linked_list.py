@@ -24,6 +24,14 @@ SIZE_TABLE = [
 ]
 
 
+SEARCH_TABLE = [
+    (3, 4, 2, 3),
+    (7, 5, 5, 7),
+    (3, 2, 1, 3),
+    (9, 8, 8, 9),
+]
+
+
 @pytest.mark.parametrize("list_name", INSTANTIATION_TABLE)
 def test_linkedlist(list_name):
     """Test instantiation LinkedList class."""
@@ -59,3 +67,14 @@ def test_size(val1, result):
     for number_to_push in range(val1):
         list_name.push(number_to_push)
     assert list_name.size() == result
+
+
+@pytest.mark.parametrize('val_to_searh_for, val2, val3, result', SEARCH_TABLE)
+def test_search(val_to_searh_for, val2, val3, result):
+    """Test search method to find value."""
+    from linked_list import LinkedList
+    search_list = LinkedList()
+    search_list.push(val_to_searh_for)
+    search_list.push(val2)
+    search_list.push(val3)
+    assert search_list.search(val_to_searh_for).val == result
