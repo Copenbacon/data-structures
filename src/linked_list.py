@@ -73,7 +73,7 @@ class LinkedList(object):
         message = u"("
         current_node = self.head
         for i in range(self.size_of_list):
-            message += "{}, ".format(str(current_node.val))
+            message += "{},".format(str(current_node.val).strip())
             current_node = current_node.next
         message += ")"
         return message

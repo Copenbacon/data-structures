@@ -16,6 +16,7 @@ class Stack(object):
     def push(self, val):
         """Add a value to the top of the stack."""
         self._container.push(val)
+        return self._container
 
     def _size(self):
         """Return the length of the stack."""

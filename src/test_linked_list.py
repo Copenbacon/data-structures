@@ -109,4 +109,4 @@ def test_display():
     list_name = LinkedList(5)
     list_name.push(6)
     list_name.push('*adf')
-    assert list_name.display() == '(*adf, 6, 5, )'
+    assert list_name.display() == '(*adf,6,5,)'
