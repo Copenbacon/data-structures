@@ -33,9 +33,9 @@ SEARCH_TABLE = [
 ]
 
 REMOVE_TABLE = [
-    (3, 7, 3, 2, None),
-    (7, 7, 5, 3, None),
-    (8, 8, 7, 5, None),
+    (3, 7, 3, 2, 7),
+    (7, 8, 7, 5, 8),
+    (5, 8, 7, 5, 7),
 ]
 
 
@@ -95,4 +95,25 @@ def test_remove(val_to_delete, val1, val2, val3, result):
     list_name.push(val1)
     list_name.push(val2)
     list_name.push(val3)
-    assert list_name.remove(val_to_delete).next == result
+    assert_result = list_name.remove(val_to_delete)
+    assert assert_result.val == result
+
+
+def test_remove_head():
+    """Test for removing the last value."""
+    from linked_list import LinkedList
+    list_name = LinkedList()
+    list_name.push(5)
+    list_name.push(6)
+    list_name.push(7)
+    assert list_name.remove(5) is None
+
+
+def test_display():
+    """Test for displaying as a tuple."""
+    from linked_list import LinkedList
+    list_name = LinkedList()
+    list_name.push(5)
+    list_name.push(6)
+    list_name.push('*adf')
+    assert list_name.display() == '(*adf, 6, 5, )'
