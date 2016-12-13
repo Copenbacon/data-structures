@@ -18,12 +18,18 @@ POP_TABLE = [
 ]
 
 
+SIZE_TABLE = [
+    (2, 2),
+    (3, 3)
+]
+
+
 @pytest.mark.parametrize("list_name", INSTANTIATION_TABLE)
 def test_linkedlist(list_name):
     """Test instantiation LinkedList class."""
     from linked_list import LinkedList
     list_name = LinkedList()
-    assert list_name.size == 0
+    assert list_name.size_of_list == 0
 
 
 @pytest.mark.parametrize("val, result", PUSH_TABLE)
@@ -42,4 +48,14 @@ def test_pop(val1, val2):
     list_name = LinkedList()
     list_name.push(val1)
     list_name.push(val2)
-    assert list_name.pop() == val2
+    assert list_name.pop() == val1
+
+
+@pytest.mark.parametrize("val1, result", SIZE_TABLE)
+def test_size(val1, result):
+    """Test size method in LinkedList class."""
+    from linked_list import LinkedList
+    list_name = LinkedList()
+    for number_to_push in range(val1):
+        list_name.push(number_to_push)
+    assert list_name.size() == result

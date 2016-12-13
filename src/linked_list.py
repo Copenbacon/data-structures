@@ -16,7 +16,7 @@ class LinkedList(object):
     def __init__(self):
         """Instantiate LinkedList class."""
         self.head = None
-        self.size = 0
+        self.size_of_list = 0
 
     def push(self, val):
         """Insert value to head of the list."""
@@ -24,6 +24,7 @@ class LinkedList(object):
             new_node = Node(val)
             self.head = new_node
             print(self.head)
+            self.size_of_list += 1
             return self.head
         else:
             new_node = self.head
@@ -32,4 +33,16 @@ class LinkedList(object):
             newer_node = Node(val)
             new_node.next = newer_node
             print(self.head)
+            self.size_of_list += 1
             return self.head
+
+    def pop(self):
+        """Remove value from head of list and return it to user."""
+        value_popped = self.head.val
+        self.head = self.head.next
+        self.size_of_list -= 1
+        return value_popped
+
+    def size(self):
+        """Return the size of the list."""
+        return self.size_of_list
