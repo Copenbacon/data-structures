@@ -25,10 +25,17 @@ SIZE_TABLE = [
 
 
 SEARCH_TABLE = [
-    (3, 4, 2, 3),
-    (7, 5, 5, 7),
-    (3, 2, 1, 3),
-    (9, 8, 8, 9),
+    (3, 7, 3, 2, 3),
+    (7, 7, 5, 5, 7),
+    (3, 2, 1, 3, 3),
+    (9, 8, 8, 9, 9),
+    (8, 8, 8, 8, 8),
+]
+
+REMOVE_TABLE = [
+    (3, 7, 3, 2, None),
+    (7, 7, 5, 3, None),
+    (8, 8, 7, 5, None),
 ]
 
 
@@ -69,12 +76,23 @@ def test_size(val1, result):
     assert list_name.size() == result
 
 
-@pytest.mark.parametrize('val_to_searh_for, val2, val3, result', SEARCH_TABLE)
-def test_search(val_to_searh_for, val2, val3, result):
+@pytest.mark.parametrize('val_to_search_for, val1, val2, val3, result', SEARCH_TABLE)
+def test_search(val_to_search_for, val1, val2, val3, result):
     """Test search method to find value."""
     from linked_list import LinkedList
     search_list = LinkedList()
-    search_list.push(val_to_searh_for)
+    search_list.push(val1)
     search_list.push(val2)
     search_list.push(val3)
-    assert search_list.search(val_to_searh_for).val == result
+    assert search_list.search(val_to_search_for).val == result
+
+
+@pytest.mark.parametrize("val_to_delete, val1, val2, val3, result", REMOVE_TABLE)
+def test_remove(val_to_delete, val1, val2, val3, result):
+    """Test remove method in LinkedList class."""
+    from linked_list import LinkedList
+    list_name = LinkedList()
+    list_name.push(val1)
+    list_name.push(val2)
+    list_name.push(val3)
+    assert list_name.remove(val_to_delete).next == result
