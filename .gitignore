@@ -28,7 +28,6 @@ lib
 lib64
 include
 *.cfg
-setup.py
 share/
 share
 pip-selfcheck.json 
