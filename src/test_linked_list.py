@@ -19,8 +19,9 @@ POP_TABLE = [
 
 
 SIZE_TABLE = [
-    (2, 2),
-    (3, 3)
+    (795, 1),
+    ([2, 33], 2),
+    ([3, 4, 5], 3),
 ]
 
 
@@ -51,8 +52,7 @@ def test_linkedlist(list_name):
 def test_push(val, result):
     """Test push method to add value to front of linked list."""
     from linked_list import LinkedList
-    list_name = LinkedList()
-    list_name.push(val)
+    list_name = LinkedList(val)
     assert list_name.head.val == result
 
 
@@ -60,19 +60,16 @@ def test_push(val, result):
 def test_pop(val1, val2):
     """Test pop method to remove node off the front of a linked list."""
     from linked_list import LinkedList
-    list_name = LinkedList()
-    list_name.push(val1)
+    list_name = LinkedList(val1)
     list_name.push(val2)
-    assert list_name.pop() == val1
+    assert list_name.pop() == val2
 
 
 @pytest.mark.parametrize("val1, result", SIZE_TABLE)
 def test_size(val1, result):
     """Test size method in LinkedList class."""
     from linked_list import LinkedList
-    list_name = LinkedList()
-    for number_to_push in range(val1):
-        list_name.push(number_to_push)
+    list_name = LinkedList(val1)
     assert list_name.size() == result
 
 
@@ -80,8 +77,7 @@ def test_size(val1, result):
 def test_search(val_to_search_for, val1, val2, val3, result):
     """Test search method to find value."""
     from linked_list import LinkedList
-    search_list = LinkedList()
-    search_list.push(val1)
+    search_list = LinkedList(val1)
     search_list.push(val2)
     search_list.push(val3)
     assert search_list.search(val_to_search_for).val == result
@@ -91,19 +87,17 @@ def test_search(val_to_search_for, val1, val2, val3, result):
 def test_remove(val_to_delete, val1, val2, val3, result):
     """Test remove method in LinkedList class."""
     from linked_list import LinkedList
-    list_name = LinkedList()
-    list_name.push(val1)
+    list_name = LinkedList(val1)
     list_name.push(val2)
     list_name.push(val3)
     assert_result = list_name.remove(val_to_delete)
     assert assert_result.val == result
 
 
-def test_remove_head():
+def test_remove_last():
     """Test for removing the last value."""
     from linked_list import LinkedList
-    list_name = LinkedList()
-    list_name.push(5)
+    list_name = LinkedList(5)
     list_name.push(6)
     list_name.push(7)
     assert list_name.remove(5) is None
@@ -112,8 +106,7 @@ def test_remove_head():
 def test_display():
     """Test for displaying as a tuple."""
     from linked_list import LinkedList
-    list_name = LinkedList()
-    list_name.push(5)
+    list_name = LinkedList(5)
     list_name.push(6)
     list_name.push('*adf')
     assert list_name.display() == '(*adf, 6, 5, )'

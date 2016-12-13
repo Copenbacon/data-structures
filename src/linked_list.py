@@ -13,29 +13,29 @@ class Node(object):
 class LinkedList(object):
     """Defining class of LinkedList."""
 
-    def __init__(self):
+    def __init__(self, iterable=None):
         """Instantiate LinkedList class."""
         self.head = None
         self.size_of_list = 0
+        if iterable and hasattr(iterable, "__iter__"):
+            for value in iterable:
+                self.push(value)
+        elif iterable:
+            self.push(iterable)
 
     def push(self, val):
         """Insert value to head of the list."""
-        if self.head is None:
-            self.head = Node(val)
-            print(self.head)
-            self.size_of_list += 1
-            return self.head
-        else:
-            self.head = Node(val, self.head)
-            print(self.head)
-            self.size_of_list += 1
-            return self.head
+        new_node = Node(val, self.head)
+        self.head = new_node
+        self.size_of_list += 1
 
     def pop(self):
         """Remove value from head of list and return it to user."""
+        if self.head is None:
+            raise IndexError("Impossible to pop an empty list")
+        value_popped = self.head.val
         self.head = self.head.next
         self.size_of_list -= 1
-        value_popped = self.head.val
         return value_popped
 
     def size(self):
@@ -45,15 +45,10 @@ class LinkedList(object):
     def search(self, val):
         """Return the val of the node when searched."""
         current = self.head
-        flag = False
-        while current and flag is False:
-            if val == current.val:
-                flag = True
+        while current:
+            if current.val == val:
                 return current
-            else:
-                current = current.next
-        if current is None:
-                return None
+            current = current.next
 
     def remove(self, node_to_delete):
         """Remove the node passed into the parameter."""
