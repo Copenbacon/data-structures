@@ -17,7 +17,7 @@ class LinkedList(object):
         """Instantiate LinkedList class."""
         self.head = None
         self.size_of_list = 0
-        if iterable and hasattr(iterable, "__iter__"):
+        if iterable and hasattr(iterable, "__iter__") or isinstance(iterable, str):
             for value in iterable:
                 self.push(value)
         elif iterable:
