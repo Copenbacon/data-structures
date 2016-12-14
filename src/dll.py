@@ -1,5 +1,5 @@
 """This is the module for doubly-linked lists methods."""
-from linked_list import LinkedList
+# encoding: utf-8
 
 
 class DLLNODE(object):
@@ -16,20 +16,19 @@ class DLLNODE(object):
 
 
 class DLL(object):
-    """Define the doubly-linked list class.
+    """Define the doubly-linked list class."""
 
-    push(val): will insert the value ‘val’ at the head of the list
-    append(val): will append the value ‘val’ at the tail of the list
-    pop(): will pop the first value off the head of the list and return it.
-    shift(): will remove the last value from the tail of the list and return it.
-    remove(val): will remove the first instance of ‘val’ found in the list, starting from the head. If ‘val’ is not present, it will raise an appropriate Python exception.
-    Special thnaks to Nick for writing the doc string methods explanations.
-    """
-
-    def __init__(self, iterable):
-        """Initiate the doubly-linked list."""
-        self._container = LinkedList(iterable)
+    def __init__(self, iterable=None):
+        """Instantiate LinkedList class."""
         self.tail = None
+        self.head = None
+        self.size_of_list = 0
+        if iterable and hasattr(iterable, "__iter__") or isinstance(iterable, str):
+            for value in iterable:
+                self.push(value)
+        elif iterable:
+            raise TypeError
+            print("Please submit an iterable when instantiating the list. You can use the push method to add one value at a time.")
 
     def push(self, val):
         """Insert value to head of the list."""
@@ -49,5 +48,8 @@ class DLL(object):
             raise IndexError("Impossible to pop an empty list")
         value_popped = self.head.val
         self.head = self.head.next
+        self.head.prev = None
+        if self.head is None:
+            self.tail = None
         self.size_of_list -= 1
         return value_popped
