@@ -3,7 +3,7 @@
 Weird bug, can't figure out. Can run tests multiple times and get different results. Have had all permutations. Had py27 succeed and py3 fail, had vice versa, had both succeed, and had both fail. It has something to do with our test_push_stack test in test_stack.py, but it's only a certain parameter from the PUSH_STACK_TABLE, the dictionaries we pass in. Displaying the dictionaries from the function call will randomly switch keys 1 and 2 from the initial dictionary passed in so that our message will appear with them in some sort of random order.
 
 
-
+UPDATE: Above bug fixed. Because Dictionaries are unordered, you cannot predict how they will be iterated over n the hash because we don't (yet) have access to the hash. Changed test to assert str(val) is in the displayed stack/LinkedList
 
 #Test logs:
 
