@@ -1,6 +1,6 @@
 """This is the test for stack module."""
 import pytest
-
+import random
 
 PUSH_TABLE = [
     [[1, 2, 3], 4, 4],
@@ -25,11 +25,17 @@ PUSH_IT_TABLE = [
 
 PUSH_STACK_TABLE = [
     [[1, 2, 3], 4, "(4,3,2,1,)"],
-    ["Foo to the bar", 5, "(5,r,a,b,,e,h,t,,o,t,,o,o,F,)"],
+    ["Foo to the bar", 5, "(5,r,a,b, ,e,h,t, ,o,t, ,o,o,F,)"],
     [("a", "b", "c"), (5,), "((5,),c,b,a,)"],
-    [{"one": 1, "two": 2}, {"three": 3}, "({'three': 3},two,one,)"],
+    [{"one": 1, "two": 2}, {"three": 3}, "({'three': 3},one,two,)"],
 ]
 
+SIZE_DECREASES_TABLE = [
+    [7, 5],
+    [1000, 500],
+    [random.randint(75, 150), random.randint(0, 75)],
+    [1, 1]
+]
 
 @pytest.fixture
 def new_stack():
@@ -78,3 +84,15 @@ def test_push_stack(iterable, val, result):
     stack_push = Stack(iterable)
     stack_push.push(val)
     assert stack_push._container.display() == result
+
+
+@pytest.mark.parametrize("times_pushed, times_popped", SIZE_DECREASES_TABLE)
+def test_size_decreases(times_pushed, times_popped):
+    """When I pop, I reduce the list size."""
+    from stack import Stack
+    size_stack = Stack()
+    for i in range(times_pushed):
+        size_stack.push(random.randint(0, 10))
+    for i in range(times_popped):
+        size_stack.pop()
+    assert size_stack._size() == times_pushed - times_popped

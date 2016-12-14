@@ -72,8 +72,8 @@ class LinkedList(object):
         """Display the info."""
         message = u"("
         current_node = self.head
-        for i in range(self.size_of_list):
-            message += "{},".format(str(current_node.val).strip())
+        while current_node:
+            message += "{},".format(str(current_node.val))
             current_node = current_node.next
         message += ")"
-        return message
+        return message.strip()
