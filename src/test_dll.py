@@ -14,7 +14,21 @@ PUSH_TABLE = [
     ([13, 14, 15, 16], 17),
     ([9], 8),
     ((7, 8), 12),
-    ("This", "T")
+    ("This", "T"),
+]
+
+APPEND_TABLE = [
+    ([13, 14, 15, 16], 17),
+    ([9], 8),
+    ((7, 8), 12),
+    ("This", "T"),
+]
+
+SHIFT_TABLE = [
+    ([13, 14, 15, 16], 13),
+    ((7, 8), 7),
+    ("This", "T"),
+    ([9], 9),
 ]
 
 
@@ -51,3 +65,38 @@ def test_push(iterable, val):
     new_dll = DLL(iterable)
     new_dll.push(val)
     assert new_dll.head.val == val
+
+
+@pytest.mark.parametrize("iterable, val", APPEND_TABLE)
+def test_append(iterable, val):
+    """Test inserting a value to head of a list."""
+    from dll import DLL
+    new_dll = DLL(iterable)
+    new_dll.append(val)
+    assert new_dll.tail.val == val
+
+
+def test_append_when_dll_empty(new_empty_dll):
+    """Test appending a new value to an empty list sets the head and tail for the list."""
+    new_empty_dll.append(9)
+    assert new_empty_dll.head.val == 9 and new_empty_dll.tail.val == 9
+
+
+@pytest.mark.parametrize("iterable, result", SHIFT_TABLE)
+def test_shift(iterable, result):
+    """Test shifting a value from tail of a list."""
+    from dll import DLL
+    new_dll = DLL(iterable)
+    assert new_dll.shift() == result
+
+
+def test_shift_when_empty(new_empty_dll):
+    """Test that shifting an empty list returns an index error."""
+    with pytest.raises(IndexError):
+        new_empty_dll.shift()
+
+
+def test_pop_when_empty(new_empty_dll):
+    """Test that shifting an empty list returns an index error."""
+    with pytest.raises(IndexError):
+        new_empty_dll.pop()

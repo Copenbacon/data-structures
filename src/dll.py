@@ -27,8 +27,7 @@ class DLL(object):
             for value in iterable:
                 self.push(value)
         elif iterable:
-            raise TypeError
-            print("Please submit an iterable when instantiating the list. You can use the push method to add one value at a time.")
+            raise TypeError("Please submit an iterable when instantiating the list. You can use the push method to add one value at a time.")
 
     def push(self, val):
         """Insert value to head of the list."""
@@ -43,7 +42,7 @@ class DLL(object):
         self.size_of_list += 1
 
     def pop(self):
-        """Remove value from head of list and return it to user."""
+        """Remove node from head of list and return it to user."""
         if self.head is None:
             raise IndexError("Impossible to pop an empty list")
         value_popped = self.head.val
@@ -53,3 +52,25 @@ class DLL(object):
             self.tail = None
         self.size_of_list -= 1
         return value_popped
+
+    def append(self, val):
+        """Add a tail to the end of the list."""
+        if self.tail is None:
+            self.push(val)
+        else:
+            new_node = DLLNODE(val)
+            self.tail.next = new_node
+            self.tail = new_node
+
+    def shift(self):
+        """Remove node from end of list and return to user."""
+        if self.tail is None:
+            raise IndexError("Impossible to shift from an empty list.")
+        value_shifted = self.tail.val
+        self.tail = self.tail.prev
+        if hasattr(self.tail, "next"):
+            self.tail.next = None
+        if hasattr(self.tail, "prev"):
+            self.head = self.tail
+        self.size_of_list -= 1
+        return value_shifted
