@@ -1,4 +1,5 @@
-"""Setupup.py for data-structures repo."""
+"""Setup.py for data-structures repo."""
+
 
 from setuptools import setup
 
