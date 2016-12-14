@@ -2,7 +2,9 @@
 
 
 class Node(object):
-    """Defining Node Class."""
+    """Defining Node Class.
+    __init__() adds a val property and an optional next property
+    """
 
     def __init__(self, val, next=None):
         """Instantiate Node Class."""
@@ -11,17 +13,27 @@ class Node(object):
 
 
 class LinkedList(object):
-    """Defining class of LinkedList."""
+    """Defining class of LinkedList. 
+
+    push(val): adds a node at the head, increments size of list.
+    pop(): removes the node at the head, deincrements size of list.
+    size(): returns size of LinkedList
+    search(val): searches list for node containing val and returns that node.
+    remove(node_to_delete): takes a node as argument, searches for it, and removes it from list, then deincrements size of list
+    display(): returns LinkedList as a stringified tuple-looking object.
+
+    """
 
     def __init__(self, iterable=None):
         """Instantiate LinkedList class."""
         self.head = None
         self.size_of_list = 0
-        if iterable and hasattr(iterable, "__iter__"):
+        if iterable and hasattr(iterable, "__iter__") or isinstance(iterable, str):
             for value in iterable:
                 self.push(value)
         elif iterable:
-            self.push(iterable)
+            raise TypeError
+            print("Please submit an iterable when instantiating the list. You can use the push method to add one value at a time.")
 
     def push(self, val):
         """Insert value to head of the list."""
@@ -49,31 +61,36 @@ class LinkedList(object):
             if current.val == val:
                 return current
             current = current.next
+        if current is None:
+            raise NameError
+            print("Parameter given, {}, is not in list".format(str(val)))
+        return current
 
     def remove(self, node_to_delete):
         """Remove the node passed into the parameter."""
-        current_node = self.search(node_to_delete)
+        current_node = self.search(node_to_delete.val)
         found = False
-        print(self.size_of_list, "Old Size of List")
         previous = self.head
         search_node = self.head.next
-        while search_node and found is False:
+        while search_node and not found:
             if current_node is self.head:
                 self.pop()
                 found = True
-            elif current_node.val == node_to_delete:
+            elif current_node.val == node_to_delete.val:
                 previous.next = current_node.next
                 found = True
-        self.size_of_list -= 1
-        print(self.size_of_list, "New Size of List")
-        return previous.next
+                self.size_of_list -= 1
+            else:
+                raise NameError
+                print("Parameter given, {}, is not in list".format(node_to_delete))
 
     def display(self):
         """Display the info."""
         message = u"("
         current_node = self.head
         for i in range(self.size_of_list):
-            message += "{}, ".format(str(current_node.val))
-            current_node = current_node.next
-        message += ")"
+            while current_node.next is not None:
+                message += "{}, ".format(str(current_node.val))
+                current_node = current_node.next
+        message += "{})".format(str(current_node.val))
         return message
