@@ -125,12 +125,5 @@ def test_remove_not_in_list_raises_error():
 def test_display():
     """Test for displaying as a tuple."""
     from linked_list import LinkedList
-<<<<<<< HEAD
-    list_name = LinkedList(5)
-    list_name.push(6)
-    list_name.push('*adf')
-    assert list_name.display() == '(*adf,6,5,)'
-=======
     list_name = LinkedList([5, 6, '*adf'])
     assert list_name.display() == '(*adf, 6, 5)'
->>>>>>> linked_list
