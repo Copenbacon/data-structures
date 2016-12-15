@@ -37,7 +37,6 @@ class DLL(object):
             self.tail = new_node
         else:
             self.head.prev = new_node
-            self.head.next = self.head
             self.head = new_node
         self.size_of_list += 1
 
@@ -61,6 +60,7 @@ class DLL(object):
             new_node = DLLNODE(val)
             self.tail.next = new_node
             self.tail = new_node
+            self.size_of_list += 1
 
     def shift(self):
         """Remove node from end of list and return to user."""
@@ -74,3 +74,31 @@ class DLL(object):
             self.head = self.tail
         self.size_of_list -= 1
         return value_shifted
+
+    def search(self, val):
+        """Return the val of the node when searched."""
+        current = self.head
+        while current:
+            print(current.next.val, "current.next")
+            current = current.next
+            if current.val == val:
+                return current
+        if current is None:
+            raise NameError
+            print("Parameter given, {}, is not in list".format(str(val)))
+        return current
+
+    def remove(self, node_to_delete):
+        """Remove the node passed into the parameter."""
+        current_node = self.search(node_to_delete)
+        if current_node is self.head:
+            self.pop()
+        elif current_node is self.tail:
+            self.shift()
+        elif current_node.val == node_to_delete:
+            current_node.prev.next = current_node.next
+            current_node.next.prev = current_node.prev
+            self.size_of_list -= 1
+        else:
+            raise NameError
+            print("Parameter given, {}, is not in list".format(node_to_delete))

@@ -31,6 +31,13 @@ SHIFT_TABLE = [
     ([9], 9),
 ]
 
+REMOVE_TABLE = [
+    ((2, 4, 6, 8), 4),
+    ((17, 21, 25, 29), 21),
+    ([33, 43, 53, 63], 43),
+    (["This", "is", "my", "life"], "This"),
+]
+
 
 @pytest.fixture
 def new_empty_dll():
@@ -100,3 +107,12 @@ def test_pop_when_empty(new_empty_dll):
     """Test that shifting an empty list returns an index error."""
     with pytest.raises(IndexError):
         new_empty_dll.pop()
+
+
+@pytest.mark.parametrize("iterable, val", REMOVE_TABLE)
+def test_remove_val_in_list(iterable, val):
+    """Test searching and removing a val in a list."""
+    from dll import DLL
+    new_dll = DLL(iterable)
+    new_dll.remove(val)
+    assert new_dll.size_of_list == len(iterable) - 1
