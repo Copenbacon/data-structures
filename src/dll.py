@@ -71,8 +71,6 @@ class DLL(object):
         self.tail = self.tail.prev
         if hasattr(self.tail, "next"):
             self.tail.next = None
-        if hasattr(self.tail, "prev"):
-            self.head = self.tail
         self.size_of_list -= 1
         return value_shifted
 
