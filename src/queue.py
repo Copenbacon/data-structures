@@ -11,16 +11,16 @@ class Queue(object):
 
     def enqueue(self, val):
         """Add value to the Queue at the end."""
-        self._container.append(val)
+        self._container.push(val)
 
     def dequeue(self):
-        """Remove the the head of the queue."""
-        self._container.pop()
+        """Remove the first value of the queue."""
+        return self._container.shift()
 
     def peek(self):
         """Look at next value in the Queue without removing."""
-        return self._container.head.val
+        return self._container.tail.val
 
     def size(self):
         """How big the Queue is."""
-        return self._container.size()
+        return self._container.size_of_list
