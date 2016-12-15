@@ -46,7 +46,8 @@ class DLL(object):
             raise IndexError("Impossible to pop an empty list")
         value_popped = self.head.val
         self.head = self.head.next
-        self.head.prev = None
+        if self.size_of_list > 1:
+            self.head.prev = None
         if self.head is None:
             self.tail = None
         self.size_of_list -= 1
@@ -78,14 +79,12 @@ class DLL(object):
     def search(self, val):
         """Return the val of the node when searched."""
         current = self.head
+        if current is None:
+            raise NameError("Parameter given, {}, is not in list".format(str(val)))
         while current:
-            print(current.next.val, "current.next")
-            current = current.next
             if current.val == val:
                 return current
-        if current is None:
-            raise NameError
-            print("Parameter given, {}, is not in list".format(str(val)))
+            current = current.next
         return current
 
     def remove(self, node_to_delete):
@@ -95,10 +94,9 @@ class DLL(object):
             self.pop()
         elif current_node is self.tail:
             self.shift()
-        elif current_node.val == node_to_delete:
+        elif current_node and current_node.val == node_to_delete:
             current_node.prev.next = current_node.next
             current_node.next.prev = current_node.prev
             self.size_of_list -= 1
         else:
-            raise NameError
-            print("Parameter given, {}, is not in list".format(node_to_delete))
+            raise NameError("Parameter given, {}, is not in list".format(node_to_delete))
