@@ -85,7 +85,7 @@ def test_search_raises_error_when_arg_not_found():
     """Make sure search returns a NameError when search term not found."""
     from linked_list import LinkedList
     search_list = LinkedList([8, 7, 6])
-    with pytest.raises(NameError):
+    with pytest.raises(ValueError):
         search_list.search(9)
 
 
@@ -118,7 +118,7 @@ def test_remove_not_in_list_raises_error():
     """Test that removing something not in list raises a NameError."""
     from linked_list import LinkedList
     list_name = LinkedList([5, 6, 7])
-    with pytest.raises(NameError):
+    with pytest.raises(ValueError):
         list_name.remove(list_name.search(9))
 
 

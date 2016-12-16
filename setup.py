@@ -4,7 +4,7 @@ from setuptools import setup
 
 setup(
     name="data-structures",
-    description="Implementation of a Linked List.",
+    description="Implementation of a variety of data structures including singly linked lists, doubly linked lists, stacks, and queues.",
     version=0.1,
     author="Colin Lamont, Conor Clary",
     author_email="sclary50@gmail.com, colinLamont@gmail.com",
