@@ -3,6 +3,7 @@
 
 class Node(object):
     """Defining Node Class.
+
     __init__() adds a val property and an optional next property
     """
 
@@ -21,7 +22,6 @@ class LinkedList(object):
     search(val): searches list for node containing val and returns that node.
     remove(node_to_delete): takes a node as argument, searches for it, and removes it from list, then deincrements size of list
     display(): returns LinkedList as a stringified tuple-looking object.
-
     """
 
     def __init__(self, iterable=None):
@@ -32,8 +32,7 @@ class LinkedList(object):
             for value in iterable:
                 self.push(value)
         elif iterable:
-            raise TypeError
-            print("Please submit an iterable when instantiating the list. You can use the push method to add one value at a time.")
+            raise TypeError("Please submit an iterable when instantiating the list. You can use the push method to add one value at a time.")
 
     def push(self, val):
         """Insert value to head of the list."""
@@ -61,28 +60,24 @@ class LinkedList(object):
             if current.val == val:
                 return current
             current = current.next
-        if current is None:
-            raise NameError
-            print("Parameter given, {}, is not in list".format(str(val)))
-        return current
+            if current is None:
+                raise ValueError("Parameter given, {}, is not in list".format(val))
 
     def remove(self, node_to_delete):
         """Remove the node passed into the parameter."""
         current_node = self.search(node_to_delete.val)
+        search_node = self.head
         found = False
-        previous = self.head
-        search_node = self.head.next
-        while search_node and not found:
+        while not found:
             if current_node is self.head:
                 self.pop()
                 found = True
-            elif current_node.val == node_to_delete.val:
-                previous.next = current_node.next
+            elif search_node.next.val == node_to_delete.val:
+                search_node.next = current_node.next
                 found = True
                 self.size_of_list -= 1
             else:
-                raise NameError
-                print("Parameter given, {}, is not in list".format(node_to_delete))
+                search_node = search_node.next
 
     def display(self):
         """Display the info."""
