@@ -3,7 +3,14 @@ from linked_list import LinkedList
 
 
 class Stack(object):
-    """Define stack class."""
+    """Define stack class.
+
+    __init__(): Initiate the Stack as a instance of LinkedList.
+    pop(): Remove the top element from stack and returns it.
+    push(): Add a value to the top of the stack.
+    _size(): Return the length of the stack.
+    _is_empty(): Return true if the stack is empty.
+    """
 
     def __init__(self, iterable=None):
         """.Initiate the Stack as a instance of LinkedList."""
