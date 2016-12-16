@@ -16,7 +16,17 @@ class DLLNODE(object):
 
 
 class DLL(object):
-    """Define the doubly-linked list class."""
+    """Define the doubly-linked list class.
+
+    __init__(): initializes the DLL class and adds a tail, head, and size_of_list attribute. It also checks that the values passed in are iterable.
+    push(): Inserts a value to head of the list
+    pop(): Remove node from head of list and return it to user.
+    append(): Add a tail to the end of the list.
+    shift(): Remove node from end of list and return to user.
+    def search(self, val): Return the val of the node when searched.
+    remove(): Remove the node passed into the parameter.
+
+    """
 
     def __init__(self, iterable=None):
         """Instantiate LinkedList class."""
