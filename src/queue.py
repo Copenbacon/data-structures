@@ -3,7 +3,16 @@ from dll import DLL
 
 
 class Queue(object):
-    """Define the Queue class."""
+    """Define the Queue class.
+
+    It is important to note that the "tail" of our queue is actually the front of the Queue.
+
+    __init__(): initializes the Queue class as a composite of the DLL class.
+    enqueue(): uses the push method from DLL to add nodes to the end of the Queue.
+    dequeue(): removes a node from the front of the dequeue
+    peek(): Looks at the front value of the Queue without removing it or advancing the view beyond it.
+    size(): returns the size of the Queue.
+    """
 
     def __init__(self, iterable=None):
         """Initiate the Queue as an instance of DLL."""
