@@ -1,4 +1,6 @@
 # data-structures
+##Dec 18, 2016 - Merged in DLL, Stack, Linked List Updates
+
 ##Dec 15, 2016
 Test Coverage at 100% for queue.py
 
@@ -36,6 +38,8 @@ TOTAL                       378      6    98%
   congratulations :)
 
 
+12/18/2016 - Merged in Stack updates nad Linked List Updates
+
 
 ##Dec 14, 2016
 
@@ -43,9 +47,43 @@ A singly linked-list might be more appropriate for maintaining some kind of line
 
 Doubly linked lists are great for the above as well, but if you want to know where the end of the list is and what is at it, a doubly linked_list is helpful. Not exactly sure of a good use case for this.
 
+
+12/18/2016 - Stack updates
 ---------- coverage: platform linux2, python 2.7.12-final-0 ----------
 Name                      Stmts   Miss  Cover   Missing
 -------------------------------------------------------
+src/linked_list.py           60      0   100%
+src/stack.py                 15      0   100%
+src/test_linked_list.py      63      0   100%
+src/test_stack.py            39      0   100%
+-------------------------------------------------------
+TOTAL                       177      0   100%
+
+
+================================================= 46 passed in 0.20 seconds
+
+----------- coverage: platform linux, python 3.5.2-final-0 -----------
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+src/linked_list.py           60      0   100%
+src/stack.py                 15      0   100%
+src/test_linked_list.py      63      0   100%
+src/test_stack.py            39      0   100%
+-------------------------------------------------------
+TOTAL                       177      0   100%
+
+
+================================================= 46 passed in 0.22 seconds
+
+
+
+12/18/2016
+
+
+---------- coverage: platform linux2, python 2.7.12-final-0 ----------
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+<<<<<<< HEAD
 src/dll.py                   72      0   100%
 src/linked_list.py           61      6    90%   36, 47, 66-67, 84-85
 src/stack.py                 14      0   100%
@@ -68,14 +106,32 @@ src/test_stack.py            41      0   100%
 -------------------------------------------------------
 TOTAL                       318      6    98%
 
+=======
+src/linked_list.py           60      0   100%
+src/test_linked_list.py      63      0   100%
+-------------------------------------------------------
+TOTAL                       123      0   100%
+
+
+================================================= 25 passed in 0.15 seconds
+
+----------- coverage: platform linux, python 3.5.2-final-0 -----------
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+src/linked_list.py           60      0   100%
+src/test_linked_list.py      63      0   100%
+-------------------------------------------------------
+TOTAL                       123      0   100%
+
+
+================================================= 25 passed in 0.15 seconds
+
 
 ## Dec 13, 2016
 Weird bug, can't figure out. Can run tests multiple times and get different results. Have had all permutations. Had py27 succeed and py3 fail, had vice versa, had both succeed, and had both fail. It has something to do with our test_push_stack test in test_stack.py, but it's only a certain parameter from the PUSH_STACK_TABLE, the dictionaries we pass in. Displaying the dictionaries from the function call will randomly switch keys 1 and 2 from the initial dictionary passed in so that our message will appear with them in some sort of random order.
 
 
-UPDATE: Above bug fixed. Because Dictionaries are unordered, you cannot predict how they will be iterated over n the hash because we don't (yet) have access to the hash. Changed test to assert str(val) is in the displayed stack/LinkedList
-
-#Test logs:
+UPDATE: Above bug fixed. Because Dictionaries are unordered, you cannot predict how they will be iterated over in the hash because we don't (yet) have access to the hash. Changed test to assert str(val) is in the displayed stack/LinkedList
 
 UPDATED 12/14/16
 ---------- coverage: platform linux2, python 2.7.12-final-0 ----------

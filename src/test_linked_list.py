@@ -81,12 +81,11 @@ def test_search(val_to_search_for, val1, result):
     assert search_list.search(val_to_search_for).val == result
 
 
-def test_search_raises_error_when_arg_not_found():
+def test_search_returns_none_when_arg_not_found():
     """Make sure search returns a NameError when search term not found."""
     from linked_list import LinkedList
     search_list = LinkedList([8, 7, 6])
-    with pytest.raises(ValueError):
-        search_list.search(9)
+    assert search_list.search(9) is None
 
 
 @pytest.mark.parametrize("val_to_delete, val1, result", REMOVE_TABLE)
@@ -115,7 +114,7 @@ def test_remove_head():
 
 
 def test_remove_not_in_list_raises_error():
-    """Test that removing something not in list raises a NameError."""
+    """Test that removing something not in list raises a ValueError."""
     from linked_list import LinkedList
     list_name = LinkedList([5, 6, 7])
     with pytest.raises(ValueError):
@@ -127,3 +126,11 @@ def test_display():
     from linked_list import LinkedList
     list_name = LinkedList([5, 6, '*adf'])
     assert list_name.display() == '(*adf, 6, 5)'
+
+
+def test_pop_empty_list_raise_error():
+    """Popping an empty list should raise an error."""
+    from linked_list import LinkedList
+    list_name = LinkedList()
+    with pytest.raises(IndexError):
+        list_name.pop()
