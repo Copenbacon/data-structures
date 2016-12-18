@@ -60,12 +60,16 @@ class LinkedList(object):
             if current.val == val:
                 return current
             current = current.next
-            if current is None:
-                raise ValueError("Parameter given, {}, is not in list".format(val))
+        return current
 
     def remove(self, node_to_delete):
         """Remove the node passed into the parameter."""
-        current_node = self.search(node_to_delete.val)
+        try:
+            current_node = self.search(node_to_delete.val)
+        except AttributeError:
+            current_node = node_to_delete
+        if current_node is None:
+            raise ValueError("Node not in list")
         search_node = self.head
         found = False
         while not found:

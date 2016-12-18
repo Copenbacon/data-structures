@@ -1,4 +1,27 @@
 # data-structures
+12/18/2016
+
+---------- coverage: platform linux2, python 2.7.12-final-0 ----------
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+src/linked_list.py           60      0   100%
+src/test_linked_list.py      63      0   100%
+-------------------------------------------------------
+TOTAL                       123      0   100%
+
+
+================================================= 25 passed in 0.15 seconds
+
+----------- coverage: platform linux, python 3.5.2-final-0 -----------
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+src/linked_list.py           60      0   100%
+src/test_linked_list.py      63      0   100%
+-------------------------------------------------------
+TOTAL                       123      0   100%
+
+
+================================================= 25 passed in 0.15 seconds
 
 UPDATED 12/14/16
 ---------- coverage: platform linux2, python 2.7.12-final-0 ----------
