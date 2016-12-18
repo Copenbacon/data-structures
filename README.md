@@ -1,11 +1,34 @@
 # data-structures
+
+12/18/2016
+
+---------- coverage: platform linux2, python 2.7.12-final-0 ----------
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+src/linked_list.py           60      0   100%
+src/test_linked_list.py      63      0   100%
+-------------------------------------------------------
+TOTAL                       123      0   100%
+
+
+================================================= 25 passed in 0.15 seconds
+
+----------- coverage: platform linux, python 3.5.2-final-0 -----------
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+src/linked_list.py           60      0   100%
+src/test_linked_list.py      63      0   100%
+-------------------------------------------------------
+TOTAL                       123      0   100%
+
+
+================================================= 25 passed in 0.15 seconds
+
 ## Dec 13, 2016
 Weird bug, can't figure out. Can run tests multiple times and get different results. Have had all permutations. Had py27 succeed and py3 fail, had vice versa, had both succeed, and had both fail. It has something to do with our test_push_stack test in test_stack.py, but it's only a certain parameter from the PUSH_STACK_TABLE, the dictionaries we pass in. Displaying the dictionaries from the function call will randomly switch keys 1 and 2 from the initial dictionary passed in so that our message will appear with them in some sort of random order.
 
 
-UPDATE: Above bug fixed. Because Dictionaries are unordered, you cannot predict how they will be iterated over n the hash because we don't (yet) have access to the hash. Changed test to assert str(val) is in the displayed stack/LinkedList
-
-#Test logs:
+UPDATE: Above bug fixed. Because Dictionaries are unordered, you cannot predict how they will be iterated over in the hash because we don't (yet) have access to the hash. Changed test to assert str(val) is in the displayed stack/LinkedList
 
 UPDATED 12/14/16
 ---------- coverage: platform linux2, python 2.7.12-final-0 ----------
