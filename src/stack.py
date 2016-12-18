@@ -18,16 +18,19 @@ class Stack(object):
 
     def pop(self):
         """Remove the top element from stack and returns it."""
-        self._container.pop()
+        return self._container.pop()
 
     def push(self, val):
         """Add a value to the top of the stack."""
         self._container.push(val)
-        return self._container
 
     def _size(self):
         """Return the length of the stack."""
         return self._container.size()
+
+    def __len__(self):
+        """A length method to call on the Stack."""
+        return self._size()
 
     def _is_empty(self):
         """Return true if the stack is empty."""
