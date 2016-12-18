@@ -17,10 +17,10 @@ POP_TABLE = [
 ]
 
 PUSH_IT_TABLE = [
-    [[1, 2, 3], 4],
-    ["Foo to the bar", 5],
-    [("a", "b", "c"), (5,)],
-    [{"one": 1, "two": 2}, {"three": 3}],
+    [4],
+    [5],
+    [(5,)],
+    [{"three": 3}],
 ]
 
 PUSH_STACK_TABLE = [
@@ -68,13 +68,11 @@ def test_new_empty_stack_is_empty(new_stack):
     assert new_stack._is_empty() is True
 
 
-@pytest.mark.parametrize("iterable, val", PUSH_IT_TABLE)
-def test_push_it(iterable, val):
+@pytest.mark.parametrize("val", PUSH_IT_TABLE)
+def test_push_it(val, new_stack):
     """Test the push method adds a value to top of stack."""
-    from stack import Stack
-    stack_push = Stack(iterable)
-    stack_push.push(val)
-    assert stack_push._container.head.val == val
+    new_stack.push(val)
+    assert new_stack._container.head.val == val
 
 
 @pytest.mark.parametrize("iterable, val", PUSH_STACK_TABLE)
@@ -83,8 +81,7 @@ def test_push_stack(iterable, val):
     from stack import Stack
     stack_push = Stack(iterable)
     stack_push.push(val)
-    assert str(val) in stack_push._container.display()
-
+    assert len(stack_push) == len(iterable) + 1
 
 @pytest.mark.parametrize("times_pushed, times_popped", SIZE_DECREASES_TABLE)
 def test_size_decreases(times_pushed, times_popped):
@@ -95,4 +92,4 @@ def test_size_decreases(times_pushed, times_popped):
         size_stack.push(random.randint(0, 10))
     for i in range(times_popped):
         size_stack.pop()
-    assert size_stack._size() == times_pushed - times_popped
+    assert len(size_stack) == times_pushed - times_popped
