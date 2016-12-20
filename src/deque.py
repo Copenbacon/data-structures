@@ -8,9 +8,12 @@ class Deque(object):
     It is important to note that the "tail" of our Deques is actually the front of the Deque.
 
     __init__(): initializes the Deque class as a composite of the DLL class.
-    enqueue(): uses the push method from DLL to add nodes to the end of the Deque.
-    dequeue(): removes a node from the front of the dequeue
+    append(): uses the push method from DLL to add nodes to the end of the Deque.
+    appendleft(): uses the append method from DLL to add nodes to the start of the Deque.
+    popleft(): removes a node from the front of the dequeue
+    pop(): removes a node from the end of the dequeue
     peek(): Looks at the front value of the Deque without removing it or advancing the view beyond it.
+    peekleft(): Looks at the end value of the Deque without removing it or advancing the view before it.
     size(): returns the size of the Deque.
     """
 
