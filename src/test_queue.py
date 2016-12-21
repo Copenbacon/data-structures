@@ -31,7 +31,7 @@ SIZE_TABLE = [
 @pytest.fixture
 def new_empty_queue():
     """Fixture to create a new empty queue list."""
-    from queue import Queue
+    from queue_ import Queue
     new_queue = Queue()
     return new_queue
 
@@ -39,7 +39,7 @@ def new_empty_queue():
 @pytest.fixture
 def filled_queue():
     """Fixture to create a filled queue, to test against."""
-    from queue import Queue
+    from queue_ import Queue
     new_filled_queue = Queue([4, 3, 2, 1])
     return new_filled_queue
 
@@ -77,7 +77,7 @@ def test_find_the_new_front_of_line_in_queue_with_dequeue(filled_queue):
 @pytest.mark.parametrize("iterable", DEQUEUE_TABLE)
 def test_dequeue_works_on_diff_iterables(iterable):
     """Testing dequeue method on a variety of iterables."""
-    from queue import Queue
+    from queue_ import Queue
     new_queue = Queue(iterable)
     assert new_queue.dequeue() == iterable[0] and new_queue._container.tail.val == iterable[1] and new_queue._container.head.val == iterable[-1]
 
@@ -90,7 +90,7 @@ def test_that_peek_returns_tail(filled_queue):
 @pytest.mark.parametrize("iterable", PEEK_TABLE)
 def test_that_peek_returns_tail_from_list_of_iterables(iterable):
     """Testing that peek() method returns the proper value."""
-    from queue import Queue
+    from queue_ import Queue
     new_queue = Queue(iterable)
     assert new_queue.peek() == iterable[0]
 
@@ -98,7 +98,7 @@ def test_that_peek_returns_tail_from_list_of_iterables(iterable):
 @pytest.mark.parametrize("iterable, result", SIZE_TABLE)
 def test_for_size_when_filled(iterable, result):
     """Checking for table size when passed in iterables."""
-    from queue import Queue
+    from queue_ import Queue
     new_queue = Queue(iterable)
     assert new_queue.size() == result
 
@@ -116,6 +116,6 @@ def test_that_dequeueing_empty_table_raises_error(new_empty_queue):
 
 def test_init_type_error():
     """Test for error when 1 value, non-iterable, is initialized in Queue."""
-    from queue import Queue
+    from queue_ import Queue
     with pytest.raises(TypeError):
         new_queue = Queue(1)
