@@ -1,4 +1,44 @@
 # data-structures
+
+##Dec 19, 2016 - Deque
+
+---------- coverage: platform linux2, python 2.7.12-final-0 ----------
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+src/deque.py                 18      0   100%
+src/dll.py                   70      0   100%
+src/linked_list.py           60      0   100%
+src/queue.py                 12      0   100%
+src/stack.py                 15      0   100%
+src/test_deque.py            74      0   100%
+src/test_dll.py              71      0   100%
+src/test_linked_list.py      63      0   100%
+src/test_queue.py            50      0   100%
+src/test_stack.py            39      0   100%
+-------------------------------------------------------
+TOTAL                       472      0   100%
+
+
+==================================== 131 passed in 0.44 seconds
+
+----------- coverage: platform linux, python 3.5.2-final-0 -----------
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+src/deque.py                 18      0   100%
+src/dll.py                   70      0   100%
+src/linked_list.py           60      0   100%
+src/queue.py                 12      0   100%
+src/stack.py                 15      0   100%
+src/test_deque.py            74      0   100%
+src/test_dll.py              71      0   100%
+src/test_linked_list.py      63      0   100%
+src/test_queue.py            50      0   100%
+src/test_stack.py            39      0   100%
+-------------------------------------------------------
+TOTAL                       472      0   100%
+
+
+==================================== 131 passed in 0.52 seconds
 ##Dec 18, 2016 - Merged in DLL, Stack, Linked List Updates
 
 ##Dec 15, 2016
