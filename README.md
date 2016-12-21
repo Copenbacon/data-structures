@@ -1,5 +1,50 @@
 # data-structures
 
+##Dec 20, 2016 - Binary Heap
+
+---------- coverage: platform linux2, python 2.7.12-final-0 ----------
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+src/binheap.py               47      0   100%
+src/deque.py                 18      0   100%
+src/dll.py                   70      0   100%
+src/linked_list.py           60      0   100%
+src/queue_.py                12      0   100%
+src/stack.py                 15      0   100%
+src/test_binheap.py          34      0   100%
+src/test_deque.py            74      0   100%
+src/test_dll.py              71      0   100%
+src/test_linked_list.py      63      0   100%
+src/test_queue.py            50      0   100%
+src/test_stack.py            39      0   100%
+-------------------------------------------------------
+TOTAL                       553      0   100%
+
+
+==================================== 150 passed in 0.52 seconds
+
+----------- coverage: platform linux, python 3.5.2-final-0 -----------
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+src/binheap.py               47      0   100%
+src/deque.py                 18      0   100%
+src/dll.py                   70      0   100%
+src/linked_list.py           60      0   100%
+src/queue_.py                12      0   100%
+src/stack.py                 15      0   100%
+src/test_binheap.py          34      0   100%
+src/test_deque.py            74      0   100%
+src/test_dll.py              71      0   100%
+src/test_linked_list.py      63      0   100%
+src/test_queue.py            50      0   100%
+src/test_stack.py            39      0   100%
+-------------------------------------------------------
+TOTAL                       553      0   100%
+
+
+==================================== 150 passed in 0.58 seconds
+
+
 ##Dec 19, 2016 - Deque
 
 ---------- coverage: platform linux2, python 2.7.12-final-0 ----------
