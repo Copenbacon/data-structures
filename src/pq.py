@@ -10,14 +10,19 @@ class PikaQ(object):
     def __init__(self, vals=[]):
         """Initialize a priority que."""
         self.pq = {}
-        if isinstance(vals, list):
+        if hasattr(vals, "__iter__"):
             try:
+                for val, pri in vals:
+                    self.insert(val, pri)
+            except TypeError:
                 for val in vals:
                     self.insert(val)
             except ValueError:
-                raise TypeError("Input must be a tuple.")
+                print("Too many values inserted in one of your lists")
+        elif not hasattr(type(vals, "__iter__")):
+            self.insert(vals)
         else:
-            raise TypeError("Input must be a list.")
+            raise ValueError("Need to submit either a single value, a list of values, or a list of values tupled/listed with priorities.")
 
     def insert(self, item, pri=float(-inf)):
         """Insert."""
@@ -31,6 +36,13 @@ class PikaQ(object):
 
     def pop(self):
         """Poppin."""
+        poppin_key = min(self.pq.keys())
+        poppin_list = self.pq[poppin_key]
+        self.pq[poppin_key].remove(poppin_list[0])
+        if len(self.pq) == 0:
+            raise IndexError("Empty PikaQ is un-poppable.")
+        if len(poppin_list) == 0:
+            self.pq.pop(poppin_key)
 
     def peek(self):
         """Peekin."""
