@@ -1,5 +1,53 @@
 # data-structures
 
+##Dec 24, 2016 Priority Queue
+
+---------- coverage: platform linux2, python 2.7.12-final-0 ----------
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+src/binheap.py               47      0   100%
+src/deque.py                 18      0   100%
+src/dll.py                   70      0   100%
+src/linked_list.py           60      0   100%
+src/pq.py                    39      3    92%   5, 36-37
+src/queue_.py                12      0   100%
+src/stack.py                 15      0   100%
+src/test_binheap.py          34      0   100%
+src/test_deque.py            74      0   100%
+src/test_dll.py              71      0   100%
+src/test_linked_list.py      63      0   100%
+src/test_pq.py               45      5    89%   6, 50-54
+src/test_queue.py            50      0   100%
+src/test_stack.py            39      0   100%
+-------------------------------------------------------
+TOTAL                       637      8    99%
+
+
+====================================================== 166 passed in 0.54 seconds
+
+----------- coverage: platform linux, python 3.5.2-final-0 -----------
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+src/binheap.py               47      0   100%
+src/deque.py                 18      0   100%
+src/dll.py                   70      0   100%
+src/linked_list.py           60      0   100%
+src/pq.py                    39      1    97%   7
+src/queue_.py                12      0   100%
+src/stack.py                 15      0   100%
+src/test_binheap.py          34      0   100%
+src/test_deque.py            74      0   100%
+src/test_dll.py              71      0   100%
+src/test_linked_list.py      63      0   100%
+src/test_pq.py               45      1    98%   8
+src/test_queue.py            50      0   100%
+src/test_stack.py            39      0   100%
+-------------------------------------------------------
+TOTAL                       637      2    99%
+
+
+====================================================== 167 passed in 0.62 seconds
+
 ##Dec 20, 2016 - Binary Heap
 
 ---------- coverage: platform linux2, python 2.7.12-final-0 ----------
