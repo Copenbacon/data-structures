@@ -1,42 +1,4 @@
 # data-structures
-##Dec 18, 2016 - Merged in DLL, Stack, Linked List Updates
-
-##Dec 15, 2016
-Test Coverage at 100% for queue.py
-
----------- coverage: platform linux2, python 2.7.12-final-0 ----------
-Name                      Stmts   Miss  Cover   Missing
--------------------------------------------------------
-src/dll.py                   70      0   100%
-src/linked_list.py           61      6    90%   36, 47, 66-67, 84-85
-src/queue.py                 12      0   100%
-src/stack.py                 14      0   100%
-src/test_dll.py              71      0   100%
-src/test_linked_list.py      59      0   100%
-src/test_queue.py            50      0   100%
-src/test_stack.py            41      0   100%
--------------------------------------------------------
-TOTAL                       378      6    98%
-
-
------------ coverage: platform linux, python 3.5.2-final-0 -----------
-Name                      Stmts   Miss  Cover   Missing
--------------------------------------------------------
-src/dll.py                   70      0   100%
-src/linked_list.py           61      6    90%   36, 47, 66-67, 84-85
-src/queue.py                 12      0   100%
-src/stack.py                 14      0   100%
-src/test_dll.py              71      0   100%
-src/test_linked_list.py      59      0   100%
-src/test_queue.py            50      0   100%
-src/test_stack.py            41      0   100%
--------------------------------------------------------
-TOTAL                       378      6    98%
-
-
-  py35: commands succeeded
-  congratulations :)
-
 
 12/18/2016 - Merged in Stack updates nad Linked List Updates
 
@@ -46,6 +8,17 @@ TOTAL                       378      6    98%
 A singly linked-list might be more appropriate for maintaining some kind of line or queue, like when you have a list of something that goes out in a particular order. FIrst thing that comes to mind is Ticketmaster. You have a set number of tickets in inventory and a lot of people want them. As they hit submit, they are placed in the linked list to maintain their order number. As they receive their ticket, they are removed from the list. I guess you could also use it for some kind of first in, last out operation, but I'm not sure where that would apply.
 
 Doubly linked lists are great for the above as well, but if you want to know where the end of the list is and what is at it, a doubly linked_list is helpful. Not exactly sure of a good use case for this.
+
+##Queue##
+
+  It is important to note that the "tail" of our queue is actually the front of the Queue.
+
+  ###Methods###
+  __init__(): initializes the Queue class as a composite of the DLL class.
+  enqueue(): uses the push method from DLL to add nodes to the end of the Queue.
+  dequeue(): removes a node from the front of the dequeue
+  peek(): Looks at the front value of the Queue without removing it or advancing the view beyond it.
+  size(): returns the size of the Queue.
 
 
 ##Doubly Linked List##
@@ -83,6 +56,40 @@ Doubly linked lists are great for the above as well, but if you want to know whe
     """
 
 ##Dec 27, 2016##
+
+---------- coverage: platform linux2, python 2.7.12-final-0 ----------
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+src/dll.py                   74      0   100%
+src/linked_list.py           59      0   100%
+src/queue.py                 18      0   100%
+src/stack.py                 15      0   100%
+src/test_dll.py              71      0   100%
+src/test_linked_list.py      75      0   100%
+src/test_queue.py            53      0   100%
+src/test_stack.py            39      0   100%
+-------------------------------------------------------
+TOTAL                       404      0   100%
+
+
+========================== 109 passed in 0.48 seconds
+
+----------- coverage: platform linux, python 3.5.2-final-0 -----------
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+src/dll.py                   74      0   100%
+src/linked_list.py           59      0   100%
+src/queue.py                 18      0   100%
+src/stack.py                 15      0   100%
+src/test_dll.py              71      0   100%
+src/test_linked_list.py      75      0   100%
+src/test_queue.py            53      0   100%
+src/test_stack.py            39      0   100%
+-------------------------------------------------------
+TOTAL                       404      0   100%
+
+
+========================== 109 passed in 0.51 seconds
 
 ---------- coverage: platform linux2, python 2.7.12-final-0 ----------
 Name                      Stmts   Miss  Cover   Missing
@@ -143,6 +150,44 @@ TOTAL                       188      0   100%
 
 
 ========================== 51 passed in 0.32 seconds 
+
+##Dec 18, 2016 - Merged in DLL, Stack, Linked List Updates
+
+##Dec 15, 2016
+Test Coverage at 100% for queue.py
+
+---------- coverage: platform linux2, python 2.7.12-final-0 ----------
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+src/dll.py                   70      0   100%
+src/linked_list.py           61      6    90%   36, 47, 66-67, 84-85
+src/queue.py                 12      0   100%
+src/stack.py                 14      0   100%
+src/test_dll.py              71      0   100%
+src/test_linked_list.py      59      0   100%
+src/test_queue.py            50      0   100%
+src/test_stack.py            41      0   100%
+-------------------------------------------------------
+TOTAL                       378      6    98%
+
+
+----------- coverage: platform linux, python 3.5.2-final-0 -----------
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+src/dll.py                   70      0   100%
+src/linked_list.py           61      6    90%   36, 47, 66-67, 84-85
+src/queue.py                 12      0   100%
+src/stack.py                 14      0   100%
+src/test_dll.py              71      0   100%
+src/test_linked_list.py      59      0   100%
+src/test_queue.py            50      0   100%
+src/test_stack.py            41      0   100%
+-------------------------------------------------------
+TOTAL                       378      6    98%
+
+
+  py35: commands succeeded
+  congratulations :)
 
 
 12/18/2016 - Stack updates
