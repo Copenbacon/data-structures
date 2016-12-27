@@ -1,5 +1,55 @@
 # data-structures
 
+##Stack##
+
+    __init__(): Initiate the Stack as a instance of LinkedList.
+    pop(): Remove the top element from stack and returns it.
+    push(): Add a value to the top of the stack.
+    _size(): Return the length of the stack.
+    _is_empty(): Return true if the stack is empty.
+    """
+
+##Linked_List##
+
+###Consists of a series of nodes.###
+    
+    ####Methods####
+    push(val): adds a node at the head, increments size of list.
+    pop(): removes the node at the head, deincrements size of list.
+    size(): returns size of LinkedList
+    search(val): searches list for node containing val and returns that node.
+    remove(node_to_delete): takes a node as argument, searches for it, and removes it from list, then deincrements size of list
+    display(): returns LinkedList as a stringified tuple-looking object.
+    """
+
+
+##Dec 27, 2016##
+---------- coverage: platform linux2, python 2.7.12-final-0 ----------
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+src/linked_list.py           59      0   100%
+src/stack.py                 15      0   100%
+src/test_linked_list.py      75      0   100%
+src/test_stack.py            39      0   100%
+-------------------------------------------------------
+TOTAL                       188      0   100%
+
+
+========================== 51 passed in 0.33 seconds
+
+----------- coverage: platform linux, python 3.5.2-final-0 -----------
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+src/linked_list.py           59      0   100%
+src/stack.py                 15      0   100%
+src/test_linked_list.py      75      0   100%
+src/test_stack.py            39      0   100%
+-------------------------------------------------------
+TOTAL                       188      0   100%
+
+
+========================== 51 passed in 0.32 seconds 
+
 12/18/2016 - Stack updates
 ---------- coverage: platform linux2, python 2.7.12-final-0 ----------
 Name                      Stmts   Miss  Cover   Missing
