@@ -64,7 +64,7 @@ class DLL(object):
 
     def append(self, val):
         """Add a tail to the end of the list."""
-        if self.tail is None:
+        if self.tail is None and self.head is None:
             self.push(val)
         else:
             new_node = DLLNode(val)
