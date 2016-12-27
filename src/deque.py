@@ -19,7 +19,10 @@ class Deque(object):
 
     def __init__(self, iterable=None):
         """Initiate the Deque as an instance of DLL."""
-        self._container = DLL(iterable)
+        try:
+            self._container = DLL(iterable)
+        except TypeError:
+            raise TypeError("Need to initialize with an iterable or empty. Otherwise just append/appendleft values.")
 
     def append(self, val):
         """Add value to the Deque at the end."""
@@ -31,19 +34,31 @@ class Deque(object):
 
     def popleft(self):
         """Remove the first value of the Deque."""
-        return self._container.shift()
+        try:
+            return self._container.shift()
+        except AttributeError:
+            raise AttributeError("Cannot pop from Empty Deque")
 
     def pop(self):
         """Remove a value from the end of the deque and returns it (raises an exception if the deque is empty)."""
-        return self._container.pop()
+        try:
+            return self._container.pop()
+        except IndexError:
+            raise IndexError("Cannot pop from Empty Deque")
 
     def peek(self):
         """Look at next value in the Deque without removing."""
-        return self._container.head.val
+        try:
+            return self._container.head.val
+        except AttributeError:
+            return None
 
     def peekleft(self):
         """Look at last value in the Deque without removing."""
-        return self._container.tail.val
+        try:
+            return self._container.tail.val
+        except AttributeError:
+            return None
 
     def size(self):
         """How big the Deque is."""

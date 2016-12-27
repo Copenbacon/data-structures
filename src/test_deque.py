@@ -174,7 +174,7 @@ def test_that_pop_empty_table_raises_error(new_empty_deque):
 
 def test_that_popleft_empty_table_raises_error(new_empty_deque):
     """Make sure poplefting from an empty table raises an error."""
-    with pytest.raises(IndexError):
+    with pytest.raises(AttributeError):
         new_empty_deque.popleft()
 
 
@@ -183,3 +183,14 @@ def test_init_type_error():
     from deque import Deque
     with pytest.raises(TypeError):
         new_deque = Deque(1)
+
+
+def test_peek_return_none_when_empty(new_empty_deque):
+    """Peeking should return None when empty."""
+    assert new_empty_deque.peek() is None
+
+
+def test_peekleft_return_none_when_empty(new_empty_deque):
+    """Peeking left should return None when empty."""
+    assert new_empty_deque.peekleft() is None
+

@@ -76,6 +76,44 @@ Doubly linked lists are great for the above as well, but if you want to know whe
 ---------- coverage: platform linux2, python 2.7.12-final-0 ----------
 Name                      Stmts   Miss  Cover   Missing
 -------------------------------------------------------
+src/deque.py                 33      0   100%
+src/dll.py                   74      0   100%
+src/linked_list.py           59      0   100%
+src/queue.py                 18      0   100%
+src/stack.py                 15      0   100%
+src/test_deque.py            78      0   100%
+src/test_dll.py              71      0   100%
+src/test_linked_list.py      75      0   100%
+src/test_queue.py            53      0   100%
+src/test_stack.py            39      0   100%
+-------------------------------------------------------
+TOTAL                       515      0   100%
+
+
+========================== 139 passed in 0.48 seconds
+
+----------- coverage: platform linux, python 3.5.2-final-0 -----------
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+src/deque.py                 33      0   100%
+src/dll.py                   74      0   100%
+src/linked_list.py           59      0   100%
+src/queue.py                 18      0   100%
+src/stack.py                 15      0   100%
+src/test_deque.py            78      0   100%
+src/test_dll.py              71      0   100%
+src/test_linked_list.py      75      0   100%
+src/test_queue.py            53      0   100%
+src/test_stack.py            39      0   100%
+-------------------------------------------------------
+TOTAL                       515      0   100%
+
+
+========================== 139 passed in 0.52 seconds
+
+---------- coverage: platform linux2, python 2.7.12-final-0 ----------
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
 src/dll.py                   74      0   100%
 src/linked_list.py           59      0   100%
 src/queue.py                 18      0   100%
