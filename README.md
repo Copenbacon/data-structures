@@ -1,4 +1,18 @@
 # data-structures
+
+##Linked_List##
+
+###Consists of a series of nodes.###
+    
+    ####Methods####
+    push(val): adds a node at the head, increments size of list.
+    pop(): removes the node at the head, deincrements size of list.
+    size(): returns size of LinkedList
+    search(val): searches list for node containing val and returns that node.
+    remove(node_to_delete): takes a node as argument, searches for it, and removes it from list, then deincrements size of list
+    display(): returns LinkedList as a stringified tuple-looking object.
+    """
+
 12/18/2016
 
 ---------- coverage: platform linux2, python 2.7.12-final-0 ----------
