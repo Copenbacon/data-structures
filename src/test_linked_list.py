@@ -34,6 +34,16 @@ REMOVE_TABLE = [
     (5, {8, 7, 5}, 7),
 ]
 
+REMOVE_TABLE_2 = [
+    (3, [7, 3, 2], 7),
+    (7, (8, 7, 5), 8),
+    (5, {8, 7, 5}, 8),
+]
+
+REMOVE_TABLE_3 = [
+    (2, [7, 3, 2], 3),
+    (5, (8, 7, 5), 7),
+]
 
 def test_linkedlist():
     """Test instantiation LinkedList class."""
@@ -89,12 +99,21 @@ def test_search_returns_none_when_arg_not_found():
 
 
 @pytest.mark.parametrize("val_to_delete, val1, result", REMOVE_TABLE)
-def test_remove(val_to_delete, val1, result):
+def test_remove_decreases_size(val_to_delete, val1, result):
     """Test remove method in LinkedList class."""
     from linked_list import LinkedList
     list_name = LinkedList(val1)
     list_name.remove(list_name.search(val_to_delete))
     assert list_name.size() == len(val1) - 1
+
+
+@pytest.mark.parametrize("val_to_delete, val1, result", REMOVE_TABLE_2)
+def test_remove_nodes_point_in_right_direction(val_to_delete, val1, result):
+    """Test remove method in LinkedList class."""
+    from linked_list import LinkedList
+    list_name = LinkedList(val1)
+    list_name.remove(list_name.search(val_to_delete))
+    assert list_name.head.next.val == result
 
 
 def test_remove_last():
@@ -103,6 +122,15 @@ def test_remove_last():
     list_name = LinkedList([5, 6, 7])
     list_name.remove(list_name.search(5))
     assert list_name.size() == 2
+
+
+@pytest.mark.parametrize("val_to_delete, val1, result", REMOVE_TABLE_3)
+def test_remove_head_makes_new_head(val_to_delete, val1, result):
+    """Test remove method in LinkedList class."""
+    from linked_list import LinkedList
+    list_name = LinkedList(val1)
+    list_name.remove(list_name.search(val_to_delete))
+    assert list_name.head.val == result
 
 
 def test_remove_head():

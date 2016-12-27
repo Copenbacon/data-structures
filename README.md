@@ -9,6 +9,103 @@ A singly linked-list might be more appropriate for maintaining some kind of line
 Doubly linked lists are great for the above as well, but if you want to know where the end of the list is and what is at it, a doubly linked_list is helpful. Not exactly sure of a good use case for this.
 
 
+##Doubly Linked List##
+  
+  ###Methods###
+  __init__(): initializes the DLL class and adds a tail, head, and size_of_list attribute. It also checks that the values passed in are iterable.
+  push(): Inserts a value to head of the list
+  pop(): Remove node from head of list and return it to user.
+  append(): Add a tail to the end of the list.
+  shift(): Remove node from end of list and return to user.
+  def search(self, val): Return the val of the node when searched.
+  remove(): Remove the node passed into the parameter.
+
+
+##Stack##
+
+  ###Methods###
+  __init__(): Initiate the Stack as a instance of LinkedList.
+  pop(): Remove the top element from stack and returns it.
+  push(): Add a value to the top of the stack.
+  _size(): Return the length of the stack.
+  _is_empty(): Return true if the stack is empty.
+
+
+##Linked_List##
+
+    
+    ####Methods####
+    push(val): adds a node at the head, increments size of list.
+    pop(): removes the node at the head, deincrements size of list.
+    size(): returns size of LinkedList
+    search(val): searches list for node containing val and returns that node.
+    remove(node_to_delete): takes a node as argument, searches for it, and removes it from list, then deincrements size of list
+    display(): returns LinkedList as a stringified tuple-looking object.
+    """
+
+##Dec 27, 2016##
+
+---------- coverage: platform linux2, python 2.7.12-final-0 ----------
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+src/dll.py                   74      0   100%
+src/linked_list.py           59      0   100%
+src/stack.py                 15      0   100%
+src/test_dll.py              71      0   100%
+src/test_linked_list.py      75      0   100%
+src/test_stack.py            39      0   100%
+-------------------------------------------------------
+TOTAL                       333      0   100%
+
+
+========================== 90 passed in 0.41 seconds
+
+----------- coverage: platform linux, python 3.5.2-final-0 -----------
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+src/dll.py                   74      0   100%
+src/linked_list.py           59      0   100%
+src/stack.py                 15      0   100%
+src/test_dll.py              71      0   100%
+src/test_linked_list.py      75      0   100%
+src/test_stack.py            39      0   100%
+-------------------------------------------------------
+TOTAL                       333      0   100%
+
+
+========================== 90 passed in 0.42 seconds
+
+
+
+---------- coverage: platform linux2, python 2.7.12-final-0 ----------
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+src/linked_list.py           59      0   100%
+src/stack.py                 15      0   100%
+src/test_linked_list.py      75      0   100%
+src/test_stack.py            39      0   100%
+-------------------------------------------------------
+TOTAL                       188      0   100%
+
+
+========================== 51 passed in 0.33 seconds
+=======
+
+
+----------- coverage: platform linux, python 3.5.2-final-0 -----------
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+src/linked_list.py           59      0   100%
+src/stack.py                 15      0   100%
+src/test_linked_list.py      75      0   100%
+src/test_stack.py            39      0   100%
+-------------------------------------------------------
+TOTAL                       188      0   100%
+
+
+========================== 51 passed in 0.32 seconds 
+
+
 12/18/2016 - Stack updates
 ---------- coverage: platform linux2, python 2.7.12-final-0 ----------
 Name                      Stmts   Miss  Cover   Missing
@@ -36,6 +133,31 @@ TOTAL                       177      0   100%
 
 ================================================= 46 passed in 0.22 seconds
 
+
+         +12/27/2016
+ +
+ +---------- coverage: platform linux2, python 2.7.12-final-0 ----------
+ +Name                      Stmts   Miss  Cover   Missing
+ +-------------------------------------------------------
+ +src/linked_list.py           59      0   100%
+ +src/test_linked_list.py      75      0   100%
+ +-------------------------------------------------------
+ +TOTAL                       134      0   100%
+ +
+ +
+ +========================== 30 passed in 0.15 seconds
+ +
+ +
+ +----------- coverage: platform linux, python 3.5.2-final-0 -----------
+ +Name                      Stmts   Miss  Cover   Missing
+ +-------------------------------------------------------
+ +src/linked_list.py           59      0   100%
+ +src/test_linked_list.py      75      0   100%
+ +-------------------------------------------------------
+ +TOTAL                       134      0   100%
+ +
+ +
+ +========================== 30 passed in 0.15 seconds
 
 
 12/18/2016
