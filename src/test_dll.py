@@ -135,7 +135,7 @@ def test_shift(iterable, result):
 
 def test_shift_when_empty(new_empty_dll):
     """Test that shifting an empty list returns an index error."""
-    with pytest.raises(IndexError):
+    with pytest.raises(AttributeError):
         new_empty_dll.shift()
 
 
@@ -152,19 +152,19 @@ def test_remove_when_not_in_list():
     """Test removing a val that is not in the list."""
     from dll import DLL
     new_dll = DLL((7, 8, 9, 10, 12))
-    with pytest.raises(NameError):
+    with pytest.raises(ValueError):
         new_dll.remove(11)
 
 
 def test_remove_from_empty_list(new_empty_dll):
     """Test remove from empty list."""
-    with pytest.raises(NameError):
+    with pytest.raises(ValueError):
         new_empty_dll.remove(11)
 
 
 def test_search_empty_list(new_empty_dll):
     """Test Searching an empty list."""
-    with pytest.raises(NameError):
+    with pytest.raises(ValueError):
         new_empty_dll.search(11)
 
 

@@ -2,7 +2,7 @@
 # encoding: utf-8
 
 
-class DLLNODE(object):
+class DLLNode(object):
     """Define the doubly-linked list node class.
 
     __init__(): instantiates an instance of a node with val, next, and prev.
@@ -41,13 +41,12 @@ class DLL(object):
 
     def push(self, val):
         """Insert value to head of the list."""
-        new_node = DLLNODE(val, self.head)
+        new_node = DLLNode(val, self.head)
         if self.head is None:
-            self.head = new_node
             self.tail = new_node
-        else:
+        elif self.head is not None:
             self.head.prev = new_node
-            self.head = new_node
+        self.head = new_node
         self.size_of_list += 1
 
     def pop(self):
@@ -65,30 +64,34 @@ class DLL(object):
 
     def append(self, val):
         """Add a tail to the end of the list."""
-        if self.tail is None:
+        if self.tail is None and self.head is None:
             self.push(val)
         else:
-            new_node = DLLNODE(val)
+            new_node = DLLNode(val)
             self.tail.next = new_node
             self.tail = new_node
             self.size_of_list += 1
 
     def shift(self):
         """Remove node from end of list and return to user."""
-        if self.tail is None:
-            raise IndexError("Impossible to shift from an empty list.")
-        value_shifted = self.tail.val
-        self.tail = self.tail.prev
-        if hasattr(self.tail, "next"):
-            self.tail.next = None
-        self.size_of_list -= 1
-        return value_shifted
+        try:
+            val_return = self.tail.val
+            if self.tail.prev is None:
+                self.head = None
+                self.tail = None
+                return val_return
+            self.tail = self.tail.prev
+            self.tail.prev = None
+            self.size_of_list -= 1
+            return val_return
+        except AttributeError:
+            raise AttributeError("Cannot shift from an empty list.")
 
     def search(self, val):
         """Return the val of the node when searched."""
         current = self.head
         if current is None:
-            raise NameError("Parameter given, {}, is not in list".format(str(val)))
+            raise ValueError("Parameter given, {}, is not in list".format(str(val)))
         while current:
             if current.val == val:
                 return current
@@ -107,4 +110,4 @@ class DLL(object):
             current_node.next.prev = current_node.prev
             self.size_of_list -= 1
         else:
-            raise NameError("Parameter given, {}, is not in list".format(node_to_delete))
+            raise ValueError("Parameter given, {}, is not in list".format(node_to_delete))
