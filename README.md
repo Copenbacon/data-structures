@@ -13,6 +13,32 @@
     display(): returns LinkedList as a stringified tuple-looking object.
     """
 
+12/27/2016
+
+---------- coverage: platform linux2, python 2.7.12-final-0 ----------
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+src/linked_list.py           59      0   100%
+src/test_linked_list.py      75      0   100%
+-------------------------------------------------------
+TOTAL                       134      0   100%
+
+
+========================== 30 passed in 0.15 seconds
+
+
+----------- coverage: platform linux, python 3.5.2-final-0 -----------
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+src/linked_list.py           59      0   100%
+src/test_linked_list.py      75      0   100%
+-------------------------------------------------------
+TOTAL                       134      0   100%
+
+
+========================== 30 passed in 0.15 seconds
+
+
 12/18/2016
 
 ---------- coverage: platform linux2, python 2.7.12-final-0 ----------
