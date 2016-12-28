@@ -55,6 +55,17 @@ A singly linked-list might be more appropriate for maintaining some kind of line
 
 Doubly linked lists are great for the above as well, but if you want to know where the end of the list is and what is at it, a doubly linked_list is helpful. Not exactly sure of a good use case for this.
 
+##Binary Heap##
+
+###Methods###
+__init__([iterable]): takes an optional iterable object when instantiating the class.
+  _perc_ip(val): Send the value up the heap as it is pushed in.
+  push(val): Append a value to the end of the list, increase list size, push the index that is equal to size, up the list.
+  _perc_down(val): Send a value down the heap if the heap's rules are violated.
+  _min_child(val): Find and return the smallest child.
+  pop(): Remove value a head of heap and sort the heap accordingly.
+  
+
 ##Deque##
 
   It is important to note that the "tail" of our Deques is actually the front of the Deque.
