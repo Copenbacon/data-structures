@@ -27,10 +27,11 @@ class Graph(object):
     def edges(self):
         """Return a list of all edges in the graph."""
         edge_list = []
-        for starting_point in self.nodetionary:
-            for ending_point in starting_point:
-                edge_list.append((starting_point, ending_point))
-        return set(edge_list)
+        if self.nodes() is not []:
+            for starting_point in self.nodetionary:
+                for ending_point in self.nodetionary[starting_point]:
+                    edge_list.append((starting_point, ending_point))
+        return edge_list
 
     def add_node(self, n):
         """Add a new node 'n' to the graph."""
@@ -41,11 +42,11 @@ class Graph(object):
         try:
             self.nodetionary[n1].append(n2)
         except KeyError:
-            self.nodetionary.setdefault(n1, n2)
+            self.nodetionary.setdefault(n1, [n2])
         try:
             self.nodetionary[n2].append(n1)
         except KeyError:
-            self.nodetionary.setdefault(n2, n1)
+            self.nodetionary.setdefault(n2, [n1])
 
     def del_node(self, n):
         u"""Delete the node ‘n’ from the graph, raises an error if no such node exists."""
