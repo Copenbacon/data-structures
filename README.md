@@ -103,6 +103,15 @@ A singly linked-list might be more appropriate for maintaining some kind of line
 
 Doubly linked lists are great for the above as well, but if you want to know where the end of the list is and what is at it, a doubly linked_list is helpful. Not exactly sure of a good use case for this.
 
+##Priority Queue##
+
+  ###Methods###
+  def __init__(vals=[]): Initialize a priority queue, and insert any values passed in into the Priority Queue. Must pass a list of items. To pass
+  def insert(item, pri=float(-inf)): Insert an item into the Priority Queue, if no priority specified, -inf will be the priority,
+  def pop(): Remove a value from the priority queue.
+  def peek(): Look at next item to be popped in the Priority Queue.
+
+
 ##Binary Heap##
 
 ###Methods###
