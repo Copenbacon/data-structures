@@ -110,7 +110,7 @@ def test_for_size_0_when_empty(new_empty_queue):
 
 def test_that_dequeueing_empty_table_raises_error(new_empty_queue):
     """Make sure dequeueing from an empty table raises an error."""
-    with pytest.raises(IndexError):
+    with pytest.raises(AttributeError):
         new_empty_queue.dequeue()
 
 
@@ -119,3 +119,9 @@ def test_init_type_error():
     from queue_ import Queue
     with pytest.raises(TypeError):
         new_queue = Queue(1)
+
+
+def test_that_peeking_empty_queue_raises_error(new_empty_queue):
+    """Make sure peeking an empty Queue raises error."""
+    with pytest.raises(AttributeError):
+        new_empty_queue.peek()

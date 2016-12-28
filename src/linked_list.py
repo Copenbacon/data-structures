@@ -60,7 +60,6 @@ class LinkedList(object):
             if current.val == val:
                 return current
             current = current.next
-        return current
 
     def remove(self, node_to_delete):
         """Remove the node passed into the parameter."""
@@ -75,11 +74,11 @@ class LinkedList(object):
         while not found:
             if current_node is self.head:
                 self.pop()
-                found = True
+                break
             elif search_node.next.val == node_to_delete.val:
                 search_node.next = current_node.next
-                found = True
                 self.size_of_list -= 1
+                break
             else:
                 search_node = search_node.next
 
