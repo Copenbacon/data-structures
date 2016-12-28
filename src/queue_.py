@@ -24,11 +24,17 @@ class Queue(object):
 
     def dequeue(self):
         """Remove the first value of the queue."""
-        return self._container.shift()
+        try:
+            return self._container.shift()
+        except AttributeError:
+            raise AttributeError("Cannot dequeue from an empty Queue.")
 
     def peek(self):
         """Look at next value in the Queue without removing."""
-        return self._container.tail.val
+        try:
+            return self._container.tail.val
+        except AttributeError:
+            raise AttributeError("Queue is empty.")
 
     def size(self):
         """How big the Queue is."""
