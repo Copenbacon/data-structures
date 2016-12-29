@@ -88,4 +88,4 @@ class Graph(object):
                 return True
             return False
         else:
-            raise KeyError("One of the supplied nodes is not in the graph. Here is a current list of nodes:" + self.nodes())
+            raise KeyError("One of the supplied nodes is not in the graph. Here is a current list of nodes:" + str(self.nodes()))

@@ -61,6 +61,13 @@ NEIGHBORS_TABLE2 = [
     [[[1, 2], [3, 2], [1, 3], [3, 4], [4, 1]], 8],
 ]
 
+ADJACENCY_TABLE = [
+    [[[1, 2]], (1, 2), True],
+    [[[1, 2], [3, 2]], (3, 1), False],
+    [[[1, 2], [3, 2], [3, 4]], (2, 1), True],
+    [[[1, 2], [3, 2], [1, 3], [3, 4], [4, 1]], (2, 4), False]
+]
+
 
 @pytest.fixture
 def empty_graph():
@@ -196,3 +203,15 @@ def test_has_neighbors_raises_error_when_node_not_in_graph(vals_to_add, node_to_
         empty_graph.neighbors(node_to_test)
 
 
+def test_adjacency_raise_error_when_node_not_present(empty_graph):
+    """Testing adjacency on an unpresent node should raise KeyError."""
+    with pytest.raises(KeyError):
+        empty_graph.adjacent(1, 2)
+
+
+@pytest.mark.parametrize("vals_to_add, vals_to_test, result", ADJACENCY_TABLE)
+def test_adjacency_works_as_expected(vals_to_add, vals_to_test, result, empty_graph):
+    """Return True if nodes are adjacent, false if not."""
+    for val in vals_to_add:
+        empty_graph.add_edge(val[0], val[1])
+    assert empty_graph.adjacent(vals_to_test[0], vals_to_test[1]) == result
