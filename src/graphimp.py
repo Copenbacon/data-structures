@@ -60,18 +60,13 @@ class Graph(object):
 
     def del_edge(self, n1, n2):
         u"""Delete the edge connecting n1 and n2 from the graph, raises an error if no such edge exists."""
-        try:
-            self.nodetionary[n1].remove(n2)
-        except ValueError:
-            raise ValueError("No such edge exists.")
-        except KeyError:
+        if self.has_node(n1) is False or self.has_node(n2) is False:
             raise KeyError("No such node in graph.")
         try:
+            self.nodetionary[n1].remove(n2)
             self.nodetionary[n2].remove(n1)
         except ValueError:
             raise ValueError("No such edge exists.")
-        except KeyError:
-            raise KeyError("No such node in graph.")
 
     def has_node(self, n):
         u"""Return True if node in graph."""
