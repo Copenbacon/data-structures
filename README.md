@@ -1,5 +1,58 @@
 # data-structures
 
+##Dec 28, 2016##
+###Graph###
+
+---------- coverage: platform linux2, python 2.7.12-final-0 ----------
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+src/binheap.py               47      0   100%
+src/deque.py                 33      0   100%
+src/dll.py                   74      0   100%
+src/graphimp.py              55      0   100%
+src/linked_list.py           59      0   100%
+src/pq.py                    39      3    92%   5, 36-37
+src/queue_.py                18      0   100%
+src/stack.py                 15      0   100%
+src/test_binheap.py          34      0   100%
+src/test_deque.py            78      0   100%
+src/test_dll.py              71      0   100%
+src/test_graph.py            87      0   100%
+src/test_linked_list.py      75      0   100%
+src/test_pq.py               45      5    89%   6, 50-54
+src/test_queue.py            53      0   100%
+src/test_stack.py            39      0   100%
+-------------------------------------------------------
+TOTAL                       822      8    99%
+
+
+======================================================================= 219 passed in 0.92 seconds
+
+----------- coverage: platform linux, python 3.5.2-final-0 -----------
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+src/binheap.py               47      0   100%
+src/deque.py                 33      0   100%
+src/dll.py                   74      0   100%
+src/graphimp.py              55      0   100%
+src/linked_list.py           59      0   100%
+src/pq.py                    39      1    97%   7
+src/queue_.py                18      0   100%
+src/stack.py                 15      0   100%
+src/test_binheap.py          34      0   100%
+src/test_deque.py            78      0   100%
+src/test_dll.py              71      0   100%
+src/test_graph.py            87      0   100%
+src/test_linked_list.py      75      0   100%
+src/test_pq.py               45      1    98%   8
+src/test_queue.py            53      0   100%
+src/test_stack.py            39      0   100%
+-------------------------------------------------------
+TOTAL                       822      2    99%
+
+
+======================================================================= 220 passed in 0.79 seconds
+
 ##Dec 24, 2016 Priority Queue
 
 ---------- coverage: platform linux2, python 2.7.12-final-0 ----------
@@ -102,6 +155,20 @@ TOTAL                       553      0   100%
 A singly linked-list might be more appropriate for maintaining some kind of line or queue, like when you have a list of something that goes out in a particular order. FIrst thing that comes to mind is Ticketmaster. You have a set number of tickets in inventory and a lot of people want them. As they hit submit, they are placed in the linked list to maintain their order number. As they receive their ticket, they are removed from the list. I guess you could also use it for some kind of first in, last out operation, but I'm not sure where that would apply.
 
 Doubly linked lists are great for the above as well, but if you want to know where the end of the list is and what is at it, a doubly linked_list is helpful. Not exactly sure of a good use case for this.
+
+##Graph##
+
+  ###Methods###
+  nodes(): return a list of all nodes in the graph
+  edges(): return a list of all edges in the graph
+  add_node(n): adds a new node ‘n’ to the graph
+  add_edge(n1, n2): adds a new edge to the graph connecting ‘n1’ and ‘n2’, if either n1 or n2 are not already present in the graph, they should be added.
+  del_node(n): deletes the node ‘n’ from the graph, raises an error if no such node exists
+  del_edge(n1, n2): deletes the edge connecting ‘n1’ and ‘n2’ from the graph, raises an error if no such edge exists
+  has_node(n): True if node ‘n’ is contained in the graph, False if not.
+  neighbors(n): returns the list of all nodes connected to ‘n’ by edges, raises an error if n is not in g
+  adjacent(n1, n2): returns True if there is an edge connecting n1 and n2, False if not, raises an error if either of the supplied nodes are not in g
+  
 
 ##Priority Queue##
 
