@@ -21,6 +21,12 @@ POP_TABLE = [
     [1, 0],
 ]
 
+POP_TABLE2 = [
+    [[(1, 0), (3, 4), [5, 6], [7, 8], (3, 0)], 1],
+    [[1], 1],
+    [1, 1],
+]
+
 PEEK_TABLE = [
     [[(1, 0), (3, 4), [5, 6], [7, 8], (3, 0)], '0: 1'],
     [[1, 2, 3, 4, 5], '-inf: 1'],
@@ -79,6 +85,14 @@ def test_popping_removes_the_highest_priority_item(vals, result):
     new_pq = PikaQ(vals)
     new_pq.pop()
     assert len(new_pq.pq) == result
+
+
+@pytest.mark.parametrize("vals, result", POP_TABLE2)
+def test_popping_returns_value_popped(vals, result):
+    """Popping a pq should return the value popped."""
+    from pq import PikaQ
+    new_pq = PikaQ(vals)
+    assert new_pq.pop() == result
 
 
 def test_popping_empty_raises_error(new_empty_priority_q):
