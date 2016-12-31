@@ -135,7 +135,7 @@ def test_shift(iterable, result):
 
 def test_shift_when_empty(new_empty_dll):
     """Test that shifting an empty list returns an index error."""
-    with pytest.raises(AttributeError):
+    with pytest.raises(IndexError):
         new_empty_dll.shift()
 
 
