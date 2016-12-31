@@ -174,7 +174,7 @@ def test_that_pop_empty_table_raises_error(new_empty_deque):
 
 def test_that_popleft_empty_table_raises_error(new_empty_deque):
     """Make sure poplefting from an empty table raises an error."""
-    with pytest.raises(AttributeError):
+    with pytest.raises(IndexError):
         new_empty_deque.popleft()
 
 
