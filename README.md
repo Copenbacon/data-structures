@@ -1,5 +1,54 @@
 # data-structures
 
+##12/30/2016##
+
+---------- coverage: platform linux2, python 2.7.12-final-0 ----------
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+src/binheap.py               47      0   100%
+src/deque.py                 33      0   100%
+src/dll.py                   75      0   100%
+src/linked_list.py           59      0   100%
+src/pq.py                    41      2    95%   34-35
+src/queue_.py                18      0   100%
+src/stack.py                 15      0   100%
+src/test_binheap.py          34      0   100%
+src/test_deque.py            78      0   100%
+src/test_dll.py              71      0   100%
+src/test_linked_list.py      75      0   100%
+src/test_pq.py               48      4    92%   53-57
+src/test_queue.py            56      0   100%
+src/test_stack.py            39      0   100%
+-------------------------------------------------------
+TOTAL                       689      6    99%
+
+
+========================== 178 passed in 0.67 seconds
+
+----------- coverage: platform linux, python 3.5.2-final-0 -----------
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+src/binheap.py               47      0   100%
+src/deque.py                 33      0   100%
+src/dll.py                   75      0   100%
+src/linked_list.py           59      0   100%
+src/pq.py                    41      0   100%
+src/queue_.py                18      0   100%
+src/stack.py                 15      0   100%
+src/test_binheap.py          34      0   100%
+src/test_deque.py            78      0   100%
+src/test_dll.py              71      0   100%
+src/test_linked_list.py      75      0   100%
+src/test_pq.py               48      0   100%
+src/test_queue.py            56      0   100%
+src/test_stack.py            39      0   100%
+-------------------------------------------------------
+TOTAL                       689      0   100%
+
+
+========================== 179 passed in 0.82 seconds
+
+
 ##Dec 24, 2016 Priority Queue
 
 ---------- coverage: platform linux2, python 2.7.12-final-0 ----------

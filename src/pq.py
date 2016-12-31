@@ -1,10 +1,6 @@
 """Implement a priority queue."""
-import sys
 
-if sys.version_info[0] == 3:
-    from math import inf
-else:
-    inf = float("inf")
+inf = float("inf")
 
 
 class PikaQ(object):
@@ -50,12 +46,13 @@ class PikaQ(object):
 
     def pop(self):
         """Remove the highest priority value from the priority queue and return it."""
-        if len(self.pq) == 0:
-            raise IndexError("Empty PikaQ is un-poppable.")
-        poppin_key = min(self.pq.keys())
-        poppin_list = self.pq[poppin_key]
-        val_popped = poppin_list[0]
-        self.pq[poppin_key].remove(poppin_list[0])
+        try:
+            poppin_key = min(self.pq.keys())
+            poppin_list = self.pq[poppin_key]
+            val_popped = poppin_list[0]
+            self.pq[poppin_key].remove(poppin_list[0])
+        except ValueError:
+            raise ValueError("Empty PikaQ is un-poppable.")
         if len(poppin_list) == 0:
             self.pq.pop(poppin_key)
         return val_popped
@@ -65,4 +62,4 @@ class PikaQ(object):
         if len(self.pq) > 0:
             return str(min(self.pq)) + ": " + str(self.pq[min(self.pq)][0])
         else:
-            return "Nothing, Priority Q is empty!"
+            return
