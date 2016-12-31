@@ -123,5 +123,11 @@ def test_init_type_error():
 
 def test_that_peeking_empty_queue_raises_error(new_empty_queue):
     """Make sure peeking an empty Queue raises error."""
-    with pytest.raises(AttributeError):
-        new_empty_queue.peek()
+    assert new_empty_queue.peek() == "Queue is empty."
+
+
+def test_remove_last_value_size_is_zero(new_empty_queue):
+    """Removing the last value should make the queue size 0."""
+    new_empty_queue.enqueue(1)
+    new_empty_queue.dequeue()
+    assert new_empty_queue.size() == 0
