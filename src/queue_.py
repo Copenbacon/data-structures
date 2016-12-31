@@ -26,8 +26,8 @@ class Queue(object):
         """Remove the first value of the queue."""
         try:
             return self._container.shift()
-        except AttributeError:
-            raise AttributeError("Cannot dequeue from an empty Queue.")
+        except IndexError:
+            raise IndexError("Cannot dequeue from an empty Queue.")
 
     def peek(self):
         """Look at next value in the Queue without removing."""
