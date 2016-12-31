@@ -83,6 +83,7 @@ class DLL(object):
         except AttributeError:
             self.head = None
         self.tail = self.tail.prev
+        self.size_of_list -= 1
         return val_return
 
     def search(self, val):
