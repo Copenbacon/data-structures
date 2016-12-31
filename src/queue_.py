@@ -34,7 +34,7 @@ class Queue(object):
         try:
             return self._container.tail.val
         except AttributeError:
-            return "Queue is empty."
+            return
 
     def size(self):
         """How big the Queue is."""

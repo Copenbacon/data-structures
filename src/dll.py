@@ -76,17 +76,14 @@ class DLL(object):
         """Remove node from end of list and return to user."""
         try:
             val_return = self.tail.val
-            if self.tail.prev is None:
-                self.head = None
-                self.tail = None
-                self.size_of_list -= 1
-                return val_return
-            self.tail = self.tail.prev
-            self.tail.prev = None
-            self.size_of_list -= 1
-            return val_return
         except AttributeError:
-            raise AttributeError("Cannot shift from an empty list.")
+            raise IndexError('Cannot shift an empty list.')
+        try:
+            self.tail.prev.next = None
+        except AttributeError:
+            self.head = None
+        self.tail = self.tail.prev
+        return val_return
 
     def search(self, val):
         """Return the val of the node when searched."""
