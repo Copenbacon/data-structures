@@ -184,6 +184,42 @@ __init__([iterable]): takes an optional iterable object when instantiating the c
     display(): returns LinkedList as a stringified tuple-looking object.
     """
 
+## 12/30/16 ##
+
+---------- coverage: platform linux2, python 2.7.12-final-0 ----------
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+src/dll.py                   75      0   100%
+src/linked_list.py           59      0   100%
+src/queue.py                 18      0   100%
+src/stack.py                 15      0   100%
+src/test_dll.py              71      0   100%
+src/test_linked_list.py      75      0   100%
+src/test_queue.py            56      0   100%
+src/test_stack.py            39      0   100%
+-------------------------------------------------------
+TOTAL                       408      0   100%
+
+
+========================== 110 passed in 0.49 seconds
+
+----------- coverage: platform linux, python 3.5.2-final-0 -----------
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+src/dll.py                   75      0   100%
+src/linked_list.py           59      0   100%
+src/queue.py                 18      0   100%
+src/stack.py                 15      0   100%
+src/test_dll.py              71      0   100%
+src/test_linked_list.py      75      0   100%
+src/test_queue.py            56      0   100%
+src/test_stack.py            39      0   100%
+-------------------------------------------------------
+TOTAL                       408      0   100%
+
+
+========================== 110 passed in 0.45 seconds
+
 ##Dec 27, 2016##
 
 ---------- coverage: platform linux2, python 2.7.12-final-0 ----------

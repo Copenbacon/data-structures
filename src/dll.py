@@ -79,6 +79,7 @@ class DLL(object):
             if self.tail.prev is None:
                 self.head = None
                 self.tail = None
+                self.size_of_list -= 1
                 return val_return
             self.tail = self.tail.prev
             self.tail.prev = None
