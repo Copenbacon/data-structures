@@ -1,5 +1,6 @@
 # data-structures
 
+
 ##Dec 28, 2016##
 ###Graph###
 
@@ -8,10 +9,10 @@ Name                      Stmts   Miss  Cover   Missing
 -------------------------------------------------------
 src/binheap.py               47      0   100%
 src/deque.py                 33      0   100%
-src/dll.py                   74      0   100%
+src/dll.py                   75      0   100%
 src/graphimp.py              55      0   100%
 src/linked_list.py           59      0   100%
-src/pq.py                    39      3    92%   5, 36-37
+src/pq.py                    41      2    95%   34-35
 src/queue_.py                18      0   100%
 src/stack.py                 15      0   100%
 src/test_binheap.py          34      0   100%
@@ -19,24 +20,24 @@ src/test_deque.py            78      0   100%
 src/test_dll.py              71      0   100%
 src/test_graph.py            87      0   100%
 src/test_linked_list.py      75      0   100%
-src/test_pq.py               45      5    89%   6, 50-54
-src/test_queue.py            53      0   100%
+src/test_pq.py               48      4    92%   53-57
+src/test_queue.py            56      0   100%
 src/test_stack.py            39      0   100%
 -------------------------------------------------------
-TOTAL                       822      8    99%
+TOTAL                       831      6    99%
 
 
-======================================================================= 219 passed in 0.92 seconds
+========================== 223 passed in 0.94 seconds
 
 ----------- coverage: platform linux, python 3.5.2-final-0 -----------
 Name                      Stmts   Miss  Cover   Missing
 -------------------------------------------------------
 src/binheap.py               47      0   100%
 src/deque.py                 33      0   100%
-src/dll.py                   74      0   100%
+src/dll.py                   75      0   100%
 src/graphimp.py              55      0   100%
 src/linked_list.py           59      0   100%
-src/pq.py                    39      1    97%   7
+src/pq.py                    41      0   100%
 src/queue_.py                18      0   100%
 src/stack.py                 15      0   100%
 src/test_binheap.py          34      0   100%
@@ -44,14 +45,65 @@ src/test_deque.py            78      0   100%
 src/test_dll.py              71      0   100%
 src/test_graph.py            87      0   100%
 src/test_linked_list.py      75      0   100%
-src/test_pq.py               45      1    98%   8
-src/test_queue.py            53      0   100%
+src/test_pq.py               48      0   100%
+src/test_queue.py            56      0   100%
 src/test_stack.py            39      0   100%
 -------------------------------------------------------
-TOTAL                       822      2    99%
+TOTAL                       831      0   100%
 
 
-======================================================================= 220 passed in 0.79 seconds
+========================== 224 passed in 0.82 seconds
+
+
+
+##12/30/2016##
+
+---------- coverage: platform linux2, python 2.7.12-final-0 ----------
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+src/binheap.py               47      0   100%
+src/deque.py                 33      0   100%
+src/dll.py                   75      0   100%
+src/linked_list.py           59      0   100%
+src/pq.py                    41      2    95%   34-35
+src/queue_.py                18      0   100%
+src/stack.py                 15      0   100%
+src/test_binheap.py          34      0   100%
+src/test_deque.py            78      0   100%
+src/test_dll.py              71      0   100%
+src/test_linked_list.py      75      0   100%
+src/test_pq.py               48      4    92%   53-57
+src/test_queue.py            56      0   100%
+src/test_stack.py            39      0   100%
+-------------------------------------------------------
+TOTAL                       689      6    99%
+
+
+========================== 178 passed in 0.67 seconds
+
+
+----------- coverage: platform linux, python 3.5.2-final-0 -----------
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+src/binheap.py               47      0   100%
+src/deque.py                 33      0   100%
+src/dll.py                   75      0   100%
+src/linked_list.py           59      0   100%
+src/pq.py                    41      0   100%
+src/queue_.py                18      0   100%
+src/stack.py                 15      0   100%
+src/test_binheap.py          34      0   100%
+src/test_deque.py            78      0   100%
+src/test_dll.py              71      0   100%
+src/test_linked_list.py      75      0   100%
+src/test_pq.py               48      0   100%
+src/test_queue.py            56      0   100%
+src/test_stack.py            39      0   100%
+-------------------------------------------------------
+TOTAL                       689      0   100%
+
+
+========================== 179 passed in 0.82 seconds
 
 ##Dec 24, 2016 Priority Queue
 
@@ -250,6 +302,42 @@ __init__([iterable]): takes an optional iterable object when instantiating the c
     remove(node_to_delete): takes a node as argument, searches for it, and removes it from list, then deincrements size of list
     display(): returns LinkedList as a stringified tuple-looking object.
     """
+
+## 12/30/16 ##
+
+---------- coverage: platform linux2, python 2.7.12-final-0 ----------
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+src/dll.py                   75      0   100%
+src/linked_list.py           59      0   100%
+src/queue.py                 18      0   100%
+src/stack.py                 15      0   100%
+src/test_dll.py              71      0   100%
+src/test_linked_list.py      75      0   100%
+src/test_queue.py            56      0   100%
+src/test_stack.py            39      0   100%
+-------------------------------------------------------
+TOTAL                       408      0   100%
+
+
+========================== 110 passed in 0.49 seconds
+
+----------- coverage: platform linux, python 3.5.2-final-0 -----------
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+src/dll.py                   75      0   100%
+src/linked_list.py           59      0   100%
+src/queue.py                 18      0   100%
+src/stack.py                 15      0   100%
+src/test_dll.py              71      0   100%
+src/test_linked_list.py      75      0   100%
+src/test_queue.py            56      0   100%
+src/test_stack.py            39      0   100%
+-------------------------------------------------------
+TOTAL                       408      0   100%
+
+
+========================== 110 passed in 0.45 seconds
 
 ##Dec 27, 2016##
 
