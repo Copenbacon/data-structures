@@ -59,14 +59,8 @@ class Graph(object):
         If either n1 or n2 are not already present in the graph,
         they should be added.
         """
-        try:
-            self.nodetionary[n1].append(n2)
-        except KeyError:
-            self.nodetionary.setdefault(n1, [n2])
-        try:
-            self.nodetionary[n2].append(n1)
-        except KeyError:
-            self.nodetionary.setdefault(n2, [n1])
+        self.nodetionary.setdefault(n1, []).append(n2)
+        self.nodetionary.setdefault(n2, [])
 
     def del_node(self, n):
         u"""Delete the node ‘n’ from the graph.
@@ -124,8 +118,21 @@ class Graph(object):
                            "Here is a current list of nodes: " +
                            str(self.nodes()))
 
-    def breadth_first_traversal(self, start):
+    def depth_first_traversal(self, start):
         """Perform a full depth-first traversal of the graph beginning at start.
+
+        Return the full visited path when traversal is complete.
+        """
+        visited = []
+        stack = [start]
+        while stack:
+            vertex = self.nodetionary[start]
+            if vertex not in visited:
+                visited.extend(vertex)
+        return visited
+
+    def breadth_first_traversal(self, start):
+        """Perform a full breadth-first traversal of the graph, beginning at start.
 
         Return the full visited path when traversal is complete.
         """
@@ -137,9 +144,3 @@ class Graph(object):
                 visited.append(vertex)
                 stack.extend(self.nodetionary[vertex])
         return visited
-
-    def depth_first_traversal(self, start):
-        """Perform a full breadth-first traversal of the graph, beginning at start.
-
-        Return the full visited path when traversal is complete.
-        """
