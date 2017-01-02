@@ -123,13 +123,16 @@ class Graph(object):
 
         Return the full visited path when traversal is complete.
         """
-        visited = []
         stack = [start]
+        visited = set()
+        return_list = []
         while stack:
-            vertex = self.nodetionary[start]
-            if vertex not in visited:
-                visited.extend(vertex)
-        return visited
+            pointer = stack.pop()
+            if pointer not in visited:
+                stack.extend(self.nodetionary[pointer][::-1])
+                visited.add(pointer)
+                return_list.append(pointer)
+        return return_list
 
     def breadth_first_traversal(self, start):
         """Perform a full breadth-first traversal of the graph, beginning at start.
