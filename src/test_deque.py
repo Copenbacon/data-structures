@@ -9,14 +9,6 @@ ADDING_TABLE = [
     [0, [4, 3, 2, 1, 0]],
 ]
 
-APPEND_LEFT_TABLE = [
-    [0],
-]
-
-ADDING_LEFT_TABLE = [
-    [0, [4, 3, 2, 1, 0]],
-]
-
 POP_TABLE = [
     ((0, 1, 2, 3, 4)),
     ([9, 45, "lol", "b"]),
@@ -83,14 +75,14 @@ def test_length_of_deque_when_using_append(val, result, filled_deque):
     assert filled_deque.size() == len(result) and filled_deque._container.head.val == val and filled_deque._container.head.val == result[-1]
 
 
-@pytest.mark.parametrize("val", APPEND_LEFT_TABLE)
+@pytest.mark.parametrize("val", APPEND_TABLE)
 def test_append_left_increases_size_of_list(val, filled_deque):
     """Test that adding a node to front of deque increases size."""
     filled_deque.appendleft(val)
     assert filled_deque._container.tail.val == val
 
 
-@pytest.mark.parametrize("val, result", ADDING_LEFT_TABLE)
+@pytest.mark.parametrize("val, result", ADDING_TABLE)
 def test_length_of_deque_when_using_append_left(val, result, filled_deque):
     """Test adding a val via append left updates head/tail."""
     filled_deque.appendleft(val)
@@ -193,4 +185,3 @@ def test_peek_return_none_when_empty(new_empty_deque):
 def test_peekleft_return_none_when_empty(new_empty_deque):
     """Peeking left should return None when empty."""
     assert new_empty_deque.peekleft() is None
-
