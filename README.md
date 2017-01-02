@@ -1,7 +1,7 @@
 # data-structures
 
 ##Dec 19, 2016 - Deque
-12/18/2016 - Merged in Stack updates nad Linked List Updates
+12/18/2016 - Merged in Stack updates and Linked List Updates
 
 
 ##Dec 14, 2016
@@ -199,24 +199,12 @@ TOTAL                       472      0   100%
 
 
 ==================================== 131 passed in 0.44 seconds
-=======
-src/dll.py                   74      0   100%
-src/linked_list.py           59      0   100%
-src/stack.py                 15      0   100%
-src/test_dll.py              71      0   100%
-src/test_linked_list.py      75      0   100%
-src/test_stack.py            39      0   100%
--------------------------------------------------------
-TOTAL                       333      0   100%
 
 
-========================== 90 passed in 0.41 seconds
->>>>>>> queue
 
 ----------- coverage: platform linux, python 3.5.2-final-0 -----------
 Name                      Stmts   Miss  Cover   Missing
 -------------------------------------------------------
-<<<<<<< HEAD
 src/deque.py                 18      0   100%
 src/dll.py                   70      0   100%
 src/linked_list.py           60      0   100%
@@ -232,18 +220,6 @@ TOTAL                       472      0   100%
 
 
 ==================================== 131 passed in 0.52 seconds
-=======
-src/dll.py                   74      0   100%
-src/linked_list.py           59      0   100%
-src/stack.py                 15      0   100%
-src/test_dll.py              71      0   100%
-src/test_linked_list.py      75      0   100%
-src/test_stack.py            39      0   100%
--------------------------------------------------------
-TOTAL                       333      0   100%
-
-
-========================== 90 passed in 0.42 seconds
 
 
 
@@ -259,7 +235,7 @@ TOTAL                       188      0   100%
 
 
 ========================== 51 passed in 0.33 seconds
-=======
+
 
 
 ----------- coverage: platform linux, python 3.5.2-final-0 -----------
@@ -275,7 +251,6 @@ TOTAL                       188      0   100%
 
 ========================== 51 passed in 0.32 seconds 
 
->>>>>>> queue
 ##Dec 18, 2016 - Merged in DLL, Stack, Linked List Updates
 
 ##Dec 15, 2016
@@ -375,7 +350,6 @@ TOTAL                       177      0   100%
 ---------- coverage: platform linux2, python 2.7.12-final-0 ----------
 Name                      Stmts   Miss  Cover   Missing
 -------------------------------------------------------
-<<<<<<< HEAD
 src/dll.py                   72      0   100%
 src/linked_list.py           61      6    90%   36, 47, 66-67, 84-85
 src/stack.py                 14      0   100%
@@ -398,14 +372,6 @@ src/test_stack.py            41      0   100%
 -------------------------------------------------------
 TOTAL                       318      6    98%
 
-=======
-src/linked_list.py           60      0   100%
-src/test_linked_list.py      63      0   100%
--------------------------------------------------------
-TOTAL                       123      0   100%
-
-
-================================================= 25 passed in 0.15 seconds
 
 ----------- coverage: platform linux, python 3.5.2-final-0 -----------
 Name                      Stmts   Miss  Cover   Missing
