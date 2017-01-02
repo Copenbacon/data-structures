@@ -132,8 +132,7 @@ class Graph(object):
         visited = []
         stack = [start]
         while stack:
-            vertex = stack[0]
-            stack.remove(stack[0])
+            vertex = stack.pop(0)
             if vertex not in visited:
                 visited.append(vertex)
                 stack.extend(self.nodetionary[vertex])
