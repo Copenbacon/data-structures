@@ -127,11 +127,11 @@ class Graph(object):
         visited = set()
         return_list = []
         while stack:
-            pointer = stack.pop()
-            if pointer not in visited:
-                stack.extend(self.nodetionary[pointer][::-1])
-                visited.add(pointer)
-                return_list.append(pointer)
+            vertex = stack.pop()
+            if vertex not in visited:
+                stack.extend(self.nodetionary[vertex][::-1])
+                visited.add(vertex)
+                return_list.append(vertex)
         return return_list
 
     def breadth_first_traversal(self, start):
@@ -139,11 +139,13 @@ class Graph(object):
 
         Return the full visited path when traversal is complete.
         """
-        visited = []
+        visited = set()
         stack = [start]
+        return_list = []
         while stack:
             vertex = stack.pop(0)
             if vertex not in visited:
-                visited.append(vertex)
+                visited.add(vertex)
                 stack.extend(self.nodetionary[vertex])
-        return visited
+                return_list.append(vertex)
+        return return_list
