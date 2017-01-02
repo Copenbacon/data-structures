@@ -75,17 +75,38 @@ class Graph(object):
         return False
 
     def neighbors(self, n):
-        u"""Return the list of all nodes connected to ‘n’ by edges, raises an error if n is not in graph."""
+        u"""Return the list of all nodes connected to ‘n’ by edges.
+
+        Raises an error if n is not in graph.
+        """
         try:
             return list(self.nodetionary[n])
         except KeyError:
             raise KeyError("Node {} is not in the graph".format(n))
 
     def adjacent(self, n1, n2):
-        u"""Return True if there is an edge connecting n1 and n2, False if not, raises an error if either of the supplied nodes are not in graph."""
+        u"""Return True if there is an edge connecting n1 and n2, False if not.
+
+        Raises an error if either of the supplied nodes are not in graph.
+        """
         if n1 in self.nodetionary and n2 in self.nodetionary:
             if n1 in self.nodetionary[n2] and n2 in self.nodetionary[n1]:
                 return True
             return False
         else:
-            raise KeyError("One of the supplied nodes is not in the graph. Here is a current list of nodes:" + str(self.nodes()))
+            raise KeyError("One of the supplied nodes is not in the graph. Here is a current list of nodes: " + str(self.nodes()))
+
+    def depth_first_traversal(self, start):
+        """Perform a full depth-first traversal of the graph beginning at start.
+
+        Return the full visited path when traversal is complete.
+        """
+        visited = []
+        stack = [start]
+        while stack:
+            vertex = stack[0]
+            stack.remove(stack[0])
+            if vertex not in visited:
+                visited.append(vertex)
+                stack.extend(self.nodetionary[vertex])
+        return visited
