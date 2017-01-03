@@ -38,24 +38,24 @@ class Graph(object):
 
     def __init__(self):
         """Instantiation of the Graph."""
-        self.nodetionary = {}
+        self.node_dict = {}
 
     def nodes(self):
         """Return a list of all nodes in the graph."""
-        return list(self.nodetionary)
+        return list(self.node_dict)
 
     def edges(self):
         """Return a list of all edges in the graph."""
         edge_list = []
         if self.nodes() is not []:
-            for starting_point in self.nodetionary:
-                for ending_point in self.nodetionary[starting_point]:
+            for starting_point in self.node_dict:
+                for ending_point in self.node_dict[starting_point]:
                     edge_list.append((starting_point, ending_point))
         return edge_list
 
     def add_node(self, n):
         """Add a new node 'n' to the graph."""
-        self.nodetionary.setdefault(n, [])
+        self.node_dict.setdefault(n, [])
 
     def add_edge(self, n1, n2):
         u"""Add a new edge to the graph connecting ‘n1’ and ‘n2’.
@@ -63,8 +63,8 @@ class Graph(object):
         If either n1 or n2 are not already present in the graph,
         they should be added.
         """
-        self.nodetionary.setdefault(n1, []).append(n2)
-        self.nodetionary.setdefault(n2, [])
+        self.node_dict.setdefault(n1, []).append(n2)
+        self.node_dict.setdefault(n2, [])
 
     def del_node(self, n):
         u"""Delete the node ‘n’ from the graph.
@@ -72,10 +72,10 @@ class Graph(object):
         Raises an error if no such node exists.
         """
         try:
-            del self.nodetionary[n]
-            for key in self.nodetionary:
-                if n in self.nodetionary[key]:
-                    self.nodetionary[key].remove(n)
+            del self.node_dict[n]
+            for key in self.node_dict:
+                if n in self.neighbors(key):
+                    self.node_dict[key].remove(n)
         except KeyError:
             raise KeyError("Can't delete a node that doesn't exist.")
 
@@ -87,13 +87,13 @@ class Graph(object):
         if not self.has_node(n1) or not self.has_node(n2):
             raise KeyError("No such node in graph.")
         try:
-            self.nodetionary[n1].remove(n2)
+            self.node_dict[n1].remove(n2)
         except ValueError:
             raise ValueError("No such edge exists.")
 
     def has_node(self, n):
         u"""Return True if node in graph."""
-        if n in self.nodetionary:
+        if n in self.node_dict:
             return True
         return False
 
@@ -103,7 +103,7 @@ class Graph(object):
         Raises an error if n is not in graph.
         """
         try:
-            return list(self.nodetionary[n])
+            return self.node_dict[n]
         except KeyError:
             raise KeyError("Node {} is not in the graph".format(n))
 
@@ -112,8 +112,8 @@ class Graph(object):
 
         Raises an error if either of the supplied nodes are not in graph.
         """
-        if n1 in self.nodetionary and n2 in self.nodetionary:
-            if n2 in self.nodetionary[n1]:
+        if self.has_node(n1):
+            if n2 in self.neighbors(n1):
                 return True
             return False
         else:
