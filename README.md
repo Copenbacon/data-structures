@@ -1,6 +1,53 @@
 # data-structures
 
-##12/30/2016##
+##Jan 3, 2017
+
+---------- coverage: platform linux2, python 2.7.12-final-0 ----------
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+src/binheap.py               47      0   100%
+src/deque.py                 33      0   100%
+src/dll.py                   73      0   100%
+src/linked_list.py           59      0   100%
+src/pq.py                    41      2    95%   34-35
+src/queue_.py                18      0   100%
+src/stack.py                 15      0   100%
+src/test_binheap.py          34      0   100%
+src/test_deque.py           114      0   100%
+src/test_dll.py              71      0   100%
+src/test_linked_list.py      75      0   100%
+src/test_pq.py               48      4    92%   53-57
+src/test_queue.py            56      0   100%
+src/test_stack.py            39      0   100%
+-------------------------------------------------------
+TOTAL                       723      6    99%
+
+
+========================== 194 passed in 0.66 seconds
+
+----------- coverage: platform linux, python 3.5.2-final-0 -----------
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+src/binheap.py               47      0   100%
+src/deque.py                 33      0   100%
+src/dll.py                   73      0   100%
+src/linked_list.py           59      0   100%
+src/pq.py                    41      0   100%
+src/queue_.py                18      0   100%
+src/stack.py                 15      0   100%
+src/test_binheap.py          34      0   100%
+src/test_deque.py           114      0   100%
+src/test_dll.py              71      0   100%
+src/test_linked_list.py      75      0   100%
+src/test_pq.py               48      0   100%
+src/test_queue.py            56      0   100%
+src/test_stack.py            39      0   100%
+-------------------------------------------------------
+TOTAL                       723      0   100%
+
+
+========================== 195 passed in 0.74 seconds
+
 
 ---------- coverage: platform linux2, python 2.7.12-final-0 ----------
 Name                      Stmts   Miss  Cover   Missing
@@ -24,6 +71,25 @@ TOTAL                       689      6    99%
 
 
 ========================== 178 passed in 0.67 seconds
+
+src/dll.py                   73      0   100%
+src/graphimp.py               0      0   100%
+src/linked_list.py           59      0   100%
+src/queue_.py                18      0   100%
+src/stack.py                 15      0   100%
+src/test_binheap.py          34      0   100%
+src/test_deque.py           114      0   100%
+src/test_dll.py              71      0   100%
+src/test_graph.py             0      0   100%
+src/test_linked_list.py      75      0   100%
+src/test_queue.py            56      0   100%
+src/test_stack.py            39      0   100%
+-------------------------------------------------------
+TOTAL                       634      0   100%
+
+
+========================== 175 passed in 0.59 seconds
+
 
 ----------- coverage: platform linux, python 3.5.2-final-0 -----------
 Name                      Stmts   Miss  Cover   Missing
@@ -96,6 +162,24 @@ TOTAL                       637      2    99%
 
 
 ====================================================== 167 passed in 0.62 seconds
+src/dll.py                   73      0   100%
+src/graphimp.py               0      0   100%
+src/linked_list.py           59      0   100%
+src/queue_.py                18      0   100%
+src/stack.py                 15      0   100%
+src/test_binheap.py          34      0   100%
+src/test_deque.py           114      0   100%
+src/test_dll.py              71      0   100%
+src/test_graph.py             0      0   100%
+src/test_linked_list.py      75      0   100%
+src/test_queue.py            56      0   100%
+src/test_stack.py            39      0   100%
+-------------------------------------------------------
+TOTAL                       634      0   100%
+
+
+========================== 175 passed in 0.65 seconds
+
 
 ##Dec 20, 2016 - Binary Heap
 
@@ -118,7 +202,9 @@ src/test_stack.py            39      0   100%
 TOTAL                       553      0   100%
 
 
-==================================== 150 passed in 0.52 seconds
+
+========================== 156 passed in 0.50 seconds
+
 
 ----------- coverage: platform linux, python 3.5.2-final-0 -----------
 Name                      Stmts   Miss  Cover   Missing
@@ -139,11 +225,11 @@ src/test_stack.py            39      0   100%
 TOTAL                       553      0   100%
 
 
-==================================== 150 passed in 0.58 seconds
+========================== 156 passed in 0.59 seconds
 
 
 ##Dec 19, 2016 - Deque
-12/18/2016 - Merged in Stack updates nad Linked List Updates
+12/18/2016 - Merged in Stack updates and Linked List Updates
 
 
 ##Dec 14, 2016
@@ -152,7 +238,8 @@ A singly linked-list might be more appropriate for maintaining some kind of line
 
 Doubly linked lists are great for the above as well, but if you want to know where the end of the list is and what is at it, a doubly linked_list is helpful. Not exactly sure of a good use case for this.
 
-##Priority Queue##
+
+##Priority Queue
 
   ###Methods###
   def __init__(vals=[]): Initialize a priority queue, and insert any values passed in into the Priority Queue. Must pass a list of items. To pass
@@ -161,7 +248,7 @@ Doubly linked lists are great for the above as well, but if you want to know whe
   def peek(): Look at next item to be popped in the Priority Queue.
 
 
-##Binary Heap##
+##Binary Heap
 
 ###Methods###
 __init__([iterable]): takes an optional iterable object when instantiating the class.
@@ -172,11 +259,11 @@ __init__([iterable]): takes an optional iterable object when instantiating the c
   pop(): Remove value a head of heap and sort the heap accordingly.
   
 
-##Deque##
+##Deque
 
   It is important to note that the "tail" of our Deques is actually the front of the Deque.
 
-  ###Methods###
+  ###Methods
   __init__(): initializes the Deque class as a composite of the DLL class.
   append(): uses the push method from DLL to add nodes to the end of the Deque.
   appendleft(): uses the append method from DLL to add nodes to the start of the Deque.
@@ -187,11 +274,11 @@ __init__([iterable]): takes an optional iterable object when instantiating the c
   size(): returns the size of the Deque.
 
 
-##Queue##
+##Queue
 
   It is important to note that the "tail" of our queue is actually the front of the Queue.
 
-  ###Methods###
+  ###Methods
   __init__(): initializes the Queue class as a composite of the DLL class.
   enqueue(): uses the push method from DLL to add nodes to the end of the Queue.
   dequeue(): removes a node from the front of the dequeue
@@ -199,9 +286,9 @@ __init__([iterable]): takes an optional iterable object when instantiating the c
   size(): returns the size of the Queue.
 
 
-##Doubly Linked List##
+##Doubly Linked List
   
-  ###Methods###
+  ###Methods
   __init__(): initializes the DLL class and adds a tail, head, and size_of_list attribute. It also checks that the values passed in are iterable.
   push(): Inserts a value to head of the list
   pop(): Remove node from head of list and return it to user.
@@ -211,9 +298,9 @@ __init__([iterable]): takes an optional iterable object when instantiating the c
   remove(): Remove the node passed into the parameter.
 
 
-##Stack##
+##Stack
 
-  ###Methods###
+  ###Methods
   __init__(): Initiate the Stack as a instance of LinkedList.
   pop(): Remove the top element from stack and returns it.
   push(): Add a value to the top of the stack.
@@ -221,10 +308,10 @@ __init__([iterable]): takes an optional iterable object when instantiating the c
   _is_empty(): Return true if the stack is empty.
 
 
-##Linked_List##
+##Linked_List
 
     
-    ####Methods####
+    ####Methods
     push(val): adds a node at the head, increments size of list.
     pop(): removes the node at the head, deincrements size of list.
     size(): returns size of LinkedList
@@ -233,7 +320,7 @@ __init__([iterable]): takes an optional iterable object when instantiating the c
     display(): returns LinkedList as a stringified tuple-looking object.
     """
 
-## 12/30/16 ##
+## 12/30/16
 
 ---------- coverage: platform linux2, python 2.7.12-final-0 ----------
 Name                      Stmts   Miss  Cover   Missing
@@ -269,7 +356,7 @@ TOTAL                       408      0   100%
 
 ========================== 110 passed in 0.45 seconds
 
-##Dec 27, 2016##
+##Dec 27, 2016
 
 ---------- coverage: platform linux2, python 2.7.12-final-0 ----------
 Name                      Stmts   Miss  Cover   Missing
@@ -361,24 +448,12 @@ TOTAL                       472      0   100%
 
 
 ==================================== 131 passed in 0.44 seconds
-=======
-src/dll.py                   74      0   100%
-src/linked_list.py           59      0   100%
-src/stack.py                 15      0   100%
-src/test_dll.py              71      0   100%
-src/test_linked_list.py      75      0   100%
-src/test_stack.py            39      0   100%
--------------------------------------------------------
-TOTAL                       333      0   100%
 
 
-========================== 90 passed in 0.41 seconds
->>>>>>> queue
 
 ----------- coverage: platform linux, python 3.5.2-final-0 -----------
 Name                      Stmts   Miss  Cover   Missing
 -------------------------------------------------------
-<<<<<<< HEAD
 src/deque.py                 18      0   100%
 src/dll.py                   70      0   100%
 src/linked_list.py           60      0   100%
@@ -394,18 +469,6 @@ TOTAL                       472      0   100%
 
 
 ==================================== 131 passed in 0.52 seconds
-=======
-src/dll.py                   74      0   100%
-src/linked_list.py           59      0   100%
-src/stack.py                 15      0   100%
-src/test_dll.py              71      0   100%
-src/test_linked_list.py      75      0   100%
-src/test_stack.py            39      0   100%
--------------------------------------------------------
-TOTAL                       333      0   100%
-
-
-========================== 90 passed in 0.42 seconds
 
 
 
@@ -421,7 +484,7 @@ TOTAL                       188      0   100%
 
 
 ========================== 51 passed in 0.33 seconds
-=======
+
 
 
 ----------- coverage: platform linux, python 3.5.2-final-0 -----------
@@ -437,7 +500,6 @@ TOTAL                       188      0   100%
 
 ========================== 51 passed in 0.32 seconds 
 
->>>>>>> queue
 ##Dec 18, 2016 - Merged in DLL, Stack, Linked List Updates
 
 ##Dec 15, 2016
@@ -537,7 +599,6 @@ TOTAL                       177      0   100%
 ---------- coverage: platform linux2, python 2.7.12-final-0 ----------
 Name                      Stmts   Miss  Cover   Missing
 -------------------------------------------------------
-<<<<<<< HEAD
 src/dll.py                   72      0   100%
 src/linked_list.py           61      6    90%   36, 47, 66-67, 84-85
 src/stack.py                 14      0   100%
@@ -560,14 +621,6 @@ src/test_stack.py            41      0   100%
 -------------------------------------------------------
 TOTAL                       318      6    98%
 
-=======
-src/linked_list.py           60      0   100%
-src/test_linked_list.py      63      0   100%
--------------------------------------------------------
-TOTAL                       123      0   100%
-
-
-================================================= 25 passed in 0.15 seconds
 
 ----------- coverage: platform linux, python 3.5.2-final-0 -----------
 Name                      Stmts   Miss  Cover   Missing
