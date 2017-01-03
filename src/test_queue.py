@@ -110,7 +110,7 @@ def test_for_size_0_when_empty(new_empty_queue):
 
 def test_that_dequeueing_empty_table_raises_error(new_empty_queue):
     """Make sure dequeueing from an empty table raises an error."""
-    with pytest.raises(AttributeError):
+    with pytest.raises(IndexError):
         new_empty_queue.dequeue()
 
 
@@ -121,9 +121,9 @@ def test_init_type_error():
         new_queue = Queue(1)
 
 
-def test_that_peeking_empty_queue_raises_error(new_empty_queue):
+def test_that_peeking_empty_queue_is_none(new_empty_queue):
     """Make sure peeking an empty Queue raises error."""
-    assert new_empty_queue.peek() == "Queue is empty."
+    assert new_empty_queue.peek() is None
 
 
 def test_remove_last_value_size_is_zero(new_empty_queue):

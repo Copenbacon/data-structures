@@ -36,8 +36,8 @@ class Deque(object):
         """Remove the first value of the Deque."""
         try:
             return self._container.shift()
-        except AttributeError:
-            raise AttributeError("Cannot pop from Empty Deque")
+        except IndexError:
+            raise IndexError("Cannot pop from Empty Deque")
 
     def pop(self):
         """Remove a value from the end of the deque and returns it (raises an exception if the deque is empty)."""
