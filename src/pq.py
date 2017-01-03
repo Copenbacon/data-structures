@@ -52,7 +52,7 @@ class PikaQ(object):
             val_popped = poppin_list[0]
             self.pq[poppin_key].remove(poppin_list[0])
         except ValueError:
-            raise ValueError("Empty PikaQ is un-poppable.")
+            raise IndexError("Empty PikaQ is un-poppable.")
         if len(poppin_list) == 0:
             self.pq.pop(poppin_key)
         return val_popped

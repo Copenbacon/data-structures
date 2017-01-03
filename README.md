@@ -1,7 +1,211 @@
 # data-structures
 
+
 ##Jan 2, 2016
 ##Graph-Traversal
+---------- coverage: platform linux2, python 2.7.12-final-0 ----------
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+src/binheap.py               47      0   100%
+src/deque.py                 33      0   100%
+src/dll.py                   73      0   100%
+src/graphimp.py              91     14    85%   164-192
+src/linked_list.py           59      0   100%
+src/pq.py                    41      2    95%   34-35
+src/queue_.py                18      0   100%
+src/stack.py                 15      0   100%
+src/test_binheap.py          34      0   100%
+src/test_deque.py           114      0   100%
+src/test_dll.py              71      0   100%
+src/test_graph.py           103      0   100%
+src/test_linked_list.py      75      0   100%
+src/test_pq.py               48      4    92%   53-57
+src/test_queue.py            56      0   100%
+src/test_stack.py            39      0   100%
+-------------------------------------------------------
+TOTAL                       917     20    98%
+
+
+========================== 249 passed in 0.91 seconds
+
+----------- coverage: platform linux, python 3.5.2-final-0 -----------
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+src/binheap.py               47      0   100%
+src/deque.py                 33      0   100%
+src/dll.py                   73      0   100%
+src/graphimp.py              91     14    85%   164-192
+src/linked_list.py           59      0   100%
+src/pq.py                    41      0   100%
+src/queue_.py                18      0   100%
+src/stack.py                 15      0   100%
+src/test_binheap.py          34      0   100%
+src/test_deque.py           114      0   100%
+src/test_dll.py              71      0   100%
+src/test_graph.py           103      0   100%
+src/test_linked_list.py      75      0   100%
+src/test_pq.py               48      0   100%
+src/test_queue.py            56      0   100%
+src/test_stack.py            39      0   100%
+-------------------------------------------------------
+TOTAL                       917     14    98%
+
+
+========================== 250 passed in 0.94 seconds
+
+##Graph
+
+  ###Methods###
+  nodes(): return a list of all nodes in the graph
+  edges(): return a list of all edges in the graph
+  add_node(n): adds a new node ‘n’ to the graph
+  add_edge(n1, n2): adds a new edge to the graph connecting ‘n1’ and ‘n2’, if either n1 or n2 are not already present in the graph, they should be added.
+  del_node(n): deletes the node ‘n’ from the graph, raises an error if no such node exists
+  del_edge(n1, n2): deletes the edge connecting ‘n1’ and ‘n2’ from the graph, raises an error if no such edge exists
+  has_node(n): True if node ‘n’ is contained in the graph, False if not.
+  neighbors(n): returns the list of all nodes connected to ‘n’ by edges, raises an error if n is not in g
+  adjacent(n1, n2): returns True if there is an edge connecting n1 and n2, False if not, raises an error if either of the supplied nodes are not in g
+  g.depth_first_traversal(start): Perform a full depth-first traversal of the graph beginning at start. Return the full visited path when traversal is complete.
+  g.breadth_first_traversal(self, start): Perform a full breadth-first traversal of the graph, beginning at start. Return the full visited path when traversal is complete.
+
+  
+
+
+##Priority Queue
+
+  ###Methods###
+  def __init__(vals=[]): Initialize a priority queue, and insert any values passed in into the Priority Queue. Must pass a list of items. To pass
+  def insert(item, pri=float(-inf)): Insert an item into the Priority Queue, if no priority specified, -inf will be the priority,
+  def pop(): Remove a value from the priority queue.
+  def peek(): Look at next item to be popped in the Priority Queue.
+
+
+##Binary Heap
+
+###Methods###
+__init__([iterable]): takes an optional iterable object when instantiating the class.
+  _perc_ip(val): Send the value up the heap as it is pushed in.
+  push(val): Append a value to the end of the list, increase list size, push the index that is equal to size, up the list.
+  _perc_down(val): Send a value down the heap if the heap's rules are violated.
+  _min_child(val): Find and return the smallest child.
+  pop(): Remove value a head of heap and sort the heap accordingly.
+  
+
+##Deque
+
+  It is important to note that the "tail" of our Deques is actually the front of the Deque.
+
+  ###Methods
+  __init__(): initializes the Deque class as a composite of the DLL class.
+  append(): uses the push method from DLL to add nodes to the end of the Deque.
+  appendleft(): uses the append method from DLL to add nodes to the start of the Deque.
+  popleft(): removes a node from the front of the dequeue
+  pop(): removes a node from the end of the dequeue
+  peek(): Looks at the front value of the Deque without removing it or advancing the view beyond it.
+  peekleft(): Looks at the end value of the Deque without removing it or advancing the view before it.
+  size(): returns the size of the Deque.
+
+
+##Queue
+
+  It is important to note that the "tail" of our queue is actually the front of the Queue.
+
+  ###Methods
+  __init__(): initializes the Queue class as a composite of the DLL class.
+  enqueue(): uses the push method from DLL to add nodes to the end of the Queue.
+  dequeue(): removes a node from the front of the dequeue
+  peek(): Looks at the front value of the Queue without removing it or advancing the view beyond it.
+  size(): returns the size of the Queue.
+
+
+##Doubly Linked List
+  
+  ###Methods
+  __init__(): initializes the DLL class and adds a tail, head, and size_of_list attribute. It also checks that the values passed in are iterable.
+  push(): Inserts a value to head of the list
+  pop(): Remove node from head of list and return it to user.
+  append(): Add a tail to the end of the list.
+  shift(): Remove node from end of list and return to user.
+  def search(self, val): Return the val of the node when searched.
+  remove(): Remove the node passed into the parameter.
+
+
+##Stack
+
+  ###Methods
+  __init__(): Initiate the Stack as a instance of LinkedList.
+  pop(): Remove the top element from stack and returns it.
+  push(): Add a value to the top of the stack.
+  _size(): Return the length of the stack.
+  _is_empty(): Return true if the stack is empty.
+
+
+##Linked_List
+
+    
+    ####Methods
+    push(val): adds a node at the head, increments size of list.
+    pop(): removes the node at the head, deincrements size of list.
+    size(): returns size of LinkedList
+    search(val): searches list for node containing val and returns that node.
+    remove(node_to_delete): takes a node as argument, searches for it, and removes it from list, then deincrements size of list
+    display(): returns LinkedList as a stringified tuple-looking object.
+
+
+##Jan 3, 2017
+---------- coverage: platform linux2, python 2.7.12-final-0 ----------
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+src/binheap.py               47      0   100%
+src/deque.py                 33      0   100%
+src/dll.py                   73      0   100%
+src/graphimp.py              48      0   100%
+src/linked_list.py           59      0   100%
+src/pq.py                    41      2    95%   34-35
+src/queue_.py                18      0   100%
+src/stack.py                 15      0   100%
+src/test_binheap.py          34      0   100%
+src/test_deque.py           114      0   100%
+src/test_dll.py              71      0   100%
+src/test_graph.py            87      0   100%
+src/test_linked_list.py      75      0   100%
+src/test_pq.py               48      4    92%   53-57
+src/test_queue.py            56      0   100%
+src/test_stack.py            39      0   100%
+-------------------------------------------------------
+TOTAL                       858      6    99%
+
+
+========================== 239 passed in 0.86 seconds
+
+----------- coverage: platform linux, python 3.5.2-final-0 -----------
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+src/binheap.py               47      0   100%
+src/deque.py                 33      0   100%
+src/dll.py                   73      0   100%
+src/graphimp.py              48      0   100%
+src/linked_list.py           59      0   100%
+src/pq.py                    41      0   100%
+src/queue_.py                18      0   100%
+src/stack.py                 15      0   100%
+src/test_binheap.py          34      0   100%
+src/test_deque.py           114      0   100%
+src/test_dll.py              71      0   100%
+src/test_graph.py            87      0   100%
+src/test_linked_list.py      75      0   100%
+src/test_pq.py               48      0   100%
+src/test_queue.py            56      0   100%
+src/test_stack.py            39      0   100%
+-------------------------------------------------------
+TOTAL                       858      0   100%
+
+
+========================== 240 passed in 0.92 seconds
+
+
+##Jan 3, 2017
+
 
 Name                      Stmts   Miss  Cover   Missing
 -------------------------------------------------------
@@ -25,7 +229,7 @@ src/test_stack.py            39      0   100%
 TOTAL                       883     20    98%
 
 
-======================================================================= 233 passed in 0.78 seconds
+============================= 233 passed in 0.78 seconds
 
 ----------- coverage: platform linux, python 3.5.2-final-0 -----------
 Name                      Stmts   Miss  Cover   Missing
@@ -49,8 +253,7 @@ src/test_stack.py            39      0   100%
 -------------------------------------------------------
 TOTAL                       883     14    98%
 
-
-======================================================================= 234 passed in 0.80 seconds 
+============================ 234 passed in 0.80 seconds 
 
 ##Graph
 ---------- coverage: platform linux2, python 2.7.12-final-0 ----------
@@ -75,8 +278,9 @@ src/test_stack.py            39      0   100%
 -------------------------------------------------------
 TOTAL                       824      6    99%
 
+ 223 passed in 0.74 seconds
 
-======================================================================= 223 passed in 0.74 seconds
+TOTAL                       723      6    99%
 
 ----------- coverage: platform linux, python 3.5.2-final-0 -----------
 Name                      Stmts   Miss  Cover   Missing
@@ -101,7 +305,7 @@ src/test_stack.py            39      0   100%
 TOTAL                       824      0   100%
 
 
-======================================================================= 224 passed in 0.80 seconds
+ 224 passed in 0.80 seconds
 
 
 ##Dec 28, 2016##
@@ -159,8 +363,6 @@ TOTAL                       831      0   100%
 
 
 
-##12/30/2016##
-
 ---------- coverage: platform linux2, python 2.7.12-final-0 ----------
 Name                      Stmts   Miss  Cover   Missing
 -------------------------------------------------------
@@ -183,6 +385,24 @@ TOTAL                       689      6    99%
 
 
 ========================== 178 passed in 0.67 seconds
+
+src/dll.py                   73      0   100%
+src/graphimp.py               0      0   100%
+src/linked_list.py           59      0   100%
+src/queue_.py                18      0   100%
+src/stack.py                 15      0   100%
+src/test_binheap.py          34      0   100%
+src/test_deque.py           114      0   100%
+src/test_dll.py              71      0   100%
+src/test_graph.py             0      0   100%
+src/test_linked_list.py      75      0   100%
+src/test_queue.py            56      0   100%
+src/test_stack.py            39      0   100%
+-------------------------------------------------------
+TOTAL                       634      0   100%
+
+
+========================== 175 passed in 0.59 seconds
 
 
 ----------- coverage: platform linux, python 3.5.2-final-0 -----------
@@ -255,6 +475,24 @@ TOTAL                       637      2    99%
 
 
 ====================================================== 167 passed in 0.62 seconds
+src/dll.py                   73      0   100%
+src/graphimp.py               0      0   100%
+src/linked_list.py           59      0   100%
+src/queue_.py                18      0   100%
+src/stack.py                 15      0   100%
+src/test_binheap.py          34      0   100%
+src/test_deque.py           114      0   100%
+src/test_dll.py              71      0   100%
+src/test_graph.py             0      0   100%
+src/test_linked_list.py      75      0   100%
+src/test_queue.py            56      0   100%
+src/test_stack.py            39      0   100%
+-------------------------------------------------------
+TOTAL                       634      0   100%
+
+
+========================== 175 passed in 0.65 seconds
+
 
 ##Dec 20, 2016 - Binary Heap
 
@@ -277,7 +515,9 @@ src/test_stack.py            39      0   100%
 TOTAL                       553      0   100%
 
 
-==================================== 150 passed in 0.52 seconds
+
+========================== 156 passed in 0.50 seconds
+
 
 ----------- coverage: platform linux, python 3.5.2-final-0 -----------
 Name                      Stmts   Miss  Cover   Missing
@@ -298,11 +538,11 @@ src/test_stack.py            39      0   100%
 TOTAL                       553      0   100%
 
 
-==================================== 150 passed in 0.58 seconds
+========================== 156 passed in 0.59 seconds
 
 
 ##Dec 19, 2016 - Deque
-12/18/2016 - Merged in Stack updates nad Linked List Updates
+12/18/2016 - Merged in Stack updates and Linked List Updates
 
 
 ##Dec 14, 2016
@@ -311,105 +551,8 @@ A singly linked-list might be more appropriate for maintaining some kind of line
 
 Doubly linked lists are great for the above as well, but if you want to know where the end of the list is and what is at it, a doubly linked_list is helpful. Not exactly sure of a good use case for this.
 
-##Graph##
 
-  ###Methods###
-  nodes(): return a list of all nodes in the graph
-  edges(): return a list of all edges in the graph
-  add_node(n): adds a new node ‘n’ to the graph
-  add_edge(n1, n2): adds a new edge to the graph connecting ‘n1’ and ‘n2’, if either n1 or n2 are not already present in the graph, they should be added.
-  del_node(n): deletes the node ‘n’ from the graph, raises an error if no such node exists
-  del_edge(n1, n2): deletes the edge connecting ‘n1’ and ‘n2’ from the graph, raises an error if no such edge exists
-  has_node(n): True if node ‘n’ is contained in the graph, False if not.
-  neighbors(n): returns the list of all nodes connected to ‘n’ by edges, raises an error if n is not in g
-  adjacent(n1, n2): returns True if there is an edge connecting n1 and n2, False if not, raises an error if either of the supplied nodes are not in g
-  g.depth_first_traversal(start): Perform a full depth-first traversal of the graph beginning at start. Return the full visited path when traversal is complete.
-  g.breadth_first_traversal(self, start): Perform a full breadth-first traversal of the graph, beginning at start. Return the full visited path when traversal is complete.
-
-  
-
-##Priority Queue##
-
-  ###Methods###
-  def __init__(vals=[]): Initialize a priority queue, and insert any values passed in into the Priority Queue. Must pass a list of items. To pass
-  def insert(item, pri=float(-inf)): Insert an item into the Priority Queue, if no priority specified, -inf will be the priority,
-  def pop(): Remove a value from the priority queue.
-  def peek(): Look at next item to be popped in the Priority Queue.
-
-
-##Binary Heap##
-
-###Methods###
-__init__([iterable]): takes an optional iterable object when instantiating the class.
-  _perc_ip(val): Send the value up the heap as it is pushed in.
-  push(val): Append a value to the end of the list, increase list size, push the index that is equal to size, up the list.
-  _perc_down(val): Send a value down the heap if the heap's rules are violated.
-  _min_child(val): Find and return the smallest child.
-  pop(): Remove value a head of heap and sort the heap accordingly.
-  
-
-##Deque##
-
-  It is important to note that the "tail" of our Deques is actually the front of the Deque.
-
-  ###Methods###
-  __init__(): initializes the Deque class as a composite of the DLL class.
-  append(): uses the push method from DLL to add nodes to the end of the Deque.
-  appendleft(): uses the append method from DLL to add nodes to the start of the Deque.
-  popleft(): removes a node from the front of the dequeue
-  pop(): removes a node from the end of the dequeue
-  peek(): Looks at the front value of the Deque without removing it or advancing the view beyond it.
-  peekleft(): Looks at the end value of the Deque without removing it or advancing the view before it.
-  size(): returns the size of the Deque.
-
-
-##Queue##
-
-  It is important to note that the "tail" of our queue is actually the front of the Queue.
-
-  ###Methods###
-  __init__(): initializes the Queue class as a composite of the DLL class.
-  enqueue(): uses the push method from DLL to add nodes to the end of the Queue.
-  dequeue(): removes a node from the front of the dequeue
-  peek(): Looks at the front value of the Queue without removing it or advancing the view beyond it.
-  size(): returns the size of the Queue.
-
-
-##Doubly Linked List##
-  
-  ###Methods###
-  __init__(): initializes the DLL class and adds a tail, head, and size_of_list attribute. It also checks that the values passed in are iterable.
-  push(): Inserts a value to head of the list
-  pop(): Remove node from head of list and return it to user.
-  append(): Add a tail to the end of the list.
-  shift(): Remove node from end of list and return to user.
-  def search(self, val): Return the val of the node when searched.
-  remove(): Remove the node passed into the parameter.
-
-
-##Stack##
-
-  ###Methods###
-  __init__(): Initiate the Stack as a instance of LinkedList.
-  pop(): Remove the top element from stack and returns it.
-  push(): Add a value to the top of the stack.
-  _size(): Return the length of the stack.
-  _is_empty(): Return true if the stack is empty.
-
-
-##Linked_List##
-
-    
-    ####Methods####
-    push(val): adds a node at the head, increments size of list.
-    pop(): removes the node at the head, deincrements size of list.
-    size(): returns size of LinkedList
-    search(val): searches list for node containing val and returns that node.
-    remove(node_to_delete): takes a node as argument, searches for it, and removes it from list, then deincrements size of list
-    display(): returns LinkedList as a stringified tuple-looking object.
-    """
-
-## 12/30/16 ##
+## 12/30/16
 
 ---------- coverage: platform linux2, python 2.7.12-final-0 ----------
 Name                      Stmts   Miss  Cover   Missing
@@ -445,7 +588,7 @@ TOTAL                       408      0   100%
 
 ========================== 110 passed in 0.45 seconds
 
-##Dec 27, 2016##
+##Dec 27, 2016
 
 ---------- coverage: platform linux2, python 2.7.12-final-0 ----------
 Name                      Stmts   Miss  Cover   Missing
@@ -537,24 +680,12 @@ TOTAL                       472      0   100%
 
 
 ==================================== 131 passed in 0.44 seconds
-=======
-src/dll.py                   74      0   100%
-src/linked_list.py           59      0   100%
-src/stack.py                 15      0   100%
-src/test_dll.py              71      0   100%
-src/test_linked_list.py      75      0   100%
-src/test_stack.py            39      0   100%
--------------------------------------------------------
-TOTAL                       333      0   100%
 
 
-========================== 90 passed in 0.41 seconds
->>>>>>> queue
 
 ----------- coverage: platform linux, python 3.5.2-final-0 -----------
 Name                      Stmts   Miss  Cover   Missing
 -------------------------------------------------------
-<<<<<<< HEAD
 src/deque.py                 18      0   100%
 src/dll.py                   70      0   100%
 src/linked_list.py           60      0   100%
@@ -570,18 +701,6 @@ TOTAL                       472      0   100%
 
 
 ==================================== 131 passed in 0.52 seconds
-=======
-src/dll.py                   74      0   100%
-src/linked_list.py           59      0   100%
-src/stack.py                 15      0   100%
-src/test_dll.py              71      0   100%
-src/test_linked_list.py      75      0   100%
-src/test_stack.py            39      0   100%
--------------------------------------------------------
-TOTAL                       333      0   100%
-
-
-========================== 90 passed in 0.42 seconds
 
 
 
@@ -597,7 +716,7 @@ TOTAL                       188      0   100%
 
 
 ========================== 51 passed in 0.33 seconds
-=======
+
 
 
 ----------- coverage: platform linux, python 3.5.2-final-0 -----------
@@ -613,7 +732,6 @@ TOTAL                       188      0   100%
 
 ========================== 51 passed in 0.32 seconds 
 
->>>>>>> queue
 ##Dec 18, 2016 - Merged in DLL, Stack, Linked List Updates
 
 ##Dec 15, 2016
@@ -713,7 +831,6 @@ TOTAL                       177      0   100%
 ---------- coverage: platform linux2, python 2.7.12-final-0 ----------
 Name                      Stmts   Miss  Cover   Missing
 -------------------------------------------------------
-<<<<<<< HEAD
 src/dll.py                   72      0   100%
 src/linked_list.py           61      6    90%   36, 47, 66-67, 84-85
 src/stack.py                 14      0   100%
@@ -736,14 +853,6 @@ src/test_stack.py            41      0   100%
 -------------------------------------------------------
 TOTAL                       318      6    98%
 
-=======
-src/linked_list.py           60      0   100%
-src/test_linked_list.py      63      0   100%
--------------------------------------------------------
-TOTAL                       123      0   100%
-
-
-================================================= 25 passed in 0.15 seconds
 
 ----------- coverage: platform linux, python 3.5.2-final-0 -----------
 Name                      Stmts   Miss  Cover   Missing

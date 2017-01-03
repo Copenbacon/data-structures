@@ -94,7 +94,7 @@ def test_popping_returns_value_popped(vals, result):
 
 def test_popping_empty_raises_error(new_empty_priority_q):
     """Test that an error is raised and handled when popping an empty Priority Q."""
-    with pytest.raises(ValueError):
+    with pytest.raises(IndexError):
         new_empty_priority_q.pop()
 
 
