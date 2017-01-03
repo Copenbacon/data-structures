@@ -21,18 +21,6 @@ PEEK_TABLE = (
     ("This string is iterable"),
 )
 
-POP_LEFT_TABLE = [
-    ((0, 1, 2, 3, 4)),
-    ([9, 45, "lol", "b"]),
-]
-
-PEEK_LEFT_TABLE = (
-    ((0, 1, 2, 3, 4)),
-    ([9, 45, "lol", "b"]),
-    [4, 3, 2, 1, 0],
-    ("This string is iterable"),
-)
-
 SIZE_TABLE = [
     [[4, 3, 2, 1, 0], 5],
     ((4, 3, 2, 1, 0, -1), 6),
@@ -57,8 +45,18 @@ def filled_deque():
 
 
 def test_new_deque_exists(new_empty_deque):
-    """Test whether instatiating Queue creates."""
-    assert new_empty_deque.size() == 0 and new_empty_deque._container.head is None and new_empty_deque._container.tail is None
+    """Test whether instantiating deque creates a deque with no size."""
+    assert new_empty_deque.size() == 0
+
+
+def test_new_deque_exists_with_no_head(new_empty_deque):
+    """Test whether instantiating deque creates a deque with no head."""
+    assert new_empty_deque._container.head is None
+
+
+def test_new_deque_exists_with_no_tail(new_empty_deque):
+    """Test whether instantiating deque creates a deque with no tail."""
+    assert new_empty_deque._container.tail is None
 
 
 @pytest.mark.parametrize("val", APPEND_TABLE)
@@ -70,9 +68,23 @@ def test_append_increases_size_of_list(val, filled_deque):
 
 @pytest.mark.parametrize("val, result", ADDING_TABLE)
 def test_length_of_deque_when_using_append(val, result, filled_deque):
+    """Test adding a val via append updates size."""
+    filled_deque.append(val)
+    assert filled_deque.size() == len(result)
+
+
+@pytest.mark.parametrize("val, result", ADDING_TABLE)
+def test_head_of_deque_when_using_append(val, result, filled_deque):
     """Test adding a val via append updates head/tail."""
     filled_deque.append(val)
-    assert filled_deque.size() == len(result) and filled_deque._container.head.val == val and filled_deque._container.head.val == result[-1]
+    assert filled_deque._container.head.val == val
+
+
+@pytest.mark.parametrize("val, result", ADDING_TABLE)
+def test_head_of_deque_when_using_append2(val, result, filled_deque):
+    """Test adding a val via append updates head/tail."""
+    filled_deque.append(val)
+    assert filled_deque._container.head.val == result[-1]
 
 
 @pytest.mark.parametrize("val", APPEND_TABLE)
@@ -84,9 +96,23 @@ def test_append_left_increases_size_of_list(val, filled_deque):
 
 @pytest.mark.parametrize("val, result", ADDING_TABLE)
 def test_length_of_deque_when_using_append_left(val, result, filled_deque):
+    """Test adding a val via append left updates size."""
+    filled_deque.appendleft(val)
+    assert filled_deque.size() == len(result)
+
+
+@pytest.mark.parametrize("val, result", ADDING_TABLE)
+def test_tail_of_deque_when_using_append_left(val, result, filled_deque):
     """Test adding a val via append left updates head/tail."""
     filled_deque.appendleft(val)
-    assert filled_deque.size() == len(result) and filled_deque._container.tail.val == result[-1] and filled_deque._container.tail.val == val
+    assert filled_deque._container.tail.val == result[-1]
+
+
+@pytest.mark.parametrize("val, result", ADDING_TABLE)
+def test_tail_of_deque_when_using_append_left2(val, result, filled_deque):
+    """Test adding a val via append left updates head/tail."""
+    filled_deque.appendleft(val)
+    assert filled_deque._container.tail.val == val
 
 
 def test_removing_the_last_val_in_deque(filled_deque):
@@ -113,10 +139,54 @@ def test_find_the_new_back_of_line_in_deque_with_popleft(filled_deque):
 
 @pytest.mark.parametrize("iterable", POP_TABLE)
 def test_deque_works_on_diff_iterables(iterable):
-    """Testing dequeue method on a variety of iterables."""
+    """Testing pop method removes right value iterables."""
     from deque import Deque
     new_deque = Deque(iterable)
-    assert new_deque.pop() == iterable[-1] and new_deque._container.tail.val == iterable[0] and new_deque._container.head.val == iterable[-2]
+    assert new_deque.pop() == iterable[-1]
+
+
+@pytest.mark.parametrize("iterable", POP_TABLE)
+def test_deque_works_on_diff_iterables_tail_is_first_val_pushed(iterable):
+    """Testing pop method keeps tail set."""
+    from deque import Deque
+    new_deque = Deque(iterable)
+    new_deque.pop()
+    assert new_deque._container.tail.val == iterable[0]
+
+
+@pytest.mark.parametrize("iterable", POP_TABLE)
+def test_deque_works_on_diff_iterables_head_is_last_val_pushed_after_pop(iterable):
+    """Testing pop method sets new head."""
+    from deque import Deque
+    new_deque = Deque(iterable)
+    new_deque.pop()
+    assert new_deque._container.head.val == iterable[-2]
+
+
+@pytest.mark.parametrize("iterable", POP_TABLE)
+def test_popleft_works_on_diff_iterables(iterable):
+    """Testing popleft method returns correct value."""
+    from deque import Deque
+    new_deque = Deque(iterable)
+    assert new_deque.popleft() == iterable[0]
+
+
+@pytest.mark.parametrize("iterable", POP_TABLE)
+def test_popleft_works_on_diff_iterables_tail_is_first_val_pushed(iterable):
+    """Testing popleft method sets new tail."""
+    from deque import Deque
+    new_deque = Deque(iterable)
+    new_deque.popleft()
+    assert new_deque._container.tail.val == iterable[1]
+
+
+@pytest.mark.parametrize("iterable", POP_TABLE)
+def test_popleft_works_on_diff_iterables_head_is_last_val_pushed_after_pop(iterable):
+    """Testing popleft method keeps head at it's point."""
+    from deque import Deque
+    new_deque = Deque(iterable)
+    new_deque.popleft()
+    assert new_deque._container.head.val == iterable[-1]
 
 
 def test_that_peek_returns_tail(filled_deque):
