@@ -1,6 +1,57 @@
 # data-structures
 
 ##Jan 3, 2017
+
+---------- coverage: platform linux2, python 2.7.12-final-0 ----------
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+src/binheap.py               47      0   100%
+src/deque.py                 33      0   100%
+src/dll.py                   73      0   100%
+src/graphimp.py              48      0   100%
+src/linked_list.py           59      0   100%
+src/pq.py                    41      2    95%   34-35
+src/queue_.py                18      0   100%
+src/stack.py                 15      0   100%
+src/test_binheap.py          34      0   100%
+src/test_deque.py           114      0   100%
+src/test_dll.py              71      0   100%
+src/test_graph.py            87      0   100%
+src/test_linked_list.py      75      0   100%
+src/test_pq.py               48      4    92%   53-57
+src/test_queue.py            56      0   100%
+src/test_stack.py            39      0   100%
+-------------------------------------------------------
+TOTAL                       858      6    99%
+
+
+========================== 239 passed in 0.72 seconds
+
+----------- coverage: platform linux, python 3.5.2-final-0 -----------
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+src/binheap.py               47      0   100%
+src/deque.py                 33      0   100%
+src/dll.py                   73      0   100%
+src/graphimp.py              48      0   100%
+src/linked_list.py           59      0   100%
+src/pq.py                    41      0   100%
+src/queue_.py                18      0   100%
+src/stack.py                 15      0   100%
+src/test_binheap.py          34      0   100%
+src/test_deque.py           114      0   100%
+src/test_dll.py              71      0   100%
+src/test_graph.py            87      0   100%
+src/test_linked_list.py      75      0   100%
+src/test_pq.py               48      0   100%
+src/test_queue.py            56      0   100%
+src/test_stack.py            39      0   100%
+-------------------------------------------------------
+TOTAL                       858      0   100%
+
+
+========================== 240 passed in 0.85 seconds
+
 ---------- coverage: platform linux2, python 2.7.12-final-0 ----------
 Name                      Stmts   Miss  Cover   Missing
 -------------------------------------------------------

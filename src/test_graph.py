@@ -77,16 +77,16 @@ def empty_graph():
 
 
 def test_empty_graph_exists(empty_graph):
-    """Make sure the empty graph has an empty nodetionary."""
-    assert empty_graph.nodetionary == {}
+    """Make sure the empty graph has an empty node_dict."""
+    assert empty_graph.node_dict == {}
 
 
 @pytest.mark.parametrize("vals, result", ADD_NODE_TABLE)
 def test_graph_can_contain_values(vals, result, empty_graph):
-    """Adding a node should return a nodetionary with values."""
+    """Adding a node should return a node_dict with values."""
     for val in vals:
         empty_graph.add_node(val)
-    assert empty_graph.nodetionary == result
+    assert empty_graph.node_dict == result
 
 
 def test_nodes_is_empty_list_on_empty_graph(empty_graph):
@@ -96,7 +96,7 @@ def test_nodes_is_empty_list_on_empty_graph(empty_graph):
 
 @pytest.mark.parametrize("vals, result", ADD_NODE_TABLE)
 def test_nodes_returns_list_of_keys(vals, result, empty_graph):
-    """The nodes() method should return a list of keys from the Nodetionary. (The nodes)."""
+    """The nodes() method should return a list of keys from the node_dict. (The nodes)."""
     for val in vals:
         empty_graph.add_node(val)
     assert len(empty_graph.nodes()) == len(vals)
