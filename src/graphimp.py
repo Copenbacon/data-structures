@@ -149,3 +149,35 @@ class Graph(object):
                 stack.extend(self.nodetionary[vertex])
                 return_list.append(vertex)
         return return_list
+
+
+if __name__ == "__main__":
+    import random
+    import timeit
+    graph = Graph()
+    for i in range(1000):
+        graph.add_edge(random.randint(0, 100), random.randint(0, 100))
+    x = random.choice(list(graph.nodetionary))
+
+    def time_graph_trav_breadth(graph, x):
+        return graph.breadth_first_traversal(x)
+
+    def time_graph_trav_depth(graph, x):
+        return graph.depth_first_traversal(x)
+
+    print(timeit.repeat(
+        stmt="time_graph_trav_depth(graph, x)",
+        setup="from __main__ import time_graph_trav_depth, graph, x",
+        number=1000,
+        repeat=3
+        ))
+
+    print(timeit.repeat(
+        stmt="time_graph_trav_breadth(graph, x)",
+        setup="from __main__ import time_graph_trav_breadth, graph, x",
+        number=1000,
+        repeat=3
+        ))
+
+    print("Depth Traversal Method: ", time_graph_trav_depth(graph, x))
+    print("Breadth Traversal Method: ", time_graph_trav_breadth(graph, x))
