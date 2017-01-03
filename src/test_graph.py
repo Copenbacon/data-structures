@@ -9,35 +9,35 @@ ADD_NODE_TABLE = [
 ]
 
 EDGES_TABLE = [
-    [[[1, 2]], [(1, 2)]],
-    [[[1, 2], [3, 2]], [(1, 2), (3, 2)]],
-    [[[1, 2], [3, 2], [3, 4]], [(1, 2), (3, 2), (3, 4)]],
+    [[[1, 2, 1]], [(1, (2, 1))]],
+    [[[1, 2, 4], [3, 2, 1]], [(1, (2, 4)), (3, (2, 1))]],
+    [[[1, 2, 4], [3, 2, 6], [3, 4, 1]], [(1, (2, 4)), (3, (2, 6)), (3, (4, 1))]],
 ]
 
 DELETE_TABLE = [
-    [[[1, 2]], 2, []],
-    [[[1, 2], [3, 2]], 3, [(1, 2)]],
-    [[[1, 4], [3, 2], [3, 4]], 4, [(3, 2)]],
+    [[[1, 2, 1]], 2, []],
+    [[[1, 2, 4], [3, 2, 1]], 3, [(1, (2, 4))]],
+    [[[1, 4, 6], [3, 2, 5], [3, 4, 7]], 4, [(3, (2, 5))]],
 ]
 
 DELETE_EDGES_TABLE = [
-    [[[1, 2]], [1, 3]],
-    [[[1, 2], [3, 2]], [4, 1]],
+    [[[1, 2, 1]], [1, 3]],
+    [[[1, 2, 4], [3, 2, 6]], [4, 1]],
 ]
 
 DELETE_EDGES_TABLE2 = [
-    [[[1, 2], [3, 2]], [1, 3]],
-    [[[1, 2], [3, 2], [4, 3], [4, 2]], [4, 1]],
+    [[[1, 2, 1], [3, 2, 1]], [1, 3]],
+    [[[1, 2, 4], [3, 2, 6], [4, 3, 8], [4, 2, 6]], [4, 1, 2]],
 ]
 
 DELETE_EDGES_TABLE3 = [
-    [[[1, 2], [3, 2]], [1, 2], 1],
-    [[[1, 2], [3, 2], [4, 3], [4, 2]], [4, 3], 3],
+    [[[1, 2, 1], [3, 2, 2]], [1, 2], 1],
+    [[[1, 2, 1], [3, 2, 1], [4, 3, 2], [4, 2, 2]], [4, 3], 3],
 ]
 
 DELETE_EDGES_TABLE4 = [
-    [[[1, 2], [3, 2]], [1, 2], [(3, 2)]],
-    [[[1, 2], [3, 2], [4, 3], [4, 2]], [4, 3], [(1, 2), (3, 2), (4, 2)]],
+    [[[1, 2, 3], [3, 2, 78]], [1, 2], [(3, (2, 78))]],
+    [[[1, 2, 1], [3, 2, 78], [4, 3, 1], [4, 2, 3]], [4, 3], [(1, (2, 1)), (3, (2, 78)), (4, (2, 3))]],
 ]
 
 HAS_NODE_TABLE = [
@@ -48,10 +48,10 @@ HAS_NODE_TABLE = [
 ]
 
 NEIGHBORS_TABLE = [
-    [[[1, 2], [3, 2]], 1, [2]],
-    [[[1, 2], [3, 2], [1, 3]], 1, [2, 3]],
+    [[[1, 2], [3, 2]], 1, [(2, 1)]],
+    [[[1, 2], [3, 2], [1, 3]], 1, [(2, 1), (3, 1)]],
     [[[1, 2], [3, 2], [1, 3]], 2, []],
-    [[[1, 2], [3, 2], [1, 3], [3, 4], [4, 1]], 1, [2, 3]],
+    [[[1, 2], [3, 2], [1, 3], [3, 4], [4, 1]], 1, [(2, 1), (3, 1)]],
 ]
 
 NEIGHBORS_TABLE2 = [
@@ -125,7 +125,7 @@ def test_edges_empty_when_no_nodes(empty_graph):
 def test_edges_on_graph(vals, result, empty_graph):
     """Add edges and make sure they list out when calling edges() method."""
     for val in vals:
-        empty_graph.add_edge(val[0], val[1])
+        empty_graph.add_edge(val[0], val[1], val[2])
     assert empty_graph.edges() == result
 
 
@@ -139,7 +139,7 @@ def test_delete_node_from_empty_graph_raises_error(empty_graph):
 def test_delete_node_deletes_node_and_edges(vals_to_add, val_to_delete, result, empty_graph):
     """Deleting a node should remove the node and any reference to the node as an edge in the graph."""
     for val in vals_to_add:
-        empty_graph.add_edge(val[0], val[1])
+        empty_graph.add_edge(val[0], val[1], val[2])
     empty_graph.del_node(val_to_delete)
     assert empty_graph.edges() == result
 
@@ -154,7 +154,7 @@ def test_delete_edges_from_empty_graph_raise_error(empty_graph):
 def test_delete_edges_when_node_not_in_graph_raise_keyerror(vals_to_add, edges_to_delete, empty_graph):
     """Deleting nodes that don't exist should raise an error."""
     for val in vals_to_add:
-        empty_graph.add_edge(val[0], val[1])
+        empty_graph.add_edge(val[0], val[1], val[2])
     with pytest.raises(KeyError):
         empty_graph.del_edge(edges_to_delete[0], edges_to_delete[1])
 
@@ -163,7 +163,7 @@ def test_delete_edges_when_node_not_in_graph_raise_keyerror(vals_to_add, edges_t
 def test_delete_edges_not_in_graph_raise_valerror(vals_to_add, edges_to_delete, empty_graph):
     """Deleting edges that don't exist shouldraise an error."""
     for val in vals_to_add:
-        empty_graph.add_edge(val[0], val[1])
+        empty_graph.add_edge(val[0], val[1], val[2])
     with pytest.raises(ValueError):
         empty_graph.del_edge(edges_to_delete[0], edges_to_delete[1])
 
@@ -172,7 +172,7 @@ def test_delete_edges_not_in_graph_raise_valerror(vals_to_add, edges_to_delete, 
 def test_delete_edges_deletes_edges(vals_to_add, edges_to_delete, result, empty_graph):
     """Deleting edges should render a list that has the length we expect."""
     for val in vals_to_add:
-        empty_graph.add_edge(val[0], val[1])
+        empty_graph.add_edge(val[0], val[1], val[2])
     empty_graph.del_edge(edges_to_delete[0], edges_to_delete[1])
     assert len(empty_graph.edges()) == result
 
@@ -181,7 +181,7 @@ def test_delete_edges_deletes_edges(vals_to_add, edges_to_delete, result, empty_
 def test_delete_edges_deletes_edges_and_edges_method_reflects_that(vals_to_add, edges_to_delete, result, empty_graph):
     """Deleting edges and calling the edges() method should render a list of the edges."""
     for val in vals_to_add:
-        empty_graph.add_edge(val[0], val[1])
+        empty_graph.add_edge(val[0], val[1], val[2])
     empty_graph.del_edge(edges_to_delete[0], edges_to_delete[1])
     assert empty_graph.edges() == result
 
@@ -261,3 +261,15 @@ def test_breadth_traversal_works(
     for val in vals_to_add:
         empty_graph.add_edge(val[0], val[1])
     assert empty_graph.breadth_first_traversal(val_to_test) == result
+
+
+def test_raise_error_when_weight_invalid_type(empty_graph):
+    """Should raise TypeError if edge added weight is not a number."""
+    with pytest.raises(TypeError):
+        empty_graph.add_edge("A", "B", "C")
+
+
+def test_raise_error_when_weight_negative_number(empty_graph):
+    """Should raise ValueError if edge added weight is not a positive number."""
+    with pytest.raises(ValueError):
+        empty_graph.add_edge("A", "B", -1)

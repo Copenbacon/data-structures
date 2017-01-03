@@ -57,13 +57,22 @@ class Graph(object):
         """Add a new node 'n' to the graph."""
         self.node_dict.setdefault(n, [])
 
-    def add_edge(self, n1, n2):
-        u"""Add a new edge to the graph connecting ‘n1’ and ‘n2’.
+    def add_edge(self, n1, n2, weight=1):
+        u"""Add a new edge to the graph with desired weight, else weight = 1, connect ‘n1’ and ‘n2’.
 
         If either n1 or n2 are not already present in the graph,
         they should be added.
         """
-        self.node_dict.setdefault(n1, []).append(n2)
+        if type(weight) != float and type(weight) != int:
+            raise TypeError("Weight needs to be a positive float or integer (A NUMBER).")
+        if weight <= 0:
+            raise ValueError("Weight needs to be a positive number, COMEON!")
+        if self.has_node(n1):
+            for node_tup in range(len(self.node_dict[n1])):
+                if self.node_dict[n1][node_tup][0] == n2:
+                    self.node_dict[n1][node_tup] = (n2, weight)
+                    return
+        self.node_dict.setdefault(n1, []).append((n2, weight))
         self.node_dict.setdefault(n2, [])
 
     def del_node(self, n):
@@ -74,8 +83,9 @@ class Graph(object):
         try:
             del self.node_dict[n]
             for key in self.node_dict:
-                if n in self.neighbors(key):
-                    self.node_dict[key].remove(n)
+                for node_tup in self.neighbors(key):
+                    if n == self.neighbors(key)[self.node_dict[key].index(node_tup)][0]:
+                        self.node_dict[key].remove(self.node_dict[key][self.node_dict[key].index(node_tup)])
         except KeyError:
             raise KeyError("Can't delete a node that doesn't exist.")
 
@@ -86,10 +96,11 @@ class Graph(object):
         """
         if not self.has_node(n1) or not self.has_node(n2):
             raise KeyError("No such node in graph.")
-        try:
-            self.node_dict[n1].remove(n2)
-        except ValueError:
-            raise ValueError("No such edge exists.")
+        for node_tup in self.node_dict[n1]:
+            if self.node_dict[n1][self.node_dict[n1].index(node_tup)][0] == n2:
+                self.node_dict[n1].remove(self.node_dict[n1][self.node_dict[n1].index(node_tup)])
+            else:
+                raise ValueError("No such edge exists.")
 
     def has_node(self, n):
         u"""Return True if node in graph."""
@@ -113,8 +124,9 @@ class Graph(object):
         Raises an error if either of the supplied nodes are not in graph.
         """
         if self.has_node(n1):
-            if n2 in self.neighbors(n1):
-                return True
+            for node_tup in self.neighbors(n1):
+                if n2 == node_tup[0]:
+                    return True
             return False
         else:
             raise KeyError("One of the supplied nodes is not in the graph." +
@@ -127,11 +139,12 @@ class Graph(object):
         Return the full visited path when traversal is complete.
         """
         try:
+            start = (start, 0)
             stack = [start]
             visited = set()
             return_list = []
             while stack:
-                vertex = stack.pop()
+                vertex = stack.pop()[0]
                 if vertex not in visited:
                     stack.extend(self.node_dict[vertex][::-1])
                     visited.add(vertex)
@@ -146,11 +159,12 @@ class Graph(object):
         Return the full visited path when traversal is complete.
         """
         try:
-            visited = set()
+            start = (start, 0)
             stack = [start]
+            visited = set()
             return_list = []
             while stack:
-                vertex = stack.pop(0)
+                vertex = stack.pop(0)[0]
                 if vertex not in visited:
                     visited.add(vertex)
                     stack.extend(self.node_dict[vertex])
