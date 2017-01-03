@@ -80,11 +80,10 @@ class Graph(object):
 
         Raises an error if no such edge exists.
         """
-        if self.has_node(n1) is False or self.has_node(n2) is False:
+        if not self.has_node(n1) or not self.has_node(n2):
             raise KeyError("No such node in graph.")
         try:
             self.nodetionary[n1].remove(n2)
-            self.nodetionary[n2].remove(n1)
         except ValueError:
             raise ValueError("No such edge exists.")
 
@@ -110,7 +109,7 @@ class Graph(object):
         Raises an error if either of the supplied nodes are not in graph.
         """
         if n1 in self.nodetionary and n2 in self.nodetionary:
-            if n1 in self.nodetionary[n2] and n2 in self.nodetionary[n1]:
+            if n2 in self.nodetionary[n1]:
                 return True
             return False
         else:
@@ -123,15 +122,18 @@ class Graph(object):
 
         Return the full visited path when traversal is complete.
         """
-        stack = [start]
-        visited = set()
-        return_list = []
-        while stack:
-            vertex = stack.pop()
-            if vertex not in visited:
-                stack.extend(self.nodetionary[vertex][::-1])
-                visited.add(vertex)
-                return_list.append(vertex)
+        try:
+            stack = [start]
+            visited = set()
+            return_list = []
+            while stack:
+                vertex = stack.pop()
+                if vertex not in visited:
+                    stack.extend(self.nodetionary[vertex][::-1])
+                    visited.add(vertex)
+                    return_list.append(vertex)
+        except KeyError:
+            raise KeyError(str(start) + " not in graph. Try again.")
         return return_list
 
     def breadth_first_traversal(self, start):
@@ -139,15 +141,18 @@ class Graph(object):
 
         Return the full visited path when traversal is complete.
         """
-        visited = set()
-        stack = [start]
-        return_list = []
-        while stack:
-            vertex = stack.pop(0)
-            if vertex not in visited:
-                visited.add(vertex)
-                stack.extend(self.nodetionary[vertex])
-                return_list.append(vertex)
+        try:
+            visited = set()
+            stack = [start]
+            return_list = []
+            while stack:
+                vertex = stack.pop(0)
+                if vertex not in visited:
+                    visited.add(vertex)
+                    stack.extend(self.nodetionary[vertex])
+                    return_list.append(vertex)
+        except KeyError:
+            raise KeyError(str(start) + " not in graph. Try again.")
         return return_list
 
 

@@ -9,15 +9,15 @@ ADD_NODE_TABLE = [
 ]
 
 EDGES_TABLE = [
-    [[[1, 2]], [(1, 2), (2, 1)]],
-    [[[1, 2], [3, 2]], [(1, 2), (2, 1), (2, 3), (3, 2)]],
-    [[[1, 2], [3, 2], [3, 4]], [(1, 2), (2, 1), (2, 3), (3, 2), (3, 4), (4, 3)]],
+    [[[1, 2]], [(1, 2)]],
+    [[[1, 2], [3, 2]], [(1, 2), (3, 2)]],
+    [[[1, 2], [3, 2], [3, 4]], [(1, 2), (3, 2), (3, 4)]],
 ]
 
 DELETE_TABLE = [
     [[[1, 2]], 2, []],
-    [[[1, 2], [3, 2]], 3, [(1, 2), (2, 1)]],
-    [[[1, 2], [3, 2], [3, 4]], 4, [(1, 2), (2, 1), (2, 3), (3, 2)]],
+    [[[1, 2], [3, 2]], 3, [(1, 2)]],
+    [[[1, 4], [3, 2], [3, 4]], 4, [(3, 2)]],
 ]
 
 DELETE_EDGES_TABLE = [
@@ -31,13 +31,13 @@ DELETE_EDGES_TABLE2 = [
 ]
 
 DELETE_EDGES_TABLE3 = [
-    [[[1, 2], [3, 2]], [1, 2], 2],
-    [[[1, 2], [3, 2], [4, 3], [4, 2]], [4, 3], 6],
+    [[[1, 2], [3, 2]], [1, 2], 1],
+    [[[1, 2], [3, 2], [4, 3], [4, 2]], [4, 3], 3],
 ]
 
 DELETE_EDGES_TABLE4 = [
-    [[[1, 2], [3, 2]], [1, 2], [(2, 3), (3, 2)]],
-    [[[1, 2], [3, 2], [4, 3], [4, 2]], [4, 3], [(1, 2), (2, 1), (2, 3), (2, 4), (3, 2), (4, 2)]],
+    [[[1, 2], [3, 2]], [1, 2], [(3, 2)]],
+    [[[1, 2], [3, 2], [4, 3], [4, 2]], [4, 3], [(1, 2), (3, 2), (4, 2)]],
 ]
 
 HAS_NODE_TABLE = [
@@ -50,8 +50,8 @@ HAS_NODE_TABLE = [
 NEIGHBORS_TABLE = [
     [[[1, 2], [3, 2]], 1, [2]],
     [[[1, 2], [3, 2], [1, 3]], 1, [2, 3]],
-    [[[1, 2], [3, 2], [1, 3]], 2, [1, 3]],
-    [[[1, 2], [3, 2], [1, 3], [3, 4], [4, 1]], 1, [2, 3, 4]],
+    [[[1, 2], [3, 2], [1, 3]], 2, []],
+    [[[1, 2], [3, 2], [1, 3], [3, 4], [4, 1]], 1, [2, 3]],
 ]
 
 NEIGHBORS_TABLE2 = [
@@ -62,12 +62,25 @@ NEIGHBORS_TABLE2 = [
 ]
 
 ADJACENCY_TABLE = [
-    [[[1, 2]], (1, 2), True],
+    [[[1, 2], [2, 1]], (1, 2), True],
     [[[1, 2], [3, 2]], (3, 1), False],
-    [[[1, 2], [3, 2], [3, 4]], (2, 1), True],
+    [[[1, 2], [3, 2], [2, 3], [2, 1]], (2, 1), True],
     [[[1, 2], [3, 2], [1, 3], [3, 4], [4, 1]], (2, 4), False]
 ]
 
+BREADTH_TRAVERSAL_TABLE = [
+    [[[1, 2], [2, 3], [3, 4]], 1, [1, 2, 3, 4]],
+    [[[1, 3], [2, 4], [4, 3], [2, 5]], 2, [2, 4, 5, 3]],
+    [[[1, 2], [2, 3], [3, 4], [3, 2], [3, 1], [2, 1]], 2, [2, 3, 1, 4]],
+]
+
+DEPTH_TRAVERSAL_TABLE = [
+    [[[1, 2], [2, 3], [3, 4]], 1, [1, 2, 3, 4]],
+    [[[1, 2], [2, 3], [3, 4]], 2, [2, 3, 4]],
+    [[[1, 2], [2, 3], [3, 4]], 3, [3, 4]],
+    [[[1, 2], [2, 3], [3, 4], [3, 2], [3, 1], [2, 1]], 3, [3, 4, 2, 1]],
+    [[[1, 3], [2, 4], [4, 3], [2, 5]], 2, [2, 4, 3, 5]]
+]
 
 @pytest.fixture
 def empty_graph():
@@ -215,3 +228,35 @@ def test_adjacency_works_as_expected(vals_to_add, vals_to_test, result, empty_gr
     for val in vals_to_add:
         empty_graph.add_edge(val[0], val[1])
     assert empty_graph.adjacent(vals_to_test[0], vals_to_test[1]) == result
+
+
+def test_empty_graph_traversal_return_breadth(empty_graph):
+    """Return Key Error because value not in graph."""
+    with pytest.raises(KeyError):
+        empty_graph.breadth_first_traversal(1)
+
+
+def test_empty_graph_traversal_return_deptth(empty_graph):
+    """Return Key Error because value not in graph."""
+    with pytest.raises(KeyError):
+        empty_graph.depth_first_traversal(1)
+
+
+@pytest.mark.parametrize("vals_to_add, val_to_test, result", DEPTH_TRAVERSAL_TABLE)
+def test_depth_traversal_works(vals_to_add, val_to_test, result, empty_graph):
+    """Result should happen based on val passed in. Depth Table."""
+    for val in vals_to_add:
+        empty_graph.add_edge(val[0], val[1])
+    assert empty_graph.depth_first_traversal(val_to_test) == result
+
+
+@pytest.mark.parametrize("vals_to_add, val_to_test, result", BREADTH_TRAVERSAL_TABLE)
+def test_breadth_traversal_works(
+    vals_to_add,
+    val_to_test,
+    result,
+    empty_graph):
+    """Result should happen based on val passed in. Depth Table."""
+    for val in vals_to_add:
+        empty_graph.add_edge(val[0], val[1])
+    assert empty_graph.breadth_first_traversal(val_to_test) == result
