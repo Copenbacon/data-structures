@@ -49,11 +49,11 @@ A singly linked-list might be more appropriate for maintaining some kind of line
 
 Doubly linked lists are great for the above as well, but if you want to know where the end of the list is and what is at it, a doubly linked_list is helpful. Not exactly sure of a good use case for this.
 
-##Deque##
+##Deque
 
   It is important to note that the "tail" of our Deques is actually the front of the Deque.
 
-  ###Methods###
+  ###Methods
   __init__(): initializes the Deque class as a composite of the DLL class.
   append(): uses the push method from DLL to add nodes to the end of the Deque.
   appendleft(): uses the append method from DLL to add nodes to the start of the Deque.
@@ -64,11 +64,11 @@ Doubly linked lists are great for the above as well, but if you want to know whe
   size(): returns the size of the Deque.
 
 
-##Queue##
+##Queue
 
   It is important to note that the "tail" of our queue is actually the front of the Queue.
 
-  ###Methods###
+  ###Methods
   __init__(): initializes the Queue class as a composite of the DLL class.
   enqueue(): uses the push method from DLL to add nodes to the end of the Queue.
   dequeue(): removes a node from the front of the dequeue
@@ -76,9 +76,9 @@ Doubly linked lists are great for the above as well, but if you want to know whe
   size(): returns the size of the Queue.
 
 
-##Doubly Linked List##
+##Doubly Linked List
   
-  ###Methods###
+  ###Methods
   __init__(): initializes the DLL class and adds a tail, head, and size_of_list attribute. It also checks that the values passed in are iterable.
   push(): Inserts a value to head of the list
   pop(): Remove node from head of list and return it to user.
@@ -88,9 +88,9 @@ Doubly linked lists are great for the above as well, but if you want to know whe
   remove(): Remove the node passed into the parameter.
 
 
-##Stack##
+##Stack
 
-  ###Methods###
+  ###Methods
   __init__(): Initiate the Stack as a instance of LinkedList.
   pop(): Remove the top element from stack and returns it.
   push(): Add a value to the top of the stack.
@@ -98,10 +98,10 @@ Doubly linked lists are great for the above as well, but if you want to know whe
   _is_empty(): Return true if the stack is empty.
 
 
-##Linked_List##
+##Linked_List
 
     
-    ####Methods####
+    ####Methods
     push(val): adds a node at the head, increments size of list.
     pop(): removes the node at the head, deincrements size of list.
     size(): returns size of LinkedList
@@ -110,7 +110,7 @@ Doubly linked lists are great for the above as well, but if you want to know whe
     display(): returns LinkedList as a stringified tuple-looking object.
     """
 
-## 12/30/16 ##
+## 12/30/16
 
 ---------- coverage: platform linux2, python 2.7.12-final-0 ----------
 Name                      Stmts   Miss  Cover   Missing
@@ -146,7 +146,7 @@ TOTAL                       408      0   100%
 
 ========================== 110 passed in 0.45 seconds
 
-##Dec 27, 2016##
+##Dec 27, 2016
 
 ---------- coverage: platform linux2, python 2.7.12-final-0 ----------
 Name                      Stmts   Miss  Cover   Missing
