@@ -82,6 +82,7 @@ DEPTH_TRAVERSAL_TABLE = [
     [[[1, 3], [2, 4], [4, 3], [2, 5]], 2, [2, 4, 3, 5]]
 ]
 
+
 @pytest.fixture
 def empty_graph():
     """Graph Fixture."""

@@ -133,7 +133,7 @@ class Graph(object):
             while stack:
                 vertex = stack.pop()
                 if vertex not in visited:
-                    stack.extend(self.nodetionary[vertex][::-1])
+                    stack.extend(self.node_dict[vertex][::-1])
                     visited.add(vertex)
                     return_list.append(vertex)
         except KeyError:
@@ -153,7 +153,7 @@ class Graph(object):
                 vertex = stack.pop(0)
                 if vertex not in visited:
                     visited.add(vertex)
-                    stack.extend(self.nodetionary[vertex])
+                    stack.extend(self.node_dict[vertex])
                     return_list.append(vertex)
         except KeyError:
             raise KeyError(str(start) + " not in graph. Try again.")
@@ -166,7 +166,7 @@ if __name__ == "__main__":
     graph = Graph()
     for i in range(1000):
         graph.add_edge(random.randint(0, 100), random.randint(0, 100))
-    x = random.choice(list(graph.nodetionary))
+    x = random.choice(list(graph.node_dict))
 
     def time_graph_trav_breadth(graph, x):
         return graph.breadth_first_traversal(x)
