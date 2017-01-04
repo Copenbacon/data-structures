@@ -160,9 +160,9 @@ TOTAL                       917     14    98%
 
   ###Methods###
   nodes(): return a list of all nodes in the graph
-  edges(): return a list of all edges in the graph
+  edges(): return a list of all edges in the graph with their weights
   add_node(n): adds a new node ‘n’ to the graph
-  add_edge(n1, n2): adds a new edge to the graph connecting ‘n1’ and ‘n2’, if either n1 or n2 are not already present in the graph, they should be added.
+  add_edge(n1, n2, weight): adds a new edge to the graph connecting ‘n1’ and ‘n2’, if either n1 or n2 are not already present in the graph, they should be added. Also adds a weight to the edge and is displayed as a tuple (connected_node, weight)
   del_node(n): deletes the node ‘n’ from the graph, raises an error if no such node exists
   del_edge(n1, n2): deletes the edge connecting ‘n1’ and ‘n2’ from the graph, raises an error if no such edge exists
   has_node(n): True if node ‘n’ is contained in the graph, False if not.

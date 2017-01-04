@@ -8,10 +8,10 @@ class Graph(object):
     g.nodes():
         return a list of all nodes in the graph
     g.edges():
-        return a list of all edges in the graph
+        return a list of all edges in the graph with their weights
     g.add_node(n):
         adds a new node ‘n’ to the graph
-    g.add_edge(n1, n2):
+    g.add_edge(n1, n2, weight):
         adds a new edge to the graph connecting ‘n1’ and ‘n2’,
         if either n1 or n2 are not already present in the graph,
         they should be added.
