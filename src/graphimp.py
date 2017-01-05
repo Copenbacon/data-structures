@@ -35,7 +35,6 @@ class Graph(object):
     g.breadth_first_traversal(self, start): 
         Perform a full breadth-first traversal of the graph, beginning at start. Return the full visited path when traversal is complete.
     """
-
     def __init__(self):
         """Instantiation of the Graph."""
         self.node_dict = {}
@@ -173,13 +172,48 @@ class Graph(object):
             raise KeyError(str(start) + " not in graph. Try again.")
         return return_list
 
+    def djikstras(self, start, end=None):
+        """Find the shortest path from start to end by weight."""
+        inf = float('inf')
+        curr = start
+        unvisited = set([start])
+        visited = set()
+        distance_dict = {}
+        for key in self.node_dict:
+            distance_dict.setdefault(key, (inf, None))
+        distance_dict[curr] = (0, None)
+        while unvisited:
+            current_explored_distance = inf
+            next_val = None
+            for node, weight in self.node_dict[curr]:
+                current_distance = distance_dict[curr][0] + weight
+                if node not in visited:
+                    unvisited.add(node)
+                    if current_distance < current_explored_distance:
+                        next_val = node
+                        current_explored_distance = current_distance
+                if current_distance < distance_dict[node][0]:
+                    distance_dict[node] = (current_distance, curr)
+            visited.add(curr)
+            unvisited.discard(curr)
+            try:
+                curr = next_val or unvisited.pop()
+            except KeyError:
+                break
+        path = []
+        insert_val = end
+        while insert_val is not None:
+            path.insert(0, insert_val)
+            insert_val = distance_dict[insert_val][1]
+        return path
+
 
 if __name__ == "__main__":
     import random
     import timeit
     graph = Graph()
-    for i in range(1000):
-        graph.add_edge(random.randint(0, 100), random.randint(0, 100))
+    for i in range(100):
+        graph.add_edge(random.randint(0, 100), random.randint(0, 100), random.randint(1, 100))
     x = random.choice(list(graph.node_dict))
 
     def time_graph_trav_breadth(graph, x):
