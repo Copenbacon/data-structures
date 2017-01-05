@@ -212,7 +212,7 @@ if __name__ == "__main__":
     import random
     import timeit
     graph = Graph()
-    for i in range(100):
+    for i in range(1000):
         graph.add_edge(random.randint(0, 100), random.randint(0, 100), random.randint(1, 100))
     x = random.choice(list(graph.node_dict))
 
