@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 """The Graph Module."""
+from pq import PikaQ
 
 
 class Graph(object):
@@ -207,13 +208,42 @@ class Graph(object):
             insert_val = distance_dict[insert_val][1]
         return path
 
+    def astar(self, start, end):
+        pika = PikaQ()
+        pika.insert(start, 0)
+        where_from = {}
+        accum_cost = {}
+        where_from[start] = None
+        accum_cost[start] = 0
+
+        while pika.peek():
+            curr = pika.pop()
+            if curr == end:
+                break
+
+            for next_node in self.neighbors(curr):
+                n_cost = accum_cost[curr[1]] + self.node_dict[curr[0]][next_node][1]
+                if next_node not in accum_cost or n_cost < accum_cost[next_node]:
+                    accum_cost[next_node] = n_cost
+                    for node_tup in self.node_dict[start]:
+                        if end == node_tup[0]:
+                            priority = n_cost + self.heuristic(node_tup, self.node_dict[start][next_node])
+                    pika.insert(self.node_dict[next_node][0], priority)
+                    where_from[self.node_dict[next_node][0]] = curr
+        return where_from, accum_cost
+
+    def heuristic(self, a, b):
+        (n1, m1) = a
+        (n2, m2) = b
+        return abs(n1 - n2) + abs(m1 - m2)
+
 
 if __name__ == "__main__":
     import random
     import timeit
     graph = Graph()
     for i in range(1000):
-        graph.add_edge(random.randint(0, 100), random.randint(0, 100), random.randint(1, 100))
+        graph.add_edge(random.randint(0, 10), random.randint(0, 10), random.randint(1, 100))
     x = random.choice(list(graph.node_dict))
 
     def time_graph_trav_breadth(graph, x):
