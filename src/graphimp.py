@@ -35,6 +35,10 @@ class Graph(object):
         Perform a full depth-first traversal of the graph beginning at start. Return the full visited path when traversal is complete.
     g.breadth_first_traversal(self, start): 
         Perform a full breadth-first traversal of the graph, beginning at start. Return the full visited path when traversal is complete.
+    g.djikstras(start, end): 
+        Return shortest path (by weight) between two nodes in the graph by using Djikstra's algorithm.
+    g.floyd(start, end):
+        Return shortest path (by weight) between two nodes using the Floy-Warshall algorithm.
     """
     def __init__(self):
         """Instantiation of the Graph."""
@@ -208,34 +212,39 @@ class Graph(object):
             insert_val = distance_dict[insert_val][1]
         return path
 
-    def astar(self, start, end):
-        pika = PikaQ()
-        pika.insert(start, 0)
-        where_from = {}
-        accum_cost = {}
-        where_from[start] = None
-        accum_cost[start] = 0
-
-        while pika.peek():
-            curr = pika.pop()
-            if curr == end:
-                break
-
-            for next_node in self.neighbors(curr):
-                n_cost = accum_cost[curr[1]] + self.node_dict[curr[0]][next_node][1]
-                if next_node not in accum_cost or n_cost < accum_cost[next_node]:
-                    accum_cost[next_node] = n_cost
-                    for node_tup in self.node_dict[start]:
-                        if end == node_tup[0]:
-                            priority = n_cost + self.heuristic(node_tup, self.node_dict[start][next_node])
-                    pika.insert(self.node_dict[next_node][0], priority)
-                    where_from[self.node_dict[next_node][0]] = curr
-        return where_from, accum_cost
-
-    def heuristic(self, a, b):
-        (n1, m1) = a
-        (n2, m2) = b
-        return abs(n1 - n2) + abs(m1 - m2)
+    def floyd(self, start, end=None):
+        """Floyd Warshall formula."""
+        inf = float('inf')
+        if end in self.breadth_first_traversal(start):
+            distance_dict = {}
+            path = {}
+            for node in self.node_dict:
+                distance_dict[node] = {}
+                path[node] = {}
+                for tup in self.node_dict:
+                    distance_dict[node][tup] = inf
+                    path[node][tup] = -1
+                distance_dict[node][node] = 0
+                for edge in range(len(self.node_dict[node])):
+                    key_edge = self.node_dict[node][edge][0]
+                    distance_dict[node][key_edge] = self.node_dict[node][edge][1]
+                    path[node][key_edge] = node
+            for next_node in self.node_dict:
+                for node in self.node_dict:
+                    for tup in self.node_dict:
+                        new_distance = distance_dict[node][next_node] + distance_dict[next_node][tup]
+                        if new_distance < distance_dict[node][tup]:
+                            distance_dict[node][tup] = new_distance
+                            path[node][tup] = path[next_node][tup]
+            return_path = []
+            return_path_node = path[start][end]
+            while return_path_node is not start:
+                return_path.insert(0, return_path_node)
+                return_path_node = path[start][return_path_node]
+            return_path.insert(0, start)
+            return_path.append(end)
+            return return_path
+        raise KeyError('Path does not exist.')
 
 
 if __name__ == "__main__":
