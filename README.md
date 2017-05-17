@@ -133,7 +133,7 @@ TOTAL                       936     16    98%
   size(): returns the size of the Deque.
   ```
 
-##Queue
+## Queue
 
   It is important to note that the "tail" of our queue is actually the front of the Queue.
 
@@ -150,7 +150,7 @@ TOTAL                       936     16    98%
   size(): returns the size of the Queue.
   ```
 
-##Doubly Linked List
+## Doubly Linked List
   
   ### Methods
   ```
@@ -169,7 +169,7 @@ TOTAL                       936     16    98%
   remove(): Remove the node passed into the parameter.
   ```
 
-##Stack
+## Stack
 
   ### Methods
   ```
@@ -184,7 +184,7 @@ TOTAL                       936     16    98%
   _is_empty(): Return true if the stack is empty.
   ```
 
-##Linked_List
+## Linked_List
 
   ### Methods
   ```
