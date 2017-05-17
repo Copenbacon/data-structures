@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 """The Graph Module."""
+from pq import PikaQ
 
 
 class Graph(object):
@@ -34,8 +35,11 @@ class Graph(object):
         Perform a full depth-first traversal of the graph beginning at start. Return the full visited path when traversal is complete.
     g.breadth_first_traversal(self, start): 
         Perform a full breadth-first traversal of the graph, beginning at start. Return the full visited path when traversal is complete.
+    g.djikstras(start, end): 
+        Return shortest path (by weight) between two nodes in the graph by using Djikstra's algorithm.
+    g.floyd(start, end):
+        Return shortest path (by weight) between two nodes using the Floy-Warshall algorithm.
     """
-
     def __init__(self):
         """Instantiation of the Graph."""
         self.node_dict = {}
@@ -173,13 +177,82 @@ class Graph(object):
             raise KeyError(str(start) + " not in graph. Try again.")
         return return_list
 
+    def djikstras(self, start, end=None):
+        """Find the shortest path from start to end by weight."""
+        inf = float('inf')
+        curr = start
+        unvisited = set([start])
+        visited = set()
+        distance_dict = {}
+        for key in self.node_dict:
+            distance_dict.setdefault(key, (inf, None))
+        distance_dict[curr] = (0, None)
+        while unvisited:
+            current_explored_distance = inf
+            next_val = None
+            for node, weight in self.node_dict[curr]:
+                current_distance = distance_dict[curr][0] + weight
+                if node not in visited:
+                    unvisited.add(node)
+                    if current_distance < current_explored_distance:
+                        next_val = node
+                        current_explored_distance = current_distance
+                if current_distance < distance_dict[node][0]:
+                    distance_dict[node] = (current_distance, curr)
+            visited.add(curr)
+            unvisited.discard(curr)
+            try:
+                curr = next_val or unvisited.pop()
+            except KeyError:
+                break
+        path = []
+        insert_val = end
+        while insert_val is not None:
+            path.insert(0, insert_val)
+            insert_val = distance_dict[insert_val][1]
+        return path
+
+    def floyd(self, start, end=None):
+        """Floyd Warshall formula."""
+        inf = float('inf')
+        if end in self.breadth_first_traversal(start):
+            distance_dict = {}
+            path = {}
+            for node in self.node_dict:
+                distance_dict[node] = {}
+                path[node] = {}
+                for tup in self.node_dict:
+                    distance_dict[node][tup] = inf
+                    path[node][tup] = -1
+                distance_dict[node][node] = 0
+                for edge in range(len(self.node_dict[node])):
+                    key_edge = self.node_dict[node][edge][0]
+                    distance_dict[node][key_edge] = self.node_dict[node][edge][1]
+                    path[node][key_edge] = node
+            for next_node in self.node_dict:
+                for node in self.node_dict:
+                    for tup in self.node_dict:
+                        new_distance = distance_dict[node][next_node] + distance_dict[next_node][tup]
+                        if new_distance < distance_dict[node][tup]:
+                            distance_dict[node][tup] = new_distance
+                            path[node][tup] = path[next_node][tup]
+            return_path = []
+            return_path_node = path[start][end]
+            while return_path_node is not start:
+                return_path.insert(0, return_path_node)
+                return_path_node = path[start][return_path_node]
+            return_path.insert(0, start)
+            return_path.append(end)
+            return return_path
+        raise KeyError('Path does not exist.')
+
 
 if __name__ == "__main__":
     import random
     import timeit
     graph = Graph()
     for i in range(1000):
-        graph.add_edge(random.randint(0, 100), random.randint(0, 100))
+        graph.add_edge(random.randint(0, 10), random.randint(0, 10), random.randint(1, 100))
     x = random.choice(list(graph.node_dict))
 
     def time_graph_trav_breadth(graph, x):
