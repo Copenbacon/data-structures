@@ -1,7 +1,7 @@
 # data-structures
 
-##Jan 3, 2016
-##Weighted Graph
+## Jan 3, 2016
+## Weighted Graph
 
 ---------- coverage: platform linux2, python 2.7.12-final-0 ----------
 Name                      Stmts   Miss  Cover   Missing
@@ -53,8 +53,8 @@ TOTAL                       936     16    98%
 
 ========================== 252 passed in 0.88 seconds
 
-##Jan 2, 2016
-##Graph-Traversal
+## Jan 2, 2016
+## Graph-Traversal
 
 ---------- coverage: platform linux2, python 2.7.12-final-0 ----------
 Name                      Stmts   Miss  Cover   Missing
@@ -156,9 +156,10 @@ TOTAL                       917     14    98%
 
 ========================== 250 passed in 0.94 seconds
 
-##Graph
+## Graph
 
-  ###Methods###
+  ### Methods
+  
   nodes(): return a list of all nodes in the graph
   edges(): return a list of all edges in the graph with their weights
   add_node(n): adds a new node ‘n’ to the graph
@@ -174,31 +175,34 @@ TOTAL                       917     14    98%
   
 
 
-##Priority Queue
+## Priority Queue
 
-  ###Methods###
+  ### Methods
+
   def __init__(vals=[]): Initialize a priority queue, and insert any values passed in into the Priority Queue. Must pass a list of items. To pass
   def insert(item, pri=float(-inf)): Insert an item into the Priority Queue, if no priority specified, -inf will be the priority,
   def pop(): Remove a value from the priority queue.
   def peek(): Look at next item to be popped in the Priority Queue.
 
 
-##Binary Heap
+## Binary Heap
 
-###Methods###
-__init__([iterable]): takes an optional iterable object when instantiating the class.
-  _perc_ip(val): Send the value up the heap as it is pushed in.
-  push(val): Append a value to the end of the list, increase list size, push the index that is equal to size, up the list.
-  _perc_down(val): Send a value down the heap if the heap's rules are violated.
-  _min_child(val): Find and return the smallest child.
-  pop(): Remove value a head of heap and sort the heap accordingly.
+  ### Methods
+
+  __init__([iterable]): takes an optional iterable object when instantiating the class.
+    _perc_ip(val): Send the value up the heap as it is pushed in.
+    push(val): Append a value to the end of the list, increase list size, push the index that is equal to size, up the list.
+    _perc_down(val): Send a value down the heap if the heap's rules are violated.
+    _min_child(val): Find and return the smallest child.
+    pop(): Remove value a head of heap and sort the heap accordingly.
   
 
-##Deque
+## Deque
 
   It is important to note that the "tail" of our Deques is actually the front of the Deque.
 
-  ###Methods
+  ### Methods
+
   __init__(): initializes the Deque class as a composite of the DLL class.
   append(): uses the push method from DLL to add nodes to the end of the Deque.
   appendleft(): uses the append method from DLL to add nodes to the start of the Deque.
