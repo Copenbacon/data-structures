@@ -55,7 +55,7 @@ TOTAL                       936     16    98%
 ## Graph
 
   ### Methods
-
+  ```
   nodes(): return a list of all nodes in the graph
   
   edges(): return a list of all edges in the graph with their weights
@@ -78,125 +78,125 @@ TOTAL                       936     16    98%
   
   g.breadth_first_traversal(self, start): Perform a full breadth-first traversal of the graph, beginning at start. Return the full visited path when traversal is complete.
 
-  
+  ```
+
 ## Priority Queue
 
   ### Methods
-
-   def __init__(vals=[]): Initialize a priority queue, and insert any values passed in into the Priority Queue. Must pass a list of items. To pass
+  ```
+  def __init__(vals=[]): Initialize a priority queue, and insert any values passed in into the Priority Queue. Must pass a list of items. To pass
   
-   def insert(item, pri=float(-inf)): Insert an item into the Priority Queue, if no priority specified, -inf will be the priority,
+  def insert(item, pri=float(-inf)): Insert an item into the Priority Queue, if no priority specified, -inf will be the priority,
   
-   def pop(): Remove a value from the priority queue.
+  def pop(): Remove a value from the priority queue.
   
-   def peek(): Look at next item to be popped in the Priority Queue.
-
+  def peek(): Look at next item to be popped in the Priority Queue.
+  ```
 
 ## Binary Heap
 
   ### Methods
-
+  ```
+  __init__([iterable]): takes an optional iterable object when instantiating the class.
   
-   __init__([iterable]): takes an optional iterable object when instantiating the class.
+  _perc_ip(val): Send the value up the heap as it is pushed in.
   
-   _perc_ip(val): Send the value up the heap as it is pushed in.
+  push(val): Append a value to the end of the list, increase list size, push the index that is equal to size, up the list.
   
-   push(val): Append a value to the end of the list, increase list size, push the index that is equal to size, up the list.
+  _perc_down(val): Send a value down the heap if the heap's rules are violated.
   
-   _perc_down(val): Send a value down the heap if the heap's rules are violated.
+  _min_child(val): Find and return the smallest child.
   
-   _min_child(val): Find and return the smallest child.
-  
-   pop(): Remove value a head of heap and sort the heap accordingly.
-  
+  pop(): Remove value a head of heap and sort the heap accordingly.
+  ```  
 
 ## Deque
 
   It is important to note that the "tail" of our Deques is actually the front of the Deque.
 
   ### Methods
+  ```
+  __init__(): initializes the Deque class as a composite of the DLL class.
   
-   __init__(): initializes the Deque class as a composite of the DLL class.
+  append(): uses the push method from DLL to add nodes to the end of the Deque.
   
-   append(): uses the push method from DLL to add nodes to the end of the Deque.
+  appendleft(): uses the append method from DLL to add nodes to the start of the Deque.
   
-   appendleft(): uses the append method from DLL to add nodes to the start of the Deque.
+  popleft(): removes a node from the front of the dequeue
   
-   popleft(): removes a node from the front of the dequeue
+  pop(): removes a node from the end of the dequeue
   
-   pop(): removes a node from the end of the dequeue
+  peek(): Looks at the front value of the Deque without removing it or advancing the view beyond it.
   
-   peek(): Looks at the front value of the Deque without removing it or advancing the view beyond it.
+  peekleft(): Looks at the end value of the Deque without removing it or advancing the view before it.
   
-   peekleft(): Looks at the end value of the Deque without removing it or advancing the view before it.
-  
-   size(): returns the size of the Deque.
-
+  size(): returns the size of the Deque.
+  ```
 
 ##Queue
 
   It is important to note that the "tail" of our queue is actually the front of the Queue.
 
   ### Methods
+  ```
+  __init__(): initializes the Queue class as a composite of the DLL class.
   
-   __init__(): initializes the Queue class as a composite of the DLL class.
+  enqueue(): uses the push method from DLL to add nodes to the end of the Queue.
   
-   enqueue(): uses the push method from DLL to add nodes to the end of the Queue.
+  dequeue(): removes a node from the front of the dequeue
   
-   dequeue(): removes a node from the front of the dequeue
+  peek(): Looks at the front value of the Queue without removing it or advancing the view beyond it.
   
-   peek(): Looks at the front value of the Queue without removing it or advancing the view beyond it.
-  
-   size(): returns the size of the Queue.
-
+  size(): returns the size of the Queue.
+  ```
 
 ##Doubly Linked List
   
   ### Methods
+  ```
+  __init__(): initializes the DLL class and adds a tail, head, and size_of_list attribute. It also checks that the values passed in are iterable.
   
-   __init__(): initializes the DLL class and adds a tail, head, and size_of_list attribute. It also checks that the values passed in are iterable.
+  push(): Inserts a value to head of the list
   
-   push(): Inserts a value to head of the list
+  pop(): Remove node from head of list and return it to user.
   
-   pop(): Remove node from head of list and return it to user.
+  append(): Add a tail to the end of the list.
   
-   append(): Add a tail to the end of the list.
+  shift(): Remove node from end of list and return to user.
   
-   shift(): Remove node from end of list and return to user.
+  def search(self, val): Return the val of the node when searched.
   
-   def search(self, val): Return the val of the node when searched.
-  
-   remove(): Remove the node passed into the parameter.
-
+  remove(): Remove the node passed into the parameter.
+  ```
 
 ##Stack
 
   ### Methods
-
-   __init__(): Initiate the Stack as a instance of LinkedList.
+  ```
+  __init__(): Initiate the Stack as a instance of LinkedList.
   
-   pop(): Remove the top element from stack and returns it.
+  pop(): Remove the top element from stack and returns it.
   
-   push(): Add a value to the top of the stack.
+  push(): Add a value to the top of the stack.
   
-   _size(): Return the length of the stack.
+  _size(): Return the length of the stack.
   
-   _is_empty(): Return true if the stack is empty.
-
+  _is_empty(): Return true if the stack is empty.
+  ```
 
 ##Linked_List
 
   ### Methods
-
-   push(val): adds a node at the head, increments size of list.
+  ```
+  push(val): adds a node at the head, increments size of list.
   
-   pop(): removes the node at the head, deincrements size of list.
+  pop(): removes the node at the head, deincrements size of list.
   
-   size(): returns size of LinkedList
+  size(): returns size of LinkedList
   
-   search(val): searches list for node containing val and returns that node.
+  search(val): searches list for node containing val and returns that node.
   
-   remove(node_to_delete): takes a node as argument, searches for it, and removes it from list, then deincrements size of list
+  remove(node_to_delete): takes a node as argument, searches for it, and removes it from list, then deincrements size of list
   
-   display(): returns LinkedList as a stringified tuple-looking object.
-
+  display(): returns LinkedList as a stringified tuple-looking object.
+  ```
