@@ -89,6 +89,14 @@ def empty_graph():
     from graphimp import Graph
     return Graph()
 
+@pytest.fixture
+def full_graph():
+    """Graph Fixture."""
+    from graphimp import Graph
+    graph = Graph()
+    for i in range(1000):
+        graph.add_edge(random.randint(0, 10), random.randint(0, 10), random.randint(1, 100))
+    return graph
 
 def test_empty_graph_exists(empty_graph):
     """Make sure the empty graph has an empty node_dict."""
@@ -273,3 +281,10 @@ def test_raise_error_when_weight_negative_number(empty_graph):
     """Should raise ValueError if edge added weight is not a positive number."""
     with pytest.raises(ValueError):
         empty_graph.add_edge("A", "B", -1)
+
+
+def test_shortest_path_algos_equal_each_other(full_graph):
+    """Djikstras and Warshall should equal each other."""
+    assert full_graph.djikstras(1, 10) == full_graph.floyd(1, 10)
+
+
